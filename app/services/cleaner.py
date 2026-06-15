@@ -1,6 +1,5 @@
 from pathlib import Path
 import pandas as pd
-
 from pathlib import Path
 
 
@@ -101,6 +100,21 @@ def load_and_clean(filename: str) -> pd.DataFrame:
     return df
 
 
-filepath_str = "cart_insight_supermarket_2025_profit_tax.csv"
+def sort_theSample(file: str) -> bool:
+    try:
+        project_root = Path(__file__).resolve().parents[2]
+        filepath = project_root / "data" / file
 
-load_and_clean(filepath_str)
+        df = pd.read_csv(filepath)
+
+        df["date"] = pd.to_datetime(df["date"])
+
+        df = df.sort_values(by=["date", "time"]).reset_index(drop=True)
+
+        df.to_csv(project_root / "data" / f"Sorted_{file}", index=False)
+
+        return True
+
+    except Exception as e:
+        print(e)
+        return False
