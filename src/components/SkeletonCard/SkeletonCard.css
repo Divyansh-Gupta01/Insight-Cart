@@ -1,0 +1,30 @@
+.skeleton-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  box-shadow: var(--shadow-sm);
+}
+.skeleton-card__img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-sm);
+  margin-bottom: 12px;
+}
+.skeleton-card__line {
+  height: 12px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+.shimmer {
+  background: linear-gradient(90deg, var(--color-border) 25%, #eef1f5 37%, var(--color-border) 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+[data-theme='dark'] .shimmer {
+  background: linear-gradient(90deg, #1f2c45 25%, #28395c 37%, #1f2c45 63%);
+  background-size: 400% 100%;
+}
+@keyframes shimmer {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}

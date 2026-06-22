@@ -1,0 +1,6 @@
+.price-tag { display: inline-flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.price-tag__current { font-weight: 700; color: var(--color-text); font-size: 18px; }
+.price-tag--sm .price-tag__current { font-size: 15px; }
+.price-tag--lg .price-tag__current { font-size: 26px; }
+.price-tag__original { font-size: 13px; color: var(--color-text-muted); text-decoration: line-through; }
+.price-tag__discount { font-size: 13px; color: var(--color-success); font-weight: 600; }
