@@ -1,0 +1,117 @@
+/* ===========================================================
+   Insight Cart — Global Design Tokens & Base Styles
+   =========================================================== */
+:root {
+  /* Brand palette (required) */
+  --color-primary: #2874F0;
+  --color-primary-dark: #1d5cc4;
+  --color-secondary: #172337;
+  --color-accent: #FF9F00;
+  --color-accent-dark: #e08600;
+  --color-bg: #F1F3F6;
+  --color-white: #FFFFFF;
+
+  /* Supporting tones */
+  --color-success: #388E3C;
+  --color-danger: #FF6161;
+  --color-text: #212121;
+  --color-text-muted: #6b7280;
+  --color-border: #E0E4EA;
+  --color-surface: #FFFFFF;
+
+  /* Typography */
+  --font-display: 'Poppins', 'Segoe UI', sans-serif;
+  --font-body: 'Inter', 'Segoe UI', sans-serif;
+
+  /* Radii & shadows */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 3px rgba(23, 35, 55, 0.08);
+  --shadow-md: 0 4px 14px rgba(23, 35, 55, 0.10);
+  --shadow-lg: 0 10px 30px rgba(23, 35, 55, 0.14);
+
+  /* Layout */
+  --header-height: 64px;
+  --max-width: 1280px;
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+}
+
+[data-theme='dark'] {
+  --color-bg: #0F1521;
+  --color-surface: #172337;
+  --color-white: #1C2740;
+  --color-text: #EDEFF3;
+  --color-text-muted: #9AA4B5;
+  --color-border: #2A3650;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 14px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  transition: background var(--transition-base), color var(--transition-base);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  margin: 0;
+  color: var(--color-secondary);
+}
+[data-theme='dark'] h1, [data-theme='dark'] h2, [data-theme='dark'] h3 { color: var(--color-text); }
+
+p { margin: 0; }
+a { text-decoration: none; color: inherit; }
+button { font-family: var(--font-body); cursor: pointer; }
+img { max-width: 100%; display: block; }
+ul { list-style: none; margin: 0; padding: 0; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Accessible focus ring everywhere */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #c7cdd6; border-radius: 10px; }
+[data-theme='dark'] ::-webkit-scrollbar-thumb { background: #2A3650; }
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 10px 16px;
+  z-index: 2000;
+  border-radius: 0 0 8px 0;
+}
+.skip-link:focus { left: 0; }
