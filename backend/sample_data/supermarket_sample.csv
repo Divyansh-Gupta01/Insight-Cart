@@ -1,0 +1,780 @@
+Date,Invoice_ID,Customer_ID,Product_Name,Category,Quantity,Unit_Price,Total_Amount,Unit_Cost,Current_Stock,Reorder_Level,Lead_Time_Days,Payment_Method
+2025-05-01 15:23:11,INV-20250501-0001,CUST-1000,Amul Taaza Homogenised Toned Milk 1L,Dairy,2,72.0,144.0,58.0,48,15,2,Credit Card
+2025-05-01 17:04:40,INV-20250501-0002,CUST-1001,Amul Taaza Homogenised Toned Milk 1L,Dairy,2,72.0,144.0,58.0,48,15,2,UPI
+2025-05-01 14:12:29,INV-20250501-0011,CUST-1013,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,1,55.0,55.0,42.0,32,10,1,Cash
+2025-05-01 17:51:29,INV-20250501-0021,CUST-1026,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,3,28.0,84.0,21.0,85,25,4,Credit Card
+2025-05-01 21:08:57,INV-20250501-0022,CUST-1027,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,3,28.0,84.0,21.0,85,25,4,Credit Card
+2025-05-01 20:23:00,INV-20250501-0031,CUST-1039,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,1,165.0,165.0,138.0,42,15,3,UPI
+2025-05-01 13:19:35,INV-20250501-0041,CUST-1052,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,1,56.0,56.0,44.0,110,35,2,Credit Card
+2025-05-01 13:56:39,INV-20250501-0042,CUST-1053,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,3,56.0,168.0,44.0,110,35,2,Cash
+2025-05-01 11:55:07,INV-20250501-0051,CUST-1065,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,1,275.0,275.0,230.0,28,12,3,Debit Card
+2025-05-01 09:52:42,INV-20250501-0052,CUST-1066,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,1,275.0,275.0,230.0,28,12,3,Cash
+2025-05-01 17:36:19,INV-20250501-0061,CUST-1078,Coca-Cola Original Taste 750ml PET Bottle,Beverages,2,40.0,80.0,29.0,64,20,2,Cash
+2025-05-01 12:39:20,INV-20250501-0071,CUST-1091,Surf Excel Easy Wash Detergent Powder 1kg,Household,3,145.0,435.0,118.0,38,15,5,UPI
+2025-05-01 19:51:23,INV-20250501-0081,CUST-1104,Dettol Original Liquid Handwash Refill 175ml,Personal Care,3,99.0,297.0,76.0,52,18,3,UPI
+2025-05-01 15:09:45,INV-20250501-0091,CUST-1117,Britannia Good Day Cashew Cookies 200g,Snacks,2,45.0,90.0,34.0,70,25,2,UPI
+2025-05-01 20:59:10,INV-20250501-0101,CUST-1130,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,1,195.0,195.0,152.0,22,10,4,UPI
+2025-05-01 12:19:20,INV-20250501-0111,CUST-1143,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,1,60.0,60.0,46.0,18,8,2,Credit Card
+2025-05-01 14:57:05,INV-20250501-0112,CUST-1144,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,3,60.0,180.0,46.0,18,8,2,UPI
+2025-05-01 16:59:37,INV-20250501-0121,CUST-1006,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,1,185.0,185.0,148.0,40,15,3,Credit Card
+2025-05-01 13:23:35,INV-20250501-0131,CUST-1019,Colgate Total Advanced Health Toothpaste 120g,Personal Care,1,125.0,125.0,96.0,60,20,3,UPI
+2025-05-01 18:13:46,INV-20250501-0132,CUST-1020,Colgate Total Advanced Health Toothpaste 120g,Personal Care,3,125.0,375.0,96.0,60,20,3,Credit Card
+2025-05-01 15:29:22,INV-20250501-0141,CUST-1032,Lays Indias Magic Masala Potato Chips 50g,Snacks,2,20.0,40.0,15.0,95,30,2,Cash
+2025-05-02 16:43:30,INV-20250502-0001,CUST-1007,Amul Taaza Homogenised Toned Milk 1L,Dairy,2,72.0,144.0,58.0,48,15,2,UPI
+2025-05-02 20:11:05,INV-20250502-0002,CUST-1008,Amul Taaza Homogenised Toned Milk 1L,Dairy,1,72.0,72.0,58.0,48,15,2,Credit Card
+2025-05-02 15:03:56,INV-20250502-0011,CUST-1020,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,3,55.0,165.0,42.0,32,10,1,Credit Card
+2025-05-02 16:52:13,INV-20250502-0012,CUST-1021,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,2,55.0,110.0,42.0,32,10,1,UPI
+2025-05-02 09:52:47,INV-20250502-0021,CUST-1033,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,1,28.0,28.0,21.0,85,25,4,Credit Card
+2025-05-02 20:40:27,INV-20250502-0031,CUST-1046,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,2,165.0,330.0,138.0,42,15,3,Credit Card
+2025-05-02 15:09:52,INV-20250502-0041,CUST-1059,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,1,56.0,56.0,44.0,110,35,2,Debit Card
+2025-05-02 13:36:18,INV-20250502-0051,CUST-1072,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,1,275.0,275.0,230.0,28,12,3,Cash
+2025-05-02 10:23:46,INV-20250502-0052,CUST-1073,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,1,275.0,275.0,230.0,28,12,3,UPI
+2025-05-02 19:42:32,INV-20250502-0061,CUST-1085,Coca-Cola Original Taste 750ml PET Bottle,Beverages,1,40.0,40.0,29.0,64,20,2,UPI
+2025-05-02 16:45:57,INV-20250502-0071,CUST-1098,Surf Excel Easy Wash Detergent Powder 1kg,Household,3,145.0,435.0,118.0,38,15,5,UPI
+2025-05-02 19:12:02,INV-20250502-0072,CUST-1099,Surf Excel Easy Wash Detergent Powder 1kg,Household,2,145.0,290.0,118.0,38,15,5,UPI
+2025-05-02 18:25:02,INV-20250502-0081,CUST-1111,Dettol Original Liquid Handwash Refill 175ml,Personal Care,2,99.0,198.0,76.0,52,18,3,UPI
+2025-05-02 17:15:57,INV-20250502-0082,CUST-1112,Dettol Original Liquid Handwash Refill 175ml,Personal Care,3,99.0,297.0,76.0,52,18,3,Debit Card
+2025-05-02 15:57:52,INV-20250502-0091,CUST-1124,Britannia Good Day Cashew Cookies 200g,Snacks,3,45.0,135.0,34.0,70,25,2,UPI
+2025-05-02 15:07:59,INV-20250502-0101,CUST-1137,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,2,195.0,390.0,152.0,22,10,4,UPI
+2025-05-02 09:44:40,INV-20250502-0102,CUST-1138,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,2,195.0,390.0,152.0,22,10,4,UPI
+2025-05-02 16:39:52,INV-20250502-0111,CUST-1000,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,UPI
+2025-05-02 20:12:15,INV-20250502-0121,CUST-1013,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,1,185.0,185.0,148.0,40,15,3,UPI
+2025-05-02 15:37:59,INV-20250502-0122,CUST-1014,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,3,185.0,555.0,148.0,40,15,3,UPI
+2025-05-02 10:34:37,INV-20250502-0131,CUST-1026,Colgate Total Advanced Health Toothpaste 120g,Personal Care,3,125.0,375.0,96.0,60,20,3,Debit Card
+2025-05-02 21:50:44,INV-20250502-0141,CUST-1039,Lays Indias Magic Masala Potato Chips 50g,Snacks,2,20.0,40.0,15.0,95,30,2,UPI
+2025-05-03 16:09:29,INV-20250503-0001,CUST-1014,Amul Taaza Homogenised Toned Milk 1L,Dairy,4,72.0,288.0,58.0,48,15,2,UPI
+2025-05-03 15:24:30,INV-20250503-0002,CUST-1015,Amul Taaza Homogenised Toned Milk 1L,Dairy,1,72.0,72.0,58.0,48,15,2,Cash
+2025-05-03 14:55:04,INV-20250503-0011,CUST-1027,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,2,55.0,110.0,42.0,32,10,1,Credit Card
+2025-05-03 12:18:07,INV-20250503-0012,CUST-1028,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,5,55.0,275.0,42.0,32,10,1,UPI
+2025-05-03 21:30:57,INV-20250503-0021,CUST-1040,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,4,28.0,112.0,21.0,85,25,4,UPI
+2025-05-03 20:34:54,INV-20250503-0022,CUST-1041,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,2,28.0,56.0,21.0,85,25,4,UPI
+2025-05-03 18:14:28,INV-20250503-0023,CUST-1042,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,1,28.0,28.0,21.0,85,25,4,Credit Card
+2025-05-03 20:20:18,INV-20250503-0031,CUST-1053,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,2,165.0,330.0,138.0,42,15,3,UPI
+2025-05-03 20:17:07,INV-20250503-0032,CUST-1054,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,1,165.0,165.0,138.0,42,15,3,Cash
+2025-05-03 14:29:06,INV-20250503-0041,CUST-1066,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,2,56.0,112.0,44.0,110,35,2,Credit Card
+2025-05-03 15:11:33,INV-20250503-0042,CUST-1067,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,5,56.0,280.0,44.0,110,35,2,Cash
+2025-05-03 16:32:23,INV-20250503-0043,CUST-1068,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,3,56.0,168.0,44.0,110,35,2,UPI
+2025-05-03 09:20:01,INV-20250503-0051,CUST-1079,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,3,275.0,825.0,230.0,28,12,3,UPI
+2025-05-03 09:58:31,INV-20250503-0052,CUST-1080,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,1,275.0,275.0,230.0,28,12,3,UPI
+2025-05-03 18:36:31,INV-20250503-0053,CUST-1081,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,1,275.0,275.0,230.0,28,12,3,UPI
+2025-05-03 12:12:07,INV-20250503-0061,CUST-1092,Coca-Cola Original Taste 750ml PET Bottle,Beverages,1,40.0,40.0,29.0,64,20,2,UPI
+2025-05-03 16:57:39,INV-20250503-0062,CUST-1093,Coca-Cola Original Taste 750ml PET Bottle,Beverages,3,40.0,120.0,29.0,64,20,2,UPI
+2025-05-03 21:29:19,INV-20250503-0063,CUST-1094,Coca-Cola Original Taste 750ml PET Bottle,Beverages,1,40.0,40.0,29.0,64,20,2,UPI
+2025-05-03 13:07:40,INV-20250503-0071,CUST-1105,Surf Excel Easy Wash Detergent Powder 1kg,Household,4,145.0,580.0,118.0,38,15,5,UPI
+2025-05-03 10:38:25,INV-20250503-0081,CUST-1118,Dettol Original Liquid Handwash Refill 175ml,Personal Care,2,99.0,198.0,76.0,52,18,3,UPI
+2025-05-03 21:32:19,INV-20250503-0082,CUST-1119,Dettol Original Liquid Handwash Refill 175ml,Personal Care,2,99.0,198.0,76.0,52,18,3,UPI
+2025-05-03 20:47:13,INV-20250503-0091,CUST-1131,Britannia Good Day Cashew Cookies 200g,Snacks,1,45.0,45.0,34.0,70,25,2,UPI
+2025-05-03 11:30:48,INV-20250503-0092,CUST-1132,Britannia Good Day Cashew Cookies 200g,Snacks,5,45.0,225.0,34.0,70,25,2,UPI
+2025-05-03 11:34:56,INV-20250503-0093,CUST-1133,Britannia Good Day Cashew Cookies 200g,Snacks,5,45.0,225.0,34.0,70,25,2,Cash
+2025-05-03 16:51:51,INV-20250503-0101,CUST-1144,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,5,195.0,975.0,152.0,22,10,4,Credit Card
+2025-05-03 17:00:57,INV-20250503-0102,CUST-1145,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,4,195.0,780.0,152.0,22,10,4,Cash
+2025-05-03 10:10:18,INV-20250503-0103,CUST-1146,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,4,195.0,780.0,152.0,22,10,4,UPI
+2025-05-03 14:37:47,INV-20250503-0111,CUST-1007,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,Debit Card
+2025-05-03 19:07:37,INV-20250503-0112,CUST-1008,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,1,60.0,60.0,46.0,18,8,2,Credit Card
+2025-05-03 13:43:27,INV-20250503-0121,CUST-1020,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,2,185.0,370.0,148.0,40,15,3,UPI
+2025-05-03 16:06:41,INV-20250503-0122,CUST-1021,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,4,185.0,740.0,148.0,40,15,3,UPI
+2025-05-03 20:05:44,INV-20250503-0131,CUST-1033,Colgate Total Advanced Health Toothpaste 120g,Personal Care,4,125.0,500.0,96.0,60,20,3,UPI
+2025-05-03 18:09:05,INV-20250503-0141,CUST-1046,Lays Indias Magic Masala Potato Chips 50g,Snacks,2,20.0,40.0,15.0,95,30,2,Credit Card
+2025-05-04 13:08:03,INV-20250504-0001,CUST-1021,Amul Taaza Homogenised Toned Milk 1L,Dairy,3,72.0,216.0,58.0,48,15,2,Cash
+2025-05-04 17:57:51,INV-20250504-0002,CUST-1022,Amul Taaza Homogenised Toned Milk 1L,Dairy,2,72.0,144.0,58.0,48,15,2,UPI
+2025-05-04 09:05:42,INV-20250504-0003,CUST-1023,Amul Taaza Homogenised Toned Milk 1L,Dairy,4,72.0,288.0,58.0,48,15,2,UPI
+2025-05-04 17:14:14,INV-20250504-0011,CUST-1034,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,3,55.0,165.0,42.0,32,10,1,Credit Card
+2025-05-04 13:21:38,INV-20250504-0012,CUST-1035,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,4,55.0,220.0,42.0,32,10,1,Credit Card
+2025-05-04 17:15:56,INV-20250504-0013,CUST-1036,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,5,55.0,275.0,42.0,32,10,1,UPI
+2025-05-04 09:49:25,INV-20250504-0021,CUST-1047,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,3,28.0,84.0,21.0,85,25,4,Cash
+2025-05-04 17:45:26,INV-20250504-0022,CUST-1048,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,2,28.0,56.0,21.0,85,25,4,Cash
+2025-05-04 18:59:06,INV-20250504-0023,CUST-1049,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,5,28.0,140.0,21.0,85,25,4,Credit Card
+2025-05-04 10:31:41,INV-20250504-0031,CUST-1060,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,1,165.0,165.0,138.0,42,15,3,UPI
+2025-05-04 12:05:01,INV-20250504-0041,CUST-1073,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,4,56.0,224.0,44.0,110,35,2,Credit Card
+2025-05-04 16:28:06,INV-20250504-0042,CUST-1074,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,1,56.0,56.0,44.0,110,35,2,UPI
+2025-05-04 21:26:32,INV-20250504-0043,CUST-1075,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,2,56.0,112.0,44.0,110,35,2,Credit Card
+2025-05-04 17:40:47,INV-20250504-0051,CUST-1086,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,4,275.0,1100.0,230.0,28,12,3,Debit Card
+2025-05-04 12:24:59,INV-20250504-0052,CUST-1087,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,5,275.0,1375.0,230.0,28,12,3,UPI
+2025-05-04 18:57:09,INV-20250504-0053,CUST-1088,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,1,275.0,275.0,230.0,28,12,3,Cash
+2025-05-04 18:44:47,INV-20250504-0061,CUST-1099,Coca-Cola Original Taste 750ml PET Bottle,Beverages,4,40.0,160.0,29.0,64,20,2,UPI
+2025-05-04 11:22:30,INV-20250504-0062,CUST-1100,Coca-Cola Original Taste 750ml PET Bottle,Beverages,2,40.0,80.0,29.0,64,20,2,UPI
+2025-05-04 17:38:28,INV-20250504-0071,CUST-1112,Surf Excel Easy Wash Detergent Powder 1kg,Household,4,145.0,580.0,118.0,38,15,5,Debit Card
+2025-05-04 21:26:02,INV-20250504-0072,CUST-1113,Surf Excel Easy Wash Detergent Powder 1kg,Household,1,145.0,145.0,118.0,38,15,5,Credit Card
+2025-05-04 21:34:03,INV-20250504-0081,CUST-1125,Dettol Original Liquid Handwash Refill 175ml,Personal Care,2,99.0,198.0,76.0,52,18,3,UPI
+2025-05-04 18:05:26,INV-20250504-0091,CUST-1138,Britannia Good Day Cashew Cookies 200g,Snacks,3,45.0,135.0,34.0,70,25,2,UPI
+2025-05-04 13:10:54,INV-20250504-0092,CUST-1139,Britannia Good Day Cashew Cookies 200g,Snacks,4,45.0,180.0,34.0,70,25,2,UPI
+2025-05-04 18:18:37,INV-20250504-0093,CUST-1140,Britannia Good Day Cashew Cookies 200g,Snacks,5,45.0,225.0,34.0,70,25,2,UPI
+2025-05-04 10:20:09,INV-20250504-0101,CUST-1001,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,3,195.0,585.0,152.0,22,10,4,Credit Card
+2025-05-04 15:23:08,INV-20250504-0111,CUST-1014,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,1,60.0,60.0,46.0,18,8,2,Credit Card
+2025-05-04 12:26:41,INV-20250504-0121,CUST-1027,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,1,185.0,185.0,148.0,40,15,3,Cash
+2025-05-04 21:06:29,INV-20250504-0122,CUST-1028,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,3,185.0,555.0,148.0,40,15,3,UPI
+2025-05-04 17:37:47,INV-20250504-0131,CUST-1040,Colgate Total Advanced Health Toothpaste 120g,Personal Care,4,125.0,500.0,96.0,60,20,3,UPI
+2025-05-04 17:58:12,INV-20250504-0132,CUST-1041,Colgate Total Advanced Health Toothpaste 120g,Personal Care,1,125.0,125.0,96.0,60,20,3,Credit Card
+2025-05-04 17:43:58,INV-20250504-0133,CUST-1042,Colgate Total Advanced Health Toothpaste 120g,Personal Care,3,125.0,375.0,96.0,60,20,3,Cash
+2025-05-04 21:39:38,INV-20250504-0141,CUST-1053,Lays Indias Magic Masala Potato Chips 50g,Snacks,3,20.0,60.0,15.0,95,30,2,UPI
+2025-05-04 17:59:16,INV-20250504-0142,CUST-1054,Lays Indias Magic Masala Potato Chips 50g,Snacks,3,20.0,60.0,15.0,95,30,2,UPI
+2025-05-05 16:41:40,INV-20250505-0001,CUST-1028,Amul Taaza Homogenised Toned Milk 1L,Dairy,3,72.0,216.0,58.0,48,15,2,UPI
+2025-05-05 12:45:42,INV-20250505-0002,CUST-1029,Amul Taaza Homogenised Toned Milk 1L,Dairy,3,72.0,216.0,58.0,48,15,2,UPI
+2025-05-05 13:17:22,INV-20250505-0011,CUST-1041,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,1,55.0,55.0,42.0,32,10,1,UPI
+2025-05-05 09:02:02,INV-20250505-0012,CUST-1042,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,2,55.0,110.0,42.0,32,10,1,Credit Card
+2025-05-05 17:05:34,INV-20250505-0021,CUST-1054,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,3,28.0,84.0,21.0,85,25,4,UPI
+2025-05-05 13:18:02,INV-20250505-0031,CUST-1067,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,3,165.0,495.0,138.0,42,15,3,Credit Card
+2025-05-05 14:52:00,INV-20250505-0041,CUST-1080,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,2,56.0,112.0,44.0,110,35,2,UPI
+2025-05-05 21:33:51,INV-20250505-0042,CUST-1081,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,2,56.0,112.0,44.0,110,35,2,UPI
+2025-05-05 19:22:02,INV-20250505-0051,CUST-1093,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,2,275.0,550.0,230.0,28,12,3,UPI
+2025-05-05 19:07:59,INV-20250505-0061,CUST-1106,Coca-Cola Original Taste 750ml PET Bottle,Beverages,1,40.0,40.0,29.0,64,20,2,UPI
+2025-05-05 14:04:42,INV-20250505-0062,CUST-1107,Coca-Cola Original Taste 750ml PET Bottle,Beverages,2,40.0,80.0,29.0,64,20,2,Credit Card
+2025-05-05 11:59:02,INV-20250505-0071,CUST-1119,Surf Excel Easy Wash Detergent Powder 1kg,Household,1,145.0,145.0,118.0,38,15,5,Credit Card
+2025-05-05 21:56:04,INV-20250505-0072,CUST-1120,Surf Excel Easy Wash Detergent Powder 1kg,Household,3,145.0,435.0,118.0,38,15,5,Cash
+2025-05-05 13:25:22,INV-20250505-0081,CUST-1132,Dettol Original Liquid Handwash Refill 175ml,Personal Care,1,99.0,99.0,76.0,52,18,3,Credit Card
+2025-05-05 12:19:04,INV-20250505-0091,CUST-1145,Britannia Good Day Cashew Cookies 200g,Snacks,3,45.0,135.0,34.0,70,25,2,Debit Card
+2025-05-05 09:01:51,INV-20250505-0101,CUST-1008,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,2,195.0,390.0,152.0,22,10,4,Credit Card
+2025-05-05 17:20:17,INV-20250505-0111,CUST-1021,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,UPI
+2025-05-05 10:41:44,INV-20250505-0112,CUST-1022,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,Debit Card
+2025-05-05 14:12:19,INV-20250505-0121,CUST-1034,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,1,185.0,185.0,148.0,40,15,3,Debit Card
+2025-05-05 09:41:21,INV-20250505-0122,CUST-1035,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,1,185.0,185.0,148.0,40,15,3,UPI
+2025-05-05 12:04:52,INV-20250505-0131,CUST-1047,Colgate Total Advanced Health Toothpaste 120g,Personal Care,3,125.0,375.0,96.0,60,20,3,UPI
+2025-05-05 17:58:41,INV-20250505-0132,CUST-1048,Colgate Total Advanced Health Toothpaste 120g,Personal Care,2,125.0,250.0,96.0,60,20,3,UPI
+2025-05-05 11:54:49,INV-20250505-0141,CUST-1060,Lays Indias Magic Masala Potato Chips 50g,Snacks,1,20.0,20.0,15.0,95,30,2,UPI
+2025-05-06 20:19:25,INV-20250506-0001,CUST-1035,Amul Taaza Homogenised Toned Milk 1L,Dairy,3,72.0,216.0,58.0,48,15,2,Cash
+2025-05-06 14:27:30,INV-20250506-0002,CUST-1036,Amul Taaza Homogenised Toned Milk 1L,Dairy,3,72.0,216.0,58.0,48,15,2,UPI
+2025-05-06 19:17:05,INV-20250506-0011,CUST-1048,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,3,55.0,165.0,42.0,32,10,1,Debit Card
+2025-05-06 10:29:41,INV-20250506-0012,CUST-1049,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,2,55.0,110.0,42.0,32,10,1,Debit Card
+2025-05-06 19:01:13,INV-20250506-0021,CUST-1061,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,2,28.0,56.0,21.0,85,25,4,UPI
+2025-05-06 10:20:02,INV-20250506-0031,CUST-1074,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,1,165.0,165.0,138.0,42,15,3,Credit Card
+2025-05-06 10:26:51,INV-20250506-0041,CUST-1087,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,3,56.0,168.0,44.0,110,35,2,UPI
+2025-05-06 15:52:10,INV-20250506-0042,CUST-1088,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,2,56.0,112.0,44.0,110,35,2,Cash
+2025-05-06 15:05:06,INV-20250506-0051,CUST-1100,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,1,275.0,275.0,230.0,28,12,3,UPI
+2025-05-06 18:33:07,INV-20250506-0052,CUST-1101,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,3,275.0,825.0,230.0,28,12,3,UPI
+2025-05-06 16:15:54,INV-20250506-0061,CUST-1113,Coca-Cola Original Taste 750ml PET Bottle,Beverages,2,40.0,80.0,29.0,64,20,2,Credit Card
+2025-05-06 17:51:02,INV-20250506-0071,CUST-1126,Surf Excel Easy Wash Detergent Powder 1kg,Household,2,145.0,290.0,118.0,38,15,5,UPI
+2025-05-06 17:05:44,INV-20250506-0081,CUST-1139,Dettol Original Liquid Handwash Refill 175ml,Personal Care,2,99.0,198.0,76.0,52,18,3,Cash
+2025-05-06 13:12:13,INV-20250506-0082,CUST-1140,Dettol Original Liquid Handwash Refill 175ml,Personal Care,3,99.0,297.0,76.0,52,18,3,Debit Card
+2025-05-06 13:06:14,INV-20250506-0091,CUST-1002,Britannia Good Day Cashew Cookies 200g,Snacks,1,45.0,45.0,34.0,70,25,2,UPI
+2025-05-06 10:11:40,INV-20250506-0101,CUST-1015,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,2,195.0,390.0,152.0,22,10,4,Credit Card
+2025-05-06 12:39:46,INV-20250506-0102,CUST-1016,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,2,195.0,390.0,152.0,22,10,4,Credit Card
+2025-05-06 12:32:46,INV-20250506-0111,CUST-1028,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,3,60.0,180.0,46.0,18,8,2,Credit Card
+2025-05-06 14:33:47,INV-20250506-0121,CUST-1041,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,1,185.0,185.0,148.0,40,15,3,UPI
+2025-05-06 18:58:52,INV-20250506-0122,CUST-1042,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,3,185.0,555.0,148.0,40,15,3,Cash
+2025-05-06 13:55:50,INV-20250506-0131,CUST-1054,Colgate Total Advanced Health Toothpaste 120g,Personal Care,3,125.0,375.0,96.0,60,20,3,Debit Card
+2025-05-06 18:14:47,INV-20250506-0132,CUST-1055,Colgate Total Advanced Health Toothpaste 120g,Personal Care,2,125.0,250.0,96.0,60,20,3,UPI
+2025-05-06 16:16:42,INV-20250506-0141,CUST-1067,Lays Indias Magic Masala Potato Chips 50g,Snacks,1,20.0,20.0,15.0,95,30,2,UPI
+2025-05-06 18:40:48,INV-20250506-0142,CUST-1068,Lays Indias Magic Masala Potato Chips 50g,Snacks,1,20.0,20.0,15.0,95,30,2,UPI
+2025-05-07 19:01:08,INV-20250507-0001,CUST-1042,Amul Taaza Homogenised Toned Milk 1L,Dairy,2,72.0,144.0,58.0,48,15,2,Cash
+2025-05-07 10:27:33,INV-20250507-0011,CUST-1055,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,1,55.0,55.0,42.0,32,10,1,UPI
+2025-05-07 09:36:00,INV-20250507-0021,CUST-1068,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,2,28.0,56.0,21.0,85,25,4,Credit Card
+2025-05-07 20:30:40,INV-20250507-0022,CUST-1069,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,1,28.0,28.0,21.0,85,25,4,Credit Card
+2025-05-07 13:51:52,INV-20250507-0031,CUST-1081,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,3,165.0,495.0,138.0,42,15,3,Debit Card
+2025-05-07 15:42:26,INV-20250507-0041,CUST-1094,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,3,56.0,168.0,44.0,110,35,2,UPI
+2025-05-07 09:22:29,INV-20250507-0051,CUST-1107,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,1,275.0,275.0,230.0,28,12,3,UPI
+2025-05-07 12:52:09,INV-20250507-0052,CUST-1108,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,3,275.0,825.0,230.0,28,12,3,UPI
+2025-05-07 20:38:01,INV-20250507-0061,CUST-1120,Coca-Cola Original Taste 750ml PET Bottle,Beverages,2,40.0,80.0,29.0,64,20,2,Credit Card
+2025-05-07 20:32:49,INV-20250507-0071,CUST-1133,Surf Excel Easy Wash Detergent Powder 1kg,Household,3,145.0,435.0,118.0,38,15,5,Debit Card
+2025-05-07 16:16:16,INV-20250507-0072,CUST-1134,Surf Excel Easy Wash Detergent Powder 1kg,Household,3,145.0,435.0,118.0,38,15,5,Cash
+2025-05-07 19:10:48,INV-20250507-0081,CUST-1146,Dettol Original Liquid Handwash Refill 175ml,Personal Care,3,99.0,297.0,76.0,52,18,3,UPI
+2025-05-07 17:30:43,INV-20250507-0091,CUST-1009,Britannia Good Day Cashew Cookies 200g,Snacks,1,45.0,45.0,34.0,70,25,2,UPI
+2025-05-07 10:07:47,INV-20250507-0101,CUST-1022,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,2,195.0,390.0,152.0,22,10,4,UPI
+2025-05-07 19:48:12,INV-20250507-0102,CUST-1023,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,2,195.0,390.0,152.0,22,10,4,UPI
+2025-05-07 17:53:46,INV-20250507-0111,CUST-1035,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,1,60.0,60.0,46.0,18,8,2,Cash
+2025-05-07 15:10:44,INV-20250507-0121,CUST-1048,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,3,185.0,555.0,148.0,40,15,3,UPI
+2025-05-07 16:16:31,INV-20250507-0131,CUST-1061,Colgate Total Advanced Health Toothpaste 120g,Personal Care,3,125.0,375.0,96.0,60,20,3,Debit Card
+2025-05-07 19:01:21,INV-20250507-0132,CUST-1062,Colgate Total Advanced Health Toothpaste 120g,Personal Care,3,125.0,375.0,96.0,60,20,3,Credit Card
+2025-05-07 15:42:15,INV-20250507-0141,CUST-1074,Lays Indias Magic Masala Potato Chips 50g,Snacks,2,20.0,40.0,15.0,95,30,2,Credit Card
+2025-05-07 21:46:34,INV-20250507-0142,CUST-1075,Lays Indias Magic Masala Potato Chips 50g,Snacks,3,20.0,60.0,15.0,95,30,2,UPI
+2025-05-08 20:56:12,INV-20250508-0001,CUST-1049,Amul Taaza Homogenised Toned Milk 1L,Dairy,2,72.0,144.0,58.0,48,15,2,UPI
+2025-05-08 13:23:14,INV-20250508-0011,CUST-1062,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,3,55.0,165.0,42.0,32,10,1,UPI
+2025-05-08 18:15:21,INV-20250508-0021,CUST-1075,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,1,28.0,28.0,21.0,85,25,4,Credit Card
+2025-05-08 17:39:23,INV-20250508-0031,CUST-1088,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,3,165.0,495.0,138.0,42,15,3,Credit Card
+2025-05-08 14:39:04,INV-20250508-0032,CUST-1089,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,3,165.0,495.0,138.0,42,15,3,UPI
+2025-05-08 09:02:46,INV-20250508-0041,CUST-1101,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,2,56.0,112.0,44.0,110,35,2,UPI
+2025-05-08 20:21:17,INV-20250508-0042,CUST-1102,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,1,56.0,56.0,44.0,110,35,2,Credit Card
+2025-05-08 10:34:24,INV-20250508-0051,CUST-1114,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,1,275.0,275.0,230.0,28,12,3,Debit Card
+2025-05-08 09:26:25,INV-20250508-0052,CUST-1115,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,2,275.0,550.0,230.0,28,12,3,Cash
+2025-05-08 19:12:22,INV-20250508-0061,CUST-1127,Coca-Cola Original Taste 750ml PET Bottle,Beverages,1,40.0,40.0,29.0,64,20,2,UPI
+2025-05-08 19:07:20,INV-20250508-0071,CUST-1140,Surf Excel Easy Wash Detergent Powder 1kg,Household,1,145.0,145.0,118.0,38,15,5,UPI
+2025-05-08 18:08:30,INV-20250508-0081,CUST-1003,Dettol Original Liquid Handwash Refill 175ml,Personal Care,2,99.0,198.0,76.0,52,18,3,UPI
+2025-05-08 19:18:11,INV-20250508-0082,CUST-1004,Dettol Original Liquid Handwash Refill 175ml,Personal Care,2,99.0,198.0,76.0,52,18,3,UPI
+2025-05-08 17:21:02,INV-20250508-0091,CUST-1016,Britannia Good Day Cashew Cookies 200g,Snacks,2,45.0,90.0,34.0,70,25,2,Debit Card
+2025-05-08 11:37:12,INV-20250508-0101,CUST-1029,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,2,195.0,390.0,152.0,22,10,4,UPI
+2025-05-08 15:01:37,INV-20250508-0102,CUST-1030,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,2,195.0,390.0,152.0,22,10,4,UPI
+2025-05-08 10:03:23,INV-20250508-0111,CUST-1042,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,Debit Card
+2025-05-08 17:27:18,INV-20250508-0121,CUST-1055,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,1,185.0,185.0,148.0,40,15,3,UPI
+2025-05-08 15:00:15,INV-20250508-0131,CUST-1068,Colgate Total Advanced Health Toothpaste 120g,Personal Care,1,125.0,125.0,96.0,60,20,3,UPI
+2025-05-08 20:46:48,INV-20250508-0141,CUST-1081,Lays Indias Magic Masala Potato Chips 50g,Snacks,2,20.0,40.0,15.0,95,30,2,UPI
+2025-05-09 14:42:37,INV-20250509-0001,CUST-1056,Amul Taaza Homogenised Toned Milk 1L,Dairy,2,72.0,144.0,58.0,48,15,2,UPI
+2025-05-09 18:44:42,INV-20250509-0011,CUST-1069,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,2,55.0,110.0,42.0,32,10,1,UPI
+2025-05-09 15:57:48,INV-20250509-0012,CUST-1070,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,1,55.0,55.0,42.0,32,10,1,Cash
+2025-05-09 16:01:42,INV-20250509-0021,CUST-1082,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,3,28.0,84.0,21.0,85,25,4,Cash
+2025-05-09 12:34:09,INV-20250509-0031,CUST-1095,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,3,165.0,495.0,138.0,42,15,3,UPI
+2025-05-09 19:36:21,INV-20250509-0041,CUST-1108,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,1,56.0,56.0,44.0,110,35,2,Credit Card
+2025-05-09 21:49:49,INV-20250509-0042,CUST-1109,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,2,56.0,112.0,44.0,110,35,2,Cash
+2025-05-09 14:01:43,INV-20250509-0051,CUST-1121,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,1,275.0,275.0,230.0,28,12,3,Cash
+2025-05-09 20:04:05,INV-20250509-0052,CUST-1122,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,2,275.0,550.0,230.0,28,12,3,UPI
+2025-05-09 17:30:46,INV-20250509-0061,CUST-1134,Coca-Cola Original Taste 750ml PET Bottle,Beverages,2,40.0,80.0,29.0,64,20,2,Credit Card
+2025-05-09 20:54:14,INV-20250509-0062,CUST-1135,Coca-Cola Original Taste 750ml PET Bottle,Beverages,1,40.0,40.0,29.0,64,20,2,Cash
+2025-05-09 19:15:47,INV-20250509-0071,CUST-1147,Surf Excel Easy Wash Detergent Powder 1kg,Household,2,145.0,290.0,118.0,38,15,5,Credit Card
+2025-05-09 15:12:28,INV-20250509-0072,CUST-1148,Surf Excel Easy Wash Detergent Powder 1kg,Household,1,145.0,145.0,118.0,38,15,5,UPI
+2025-05-09 19:41:41,INV-20250509-0081,CUST-1010,Dettol Original Liquid Handwash Refill 175ml,Personal Care,2,99.0,198.0,76.0,52,18,3,Credit Card
+2025-05-09 10:11:19,INV-20250509-0091,CUST-1023,Britannia Good Day Cashew Cookies 200g,Snacks,1,45.0,45.0,34.0,70,25,2,UPI
+2025-05-09 16:29:16,INV-20250509-0101,CUST-1036,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,1,195.0,195.0,152.0,22,10,4,UPI
+2025-05-09 15:27:32,INV-20250509-0102,CUST-1037,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,2,195.0,390.0,152.0,22,10,4,Cash
+2025-05-09 20:36:12,INV-20250509-0111,CUST-1049,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,Cash
+2025-05-09 20:47:37,INV-20250509-0112,CUST-1050,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,Cash
+2025-05-09 16:52:09,INV-20250509-0121,CUST-1062,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,3,185.0,555.0,148.0,40,15,3,Cash
+2025-05-09 12:56:48,INV-20250509-0122,CUST-1063,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,3,185.0,555.0,148.0,40,15,3,UPI
+2025-05-09 19:00:11,INV-20250509-0131,CUST-1075,Colgate Total Advanced Health Toothpaste 120g,Personal Care,1,125.0,125.0,96.0,60,20,3,Credit Card
+2025-05-09 21:41:00,INV-20250509-0132,CUST-1076,Colgate Total Advanced Health Toothpaste 120g,Personal Care,3,125.0,375.0,96.0,60,20,3,UPI
+2025-05-09 18:50:55,INV-20250509-0141,CUST-1088,Lays Indias Magic Masala Potato Chips 50g,Snacks,1,20.0,20.0,15.0,95,30,2,Cash
+2025-05-10 11:46:30,INV-20250510-0001,CUST-1063,Amul Taaza Homogenised Toned Milk 1L,Dairy,3,72.0,216.0,58.0,48,15,2,UPI
+2025-05-10 10:42:29,INV-20250510-0002,CUST-1064,Amul Taaza Homogenised Toned Milk 1L,Dairy,1,72.0,72.0,58.0,48,15,2,UPI
+2025-05-10 17:33:25,INV-20250510-0011,CUST-1076,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,5,55.0,275.0,42.0,32,10,1,Credit Card
+2025-05-10 11:48:14,INV-20250510-0012,CUST-1077,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,2,55.0,110.0,42.0,32,10,1,UPI
+2025-05-10 12:57:16,INV-20250510-0021,CUST-1089,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,1,28.0,28.0,21.0,85,25,4,Credit Card
+2025-05-10 19:54:18,INV-20250510-0022,CUST-1090,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,1,28.0,28.0,21.0,85,25,4,Cash
+2025-05-10 09:03:16,INV-20250510-0031,CUST-1102,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,5,165.0,825.0,138.0,42,15,3,Cash
+2025-05-10 09:07:21,INV-20250510-0032,CUST-1103,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,2,165.0,330.0,138.0,42,15,3,Credit Card
+2025-05-10 14:26:27,INV-20250510-0033,CUST-1104,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,1,165.0,165.0,138.0,42,15,3,Credit Card
+2025-05-10 16:23:52,INV-20250510-0041,CUST-1115,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,2,56.0,112.0,44.0,110,35,2,UPI
+2025-05-10 18:23:00,INV-20250510-0042,CUST-1116,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,1,56.0,56.0,44.0,110,35,2,Credit Card
+2025-05-10 18:53:27,INV-20250510-0043,CUST-1117,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,4,56.0,224.0,44.0,110,35,2,Cash
+2025-05-10 11:53:31,INV-20250510-0051,CUST-1128,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,4,275.0,1100.0,230.0,28,12,3,UPI
+2025-05-10 10:23:04,INV-20250510-0052,CUST-1129,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,2,275.0,550.0,230.0,28,12,3,Cash
+2025-05-10 19:54:36,INV-20250510-0053,CUST-1130,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,5,275.0,1375.0,230.0,28,12,3,UPI
+2025-05-10 17:04:12,INV-20250510-0061,CUST-1141,Coca-Cola Original Taste 750ml PET Bottle,Beverages,2,40.0,80.0,29.0,64,20,2,UPI
+2025-05-10 18:10:10,INV-20250510-0062,CUST-1142,Coca-Cola Original Taste 750ml PET Bottle,Beverages,1,40.0,40.0,29.0,64,20,2,UPI
+2025-05-10 19:02:46,INV-20250510-0071,CUST-1004,Surf Excel Easy Wash Detergent Powder 1kg,Household,5,145.0,725.0,118.0,38,15,5,UPI
+2025-05-10 14:44:57,INV-20250510-0072,CUST-1005,Surf Excel Easy Wash Detergent Powder 1kg,Household,2,145.0,290.0,118.0,38,15,5,Credit Card
+2025-05-10 10:57:05,INV-20250510-0073,CUST-1006,Surf Excel Easy Wash Detergent Powder 1kg,Household,4,145.0,580.0,118.0,38,15,5,Debit Card
+2025-05-10 16:08:08,INV-20250510-0081,CUST-1017,Dettol Original Liquid Handwash Refill 175ml,Personal Care,5,99.0,495.0,76.0,52,18,3,UPI
+2025-05-10 21:23:26,INV-20250510-0082,CUST-1018,Dettol Original Liquid Handwash Refill 175ml,Personal Care,1,99.0,99.0,76.0,52,18,3,UPI
+2025-05-10 16:41:31,INV-20250510-0091,CUST-1030,Britannia Good Day Cashew Cookies 200g,Snacks,3,45.0,135.0,34.0,70,25,2,UPI
+2025-05-10 11:29:16,INV-20250510-0101,CUST-1043,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,1,195.0,195.0,152.0,22,10,4,Cash
+2025-05-10 12:53:33,INV-20250510-0102,CUST-1044,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,5,195.0,975.0,152.0,22,10,4,UPI
+2025-05-10 20:01:13,INV-20250510-0111,CUST-1056,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,UPI
+2025-05-10 19:08:51,INV-20250510-0112,CUST-1057,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,5,60.0,300.0,46.0,18,8,2,Credit Card
+2025-05-10 12:11:35,INV-20250510-0113,CUST-1058,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,5,60.0,300.0,46.0,18,8,2,Credit Card
+2025-05-10 09:58:24,INV-20250510-0121,CUST-1069,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,3,185.0,555.0,148.0,40,15,3,Credit Card
+2025-05-10 21:27:21,INV-20250510-0131,CUST-1082,Colgate Total Advanced Health Toothpaste 120g,Personal Care,4,125.0,500.0,96.0,60,20,3,Credit Card
+2025-05-10 12:56:10,INV-20250510-0141,CUST-1095,Lays Indias Magic Masala Potato Chips 50g,Snacks,3,20.0,60.0,15.0,95,30,2,Credit Card
+2025-05-10 09:12:22,INV-20250510-0142,CUST-1096,Lays Indias Magic Masala Potato Chips 50g,Snacks,5,20.0,100.0,15.0,95,30,2,UPI
+2025-05-10 12:30:35,INV-20250510-0143,CUST-1097,Lays Indias Magic Masala Potato Chips 50g,Snacks,5,20.0,100.0,15.0,95,30,2,UPI
+2025-05-11 21:11:25,INV-20250511-0001,CUST-1070,Amul Taaza Homogenised Toned Milk 1L,Dairy,1,72.0,72.0,58.0,48,15,2,Cash
+2025-05-11 17:29:43,INV-20250511-0002,CUST-1071,Amul Taaza Homogenised Toned Milk 1L,Dairy,3,72.0,216.0,58.0,48,15,2,Credit Card
+2025-05-11 09:12:03,INV-20250511-0011,CUST-1083,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,3,55.0,165.0,42.0,32,10,1,Credit Card
+2025-05-11 17:47:40,INV-20250511-0012,CUST-1084,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,2,55.0,110.0,42.0,32,10,1,Debit Card
+2025-05-11 18:16:19,INV-20250511-0021,CUST-1096,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,5,28.0,140.0,21.0,85,25,4,UPI
+2025-05-11 16:31:20,INV-20250511-0031,CUST-1109,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,4,165.0,660.0,138.0,42,15,3,UPI
+2025-05-11 21:20:16,INV-20250511-0032,CUST-1110,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,1,165.0,165.0,138.0,42,15,3,UPI
+2025-05-11 11:13:58,INV-20250511-0033,CUST-1111,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,2,165.0,330.0,138.0,42,15,3,UPI
+2025-05-11 14:27:51,INV-20250511-0041,CUST-1122,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,1,56.0,56.0,44.0,110,35,2,Credit Card
+2025-05-11 13:55:21,INV-20250511-0042,CUST-1123,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,4,56.0,224.0,44.0,110,35,2,Cash
+2025-05-11 10:35:05,INV-20250511-0043,CUST-1124,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,4,56.0,224.0,44.0,110,35,2,UPI
+2025-05-11 19:12:20,INV-20250511-0051,CUST-1135,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,4,275.0,1100.0,230.0,28,12,3,Debit Card
+2025-05-11 13:23:59,INV-20250511-0052,CUST-1136,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,5,275.0,1375.0,230.0,28,12,3,Debit Card
+2025-05-11 18:22:16,INV-20250511-0053,CUST-1137,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,5,275.0,1375.0,230.0,28,12,3,Cash
+2025-05-11 16:23:02,INV-20250511-0061,CUST-1148,Coca-Cola Original Taste 750ml PET Bottle,Beverages,2,40.0,80.0,29.0,64,20,2,Debit Card
+2025-05-11 14:23:25,INV-20250511-0062,CUST-1149,Coca-Cola Original Taste 750ml PET Bottle,Beverages,4,40.0,160.0,29.0,64,20,2,Cash
+2025-05-11 21:13:47,INV-20250511-0071,CUST-1011,Surf Excel Easy Wash Detergent Powder 1kg,Household,2,145.0,290.0,118.0,38,15,5,Credit Card
+2025-05-11 20:59:25,INV-20250511-0072,CUST-1012,Surf Excel Easy Wash Detergent Powder 1kg,Household,3,145.0,435.0,118.0,38,15,5,Credit Card
+2025-05-11 09:05:24,INV-20250511-0073,CUST-1013,Surf Excel Easy Wash Detergent Powder 1kg,Household,1,145.0,145.0,118.0,38,15,5,Cash
+2025-05-11 13:20:48,INV-20250511-0081,CUST-1024,Dettol Original Liquid Handwash Refill 175ml,Personal Care,2,99.0,198.0,76.0,52,18,3,UPI
+2025-05-11 14:30:05,INV-20250511-0082,CUST-1025,Dettol Original Liquid Handwash Refill 175ml,Personal Care,4,99.0,396.0,76.0,52,18,3,Debit Card
+2025-05-11 15:28:05,INV-20250511-0083,CUST-1026,Dettol Original Liquid Handwash Refill 175ml,Personal Care,2,99.0,198.0,76.0,52,18,3,UPI
+2025-05-11 10:15:55,INV-20250511-0091,CUST-1037,Britannia Good Day Cashew Cookies 200g,Snacks,2,45.0,90.0,34.0,70,25,2,Debit Card
+2025-05-11 13:45:16,INV-20250511-0101,CUST-1050,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,3,195.0,585.0,152.0,22,10,4,Cash
+2025-05-11 14:50:25,INV-20250511-0111,CUST-1063,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,UPI
+2025-05-11 10:36:53,INV-20250511-0112,CUST-1064,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,1,60.0,60.0,46.0,18,8,2,Cash
+2025-05-11 16:06:18,INV-20250511-0113,CUST-1065,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,1,60.0,60.0,46.0,18,8,2,Debit Card
+2025-05-11 15:33:04,INV-20250511-0121,CUST-1076,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,4,185.0,740.0,148.0,40,15,3,Credit Card
+2025-05-11 15:13:24,INV-20250511-0131,CUST-1089,Colgate Total Advanced Health Toothpaste 120g,Personal Care,5,125.0,625.0,96.0,60,20,3,UPI
+2025-05-11 10:07:13,INV-20250511-0132,CUST-1090,Colgate Total Advanced Health Toothpaste 120g,Personal Care,4,125.0,500.0,96.0,60,20,3,Cash
+2025-05-11 17:00:32,INV-20250511-0133,CUST-1091,Colgate Total Advanced Health Toothpaste 120g,Personal Care,4,125.0,500.0,96.0,60,20,3,Credit Card
+2025-05-11 10:08:12,INV-20250511-0141,CUST-1102,Lays Indias Magic Masala Potato Chips 50g,Snacks,3,20.0,60.0,15.0,95,30,2,UPI
+2025-05-11 14:56:34,INV-20250511-0142,CUST-1103,Lays Indias Magic Masala Potato Chips 50g,Snacks,1,20.0,20.0,15.0,95,30,2,Cash
+2025-05-11 20:18:13,INV-20250511-0143,CUST-1104,Lays Indias Magic Masala Potato Chips 50g,Snacks,4,20.0,80.0,15.0,95,30,2,Credit Card
+2025-05-12 15:08:31,INV-20250512-0001,CUST-1077,Amul Taaza Homogenised Toned Milk 1L,Dairy,3,72.0,216.0,58.0,48,15,2,Credit Card
+2025-05-12 16:23:40,INV-20250512-0011,CUST-1090,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,3,55.0,165.0,42.0,32,10,1,UPI
+2025-05-12 20:41:50,INV-20250512-0021,CUST-1103,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,3,28.0,84.0,21.0,85,25,4,Credit Card
+2025-05-12 20:15:07,INV-20250512-0022,CUST-1104,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,2,28.0,56.0,21.0,85,25,4,UPI
+2025-05-12 12:06:04,INV-20250512-0031,CUST-1116,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,2,165.0,330.0,138.0,42,15,3,Credit Card
+2025-05-12 16:12:51,INV-20250512-0032,CUST-1117,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,2,165.0,330.0,138.0,42,15,3,UPI
+2025-05-12 11:20:50,INV-20250512-0041,CUST-1129,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,2,56.0,112.0,44.0,110,35,2,UPI
+2025-05-12 15:53:34,INV-20250512-0051,CUST-1142,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,3,275.0,825.0,230.0,28,12,3,UPI
+2025-05-12 16:12:28,INV-20250512-0052,CUST-1143,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,3,275.0,825.0,230.0,28,12,3,Credit Card
+2025-05-12 11:24:15,INV-20250512-0061,CUST-1005,Coca-Cola Original Taste 750ml PET Bottle,Beverages,2,40.0,80.0,29.0,64,20,2,Cash
+2025-05-12 20:24:35,INV-20250512-0062,CUST-1006,Coca-Cola Original Taste 750ml PET Bottle,Beverages,2,40.0,80.0,29.0,64,20,2,Cash
+2025-05-12 17:22:04,INV-20250512-0071,CUST-1018,Surf Excel Easy Wash Detergent Powder 1kg,Household,1,145.0,145.0,118.0,38,15,5,Credit Card
+2025-05-12 18:48:31,INV-20250512-0081,CUST-1031,Dettol Original Liquid Handwash Refill 175ml,Personal Care,3,99.0,297.0,76.0,52,18,3,UPI
+2025-05-12 16:22:22,INV-20250512-0091,CUST-1044,Britannia Good Day Cashew Cookies 200g,Snacks,1,45.0,45.0,34.0,70,25,2,UPI
+2025-05-12 16:57:42,INV-20250512-0092,CUST-1045,Britannia Good Day Cashew Cookies 200g,Snacks,3,45.0,135.0,34.0,70,25,2,UPI
+2025-05-12 21:14:03,INV-20250512-0101,CUST-1057,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,3,195.0,585.0,152.0,22,10,4,Cash
+2025-05-12 10:18:14,INV-20250512-0111,CUST-1070,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,Cash
+2025-05-12 10:20:26,INV-20250512-0112,CUST-1071,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,1,60.0,60.0,46.0,18,8,2,UPI
+2025-05-12 21:29:20,INV-20250512-0121,CUST-1083,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,3,185.0,555.0,148.0,40,15,3,Credit Card
+2025-05-12 21:16:31,INV-20250512-0131,CUST-1096,Colgate Total Advanced Health Toothpaste 120g,Personal Care,3,125.0,375.0,96.0,60,20,3,UPI
+2025-05-12 17:36:03,INV-20250512-0132,CUST-1097,Colgate Total Advanced Health Toothpaste 120g,Personal Care,3,125.0,375.0,96.0,60,20,3,UPI
+2025-05-12 21:06:02,INV-20250512-0141,CUST-1109,Lays Indias Magic Masala Potato Chips 50g,Snacks,1,20.0,20.0,15.0,95,30,2,Credit Card
+2025-05-13 17:47:57,INV-20250513-0001,CUST-1084,Amul Taaza Homogenised Toned Milk 1L,Dairy,2,72.0,144.0,58.0,48,15,2,Cash
+2025-05-13 14:13:43,INV-20250513-0011,CUST-1097,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,2,55.0,110.0,42.0,32,10,1,UPI
+2025-05-13 14:38:50,INV-20250513-0012,CUST-1098,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,3,55.0,165.0,42.0,32,10,1,Credit Card
+2025-05-13 10:35:16,INV-20250513-0021,CUST-1110,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,1,28.0,28.0,21.0,85,25,4,UPI
+2025-05-13 15:30:21,INV-20250513-0031,CUST-1123,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,3,165.0,495.0,138.0,42,15,3,UPI
+2025-05-13 11:43:18,INV-20250513-0041,CUST-1136,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,3,56.0,168.0,44.0,110,35,2,UPI
+2025-05-13 11:57:51,INV-20250513-0042,CUST-1137,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,3,56.0,168.0,44.0,110,35,2,Credit Card
+2025-05-13 10:04:52,INV-20250513-0051,CUST-1149,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,2,275.0,550.0,230.0,28,12,3,Cash
+2025-05-13 15:51:01,INV-20250513-0052,CUST-1000,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,3,275.0,825.0,230.0,28,12,3,UPI
+2025-05-13 11:32:28,INV-20250513-0061,CUST-1012,Coca-Cola Original Taste 750ml PET Bottle,Beverages,2,40.0,80.0,29.0,64,20,2,Debit Card
+2025-05-13 13:11:00,INV-20250513-0062,CUST-1013,Coca-Cola Original Taste 750ml PET Bottle,Beverages,3,40.0,120.0,29.0,64,20,2,Credit Card
+2025-05-13 17:54:09,INV-20250513-0071,CUST-1025,Surf Excel Easy Wash Detergent Powder 1kg,Household,2,145.0,290.0,118.0,38,15,5,UPI
+2025-05-13 13:29:23,INV-20250513-0081,CUST-1038,Dettol Original Liquid Handwash Refill 175ml,Personal Care,1,99.0,99.0,76.0,52,18,3,UPI
+2025-05-13 09:11:33,INV-20250513-0082,CUST-1039,Dettol Original Liquid Handwash Refill 175ml,Personal Care,3,99.0,297.0,76.0,52,18,3,UPI
+2025-05-13 09:49:45,INV-20250513-0091,CUST-1051,Britannia Good Day Cashew Cookies 200g,Snacks,1,45.0,45.0,34.0,70,25,2,Credit Card
+2025-05-13 20:13:21,INV-20250513-0101,CUST-1064,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,2,195.0,390.0,152.0,22,10,4,UPI
+2025-05-13 17:37:54,INV-20250513-0102,CUST-1065,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,1,195.0,195.0,152.0,22,10,4,UPI
+2025-05-13 09:43:53,INV-20250513-0111,CUST-1077,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,Cash
+2025-05-13 21:46:03,INV-20250513-0112,CUST-1078,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,UPI
+2025-05-13 20:19:44,INV-20250513-0121,CUST-1090,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,3,185.0,555.0,148.0,40,15,3,UPI
+2025-05-13 13:09:44,INV-20250513-0131,CUST-1103,Colgate Total Advanced Health Toothpaste 120g,Personal Care,3,125.0,375.0,96.0,60,20,3,UPI
+2025-05-13 21:51:46,INV-20250513-0132,CUST-1104,Colgate Total Advanced Health Toothpaste 120g,Personal Care,1,125.0,125.0,96.0,60,20,3,Credit Card
+2025-05-13 16:45:23,INV-20250513-0141,CUST-1116,Lays Indias Magic Masala Potato Chips 50g,Snacks,1,20.0,20.0,15.0,95,30,2,UPI
+2025-05-14 16:06:36,INV-20250514-0001,CUST-1091,Amul Taaza Homogenised Toned Milk 1L,Dairy,1,72.0,72.0,58.0,48,15,2,UPI
+2025-05-14 17:16:24,INV-20250514-0011,CUST-1104,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,2,55.0,110.0,42.0,32,10,1,Credit Card
+2025-05-14 12:34:14,INV-20250514-0021,CUST-1117,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,2,28.0,56.0,21.0,85,25,4,Credit Card
+2025-05-14 13:16:07,INV-20250514-0022,CUST-1118,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,1,28.0,28.0,21.0,85,25,4,Debit Card
+2025-05-14 12:14:22,INV-20250514-0031,CUST-1130,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,1,165.0,165.0,138.0,42,15,3,UPI
+2025-05-14 21:49:09,INV-20250514-0032,CUST-1131,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,3,165.0,495.0,138.0,42,15,3,UPI
+2025-05-14 11:06:38,INV-20250514-0041,CUST-1143,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,1,56.0,56.0,44.0,110,35,2,UPI
+2025-05-14 16:04:42,INV-20250514-0051,CUST-1006,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,2,275.0,550.0,230.0,28,12,3,UPI
+2025-05-14 10:56:48,INV-20250514-0061,CUST-1019,Coca-Cola Original Taste 750ml PET Bottle,Beverages,1,40.0,40.0,29.0,64,20,2,UPI
+2025-05-14 10:49:43,INV-20250514-0062,CUST-1020,Coca-Cola Original Taste 750ml PET Bottle,Beverages,1,40.0,40.0,29.0,64,20,2,Credit Card
+2025-05-14 09:42:11,INV-20250514-0071,CUST-1032,Surf Excel Easy Wash Detergent Powder 1kg,Household,2,145.0,290.0,118.0,38,15,5,Cash
+2025-05-14 15:25:53,INV-20250514-0072,CUST-1033,Surf Excel Easy Wash Detergent Powder 1kg,Household,3,145.0,435.0,118.0,38,15,5,Cash
+2025-05-14 18:25:04,INV-20250514-0081,CUST-1045,Dettol Original Liquid Handwash Refill 175ml,Personal Care,1,99.0,99.0,76.0,52,18,3,UPI
+2025-05-14 20:13:59,INV-20250514-0082,CUST-1046,Dettol Original Liquid Handwash Refill 175ml,Personal Care,3,99.0,297.0,76.0,52,18,3,UPI
+2025-05-14 09:18:51,INV-20250514-0091,CUST-1058,Britannia Good Day Cashew Cookies 200g,Snacks,3,45.0,135.0,34.0,70,25,2,UPI
+2025-05-14 12:15:57,INV-20250514-0101,CUST-1071,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,1,195.0,195.0,152.0,22,10,4,UPI
+2025-05-14 12:38:07,INV-20250514-0111,CUST-1084,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,1,60.0,60.0,46.0,18,8,2,UPI
+2025-05-14 17:04:49,INV-20250514-0112,CUST-1085,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,Debit Card
+2025-05-14 11:07:00,INV-20250514-0121,CUST-1097,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,2,185.0,370.0,148.0,40,15,3,Debit Card
+2025-05-14 21:54:49,INV-20250514-0131,CUST-1110,Colgate Total Advanced Health Toothpaste 120g,Personal Care,3,125.0,375.0,96.0,60,20,3,UPI
+2025-05-14 17:29:04,INV-20250514-0141,CUST-1123,Lays Indias Magic Masala Potato Chips 50g,Snacks,1,20.0,20.0,15.0,95,30,2,UPI
+2025-05-15 12:00:03,INV-20250515-0001,CUST-1098,Amul Taaza Homogenised Toned Milk 1L,Dairy,1,72.0,72.0,58.0,48,15,2,Credit Card
+2025-05-15 13:27:16,INV-20250515-0011,CUST-1111,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,1,55.0,55.0,42.0,32,10,1,Credit Card
+2025-05-15 15:58:50,INV-20250515-0012,CUST-1112,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,1,55.0,55.0,42.0,32,10,1,Cash
+2025-05-15 20:59:25,INV-20250515-0021,CUST-1124,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,3,28.0,84.0,21.0,85,25,4,Cash
+2025-05-15 16:14:27,INV-20250515-0022,CUST-1125,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,3,28.0,84.0,21.0,85,25,4,Debit Card
+2025-05-15 09:26:04,INV-20250515-0031,CUST-1137,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,3,165.0,495.0,138.0,42,15,3,UPI
+2025-05-15 13:42:56,INV-20250515-0041,CUST-1000,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,1,56.0,56.0,44.0,110,35,2,UPI
+2025-05-15 10:28:25,INV-20250515-0042,CUST-1001,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,2,56.0,112.0,44.0,110,35,2,UPI
+2025-05-15 17:54:38,INV-20250515-0051,CUST-1013,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,2,275.0,550.0,230.0,28,12,3,UPI
+2025-05-15 18:02:50,INV-20250515-0052,CUST-1014,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,1,275.0,275.0,230.0,28,12,3,UPI
+2025-05-15 21:21:50,INV-20250515-0061,CUST-1026,Coca-Cola Original Taste 750ml PET Bottle,Beverages,2,40.0,80.0,29.0,64,20,2,UPI
+2025-05-15 14:42:18,INV-20250515-0071,CUST-1039,Surf Excel Easy Wash Detergent Powder 1kg,Household,1,145.0,145.0,118.0,38,15,5,UPI
+2025-05-15 11:48:53,INV-20250515-0072,CUST-1040,Surf Excel Easy Wash Detergent Powder 1kg,Household,2,145.0,290.0,118.0,38,15,5,Cash
+2025-05-15 20:40:51,INV-20250515-0081,CUST-1052,Dettol Original Liquid Handwash Refill 175ml,Personal Care,1,99.0,99.0,76.0,52,18,3,UPI
+2025-05-15 11:52:42,INV-20250515-0082,CUST-1053,Dettol Original Liquid Handwash Refill 175ml,Personal Care,1,99.0,99.0,76.0,52,18,3,Debit Card
+2025-05-15 17:36:31,INV-20250515-0091,CUST-1065,Britannia Good Day Cashew Cookies 200g,Snacks,2,45.0,90.0,34.0,70,25,2,Credit Card
+2025-05-15 12:14:57,INV-20250515-0092,CUST-1066,Britannia Good Day Cashew Cookies 200g,Snacks,2,45.0,90.0,34.0,70,25,2,UPI
+2025-05-15 18:31:12,INV-20250515-0101,CUST-1078,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,1,195.0,195.0,152.0,22,10,4,UPI
+2025-05-15 14:21:13,INV-20250515-0111,CUST-1091,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,Credit Card
+2025-05-15 12:55:02,INV-20250515-0112,CUST-1092,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,3,60.0,180.0,46.0,18,8,2,UPI
+2025-05-15 19:33:29,INV-20250515-0121,CUST-1104,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,2,185.0,370.0,148.0,40,15,3,Debit Card
+2025-05-15 18:01:50,INV-20250515-0122,CUST-1105,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,1,185.0,185.0,148.0,40,15,3,UPI
+2025-05-15 20:07:43,INV-20250515-0131,CUST-1117,Colgate Total Advanced Health Toothpaste 120g,Personal Care,2,125.0,250.0,96.0,60,20,3,Cash
+2025-05-15 19:37:34,INV-20250515-0141,CUST-1130,Lays Indias Magic Masala Potato Chips 50g,Snacks,1,20.0,20.0,15.0,95,30,2,Credit Card
+2025-05-16 14:29:47,INV-20250516-0001,CUST-1105,Amul Taaza Homogenised Toned Milk 1L,Dairy,1,72.0,72.0,58.0,48,15,2,Credit Card
+2025-05-16 10:17:22,INV-20250516-0011,CUST-1118,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,2,55.0,110.0,42.0,32,10,1,Debit Card
+2025-05-16 12:56:43,INV-20250516-0021,CUST-1131,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,2,28.0,56.0,21.0,85,25,4,Credit Card
+2025-05-16 20:26:36,INV-20250516-0022,CUST-1132,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,1,28.0,28.0,21.0,85,25,4,UPI
+2025-05-16 15:08:15,INV-20250516-0031,CUST-1144,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,3,165.0,495.0,138.0,42,15,3,Credit Card
+2025-05-16 19:40:35,INV-20250516-0041,CUST-1007,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,1,56.0,56.0,44.0,110,35,2,Credit Card
+2025-05-16 13:21:48,INV-20250516-0051,CUST-1020,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,1,275.0,275.0,230.0,28,12,3,UPI
+2025-05-16 14:32:52,INV-20250516-0052,CUST-1021,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,2,275.0,550.0,230.0,28,12,3,Credit Card
+2025-05-16 11:00:26,INV-20250516-0061,CUST-1033,Coca-Cola Original Taste 750ml PET Bottle,Beverages,2,40.0,80.0,29.0,64,20,2,UPI
+2025-05-16 14:43:38,INV-20250516-0062,CUST-1034,Coca-Cola Original Taste 750ml PET Bottle,Beverages,3,40.0,120.0,29.0,64,20,2,UPI
+2025-05-16 13:09:07,INV-20250516-0071,CUST-1046,Surf Excel Easy Wash Detergent Powder 1kg,Household,1,145.0,145.0,118.0,38,15,5,Credit Card
+2025-05-16 15:17:01,INV-20250516-0081,CUST-1059,Dettol Original Liquid Handwash Refill 175ml,Personal Care,1,99.0,99.0,76.0,52,18,3,UPI
+2025-05-16 11:09:29,INV-20250516-0082,CUST-1060,Dettol Original Liquid Handwash Refill 175ml,Personal Care,2,99.0,198.0,76.0,52,18,3,UPI
+2025-05-16 20:56:49,INV-20250516-0091,CUST-1072,Britannia Good Day Cashew Cookies 200g,Snacks,1,45.0,45.0,34.0,70,25,2,UPI
+2025-05-16 10:59:47,INV-20250516-0101,CUST-1085,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,2,195.0,390.0,152.0,22,10,4,UPI
+2025-05-16 13:28:46,INV-20250516-0111,CUST-1098,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,Cash
+2025-05-16 18:18:17,INV-20250516-0121,CUST-1111,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,1,185.0,185.0,148.0,40,15,3,Credit Card
+2025-05-16 09:25:23,INV-20250516-0122,CUST-1112,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,2,185.0,370.0,148.0,40,15,3,UPI
+2025-05-16 17:18:19,INV-20250516-0131,CUST-1124,Colgate Total Advanced Health Toothpaste 120g,Personal Care,1,125.0,125.0,96.0,60,20,3,Debit Card
+2025-05-16 10:42:53,INV-20250516-0141,CUST-1137,Lays Indias Magic Masala Potato Chips 50g,Snacks,2,20.0,40.0,15.0,95,30,2,UPI
+2025-05-16 17:16:55,INV-20250516-0142,CUST-1138,Lays Indias Magic Masala Potato Chips 50g,Snacks,2,20.0,40.0,15.0,95,30,2,UPI
+2025-05-17 19:06:19,INV-20250517-0001,CUST-1112,Amul Taaza Homogenised Toned Milk 1L,Dairy,5,72.0,360.0,58.0,48,15,2,UPI
+2025-05-17 16:51:36,INV-20250517-0002,CUST-1113,Amul Taaza Homogenised Toned Milk 1L,Dairy,2,72.0,144.0,58.0,48,15,2,UPI
+2025-05-17 10:23:53,INV-20250517-0011,CUST-1125,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,3,55.0,165.0,42.0,32,10,1,UPI
+2025-05-17 11:05:21,INV-20250517-0012,CUST-1126,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,2,55.0,110.0,42.0,32,10,1,Debit Card
+2025-05-17 13:30:52,INV-20250517-0013,CUST-1127,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,1,55.0,55.0,42.0,32,10,1,UPI
+2025-05-17 18:01:42,INV-20250517-0021,CUST-1138,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,4,28.0,112.0,21.0,85,25,4,Cash
+2025-05-17 19:07:40,INV-20250517-0031,CUST-1001,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,5,165.0,825.0,138.0,42,15,3,UPI
+2025-05-17 17:13:15,INV-20250517-0032,CUST-1002,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,5,165.0,825.0,138.0,42,15,3,UPI
+2025-05-17 09:57:21,INV-20250517-0041,CUST-1014,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,3,56.0,168.0,44.0,110,35,2,UPI
+2025-05-17 19:23:52,INV-20250517-0042,CUST-1015,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,5,56.0,280.0,44.0,110,35,2,UPI
+2025-05-17 20:07:52,INV-20250517-0043,CUST-1016,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,2,56.0,112.0,44.0,110,35,2,UPI
+2025-05-17 09:45:33,INV-20250517-0051,CUST-1027,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,5,275.0,1375.0,230.0,28,12,3,UPI
+2025-05-17 15:41:02,INV-20250517-0052,CUST-1028,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,1,275.0,275.0,230.0,28,12,3,UPI
+2025-05-17 18:47:00,INV-20250517-0053,CUST-1029,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,5,275.0,1375.0,230.0,28,12,3,UPI
+2025-05-17 15:29:50,INV-20250517-0061,CUST-1040,Coca-Cola Original Taste 750ml PET Bottle,Beverages,4,40.0,160.0,29.0,64,20,2,UPI
+2025-05-17 21:27:41,INV-20250517-0071,CUST-1053,Surf Excel Easy Wash Detergent Powder 1kg,Household,1,145.0,145.0,118.0,38,15,5,UPI
+2025-05-17 18:41:30,INV-20250517-0072,CUST-1054,Surf Excel Easy Wash Detergent Powder 1kg,Household,4,145.0,580.0,118.0,38,15,5,UPI
+2025-05-17 13:04:01,INV-20250517-0081,CUST-1066,Dettol Original Liquid Handwash Refill 175ml,Personal Care,3,99.0,297.0,76.0,52,18,3,Debit Card
+2025-05-17 10:19:48,INV-20250517-0082,CUST-1067,Dettol Original Liquid Handwash Refill 175ml,Personal Care,2,99.0,198.0,76.0,52,18,3,UPI
+2025-05-17 20:33:14,INV-20250517-0091,CUST-1079,Britannia Good Day Cashew Cookies 200g,Snacks,5,45.0,225.0,34.0,70,25,2,Credit Card
+2025-05-17 19:20:14,INV-20250517-0101,CUST-1092,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,4,195.0,780.0,152.0,22,10,4,Debit Card
+2025-05-17 17:58:54,INV-20250517-0102,CUST-1093,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,3,195.0,585.0,152.0,22,10,4,Debit Card
+2025-05-17 18:16:42,INV-20250517-0103,CUST-1094,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,3,195.0,585.0,152.0,22,10,4,Debit Card
+2025-05-17 10:25:28,INV-20250517-0111,CUST-1105,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,UPI
+2025-05-17 18:24:59,INV-20250517-0121,CUST-1118,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,2,185.0,370.0,148.0,40,15,3,Cash
+2025-05-17 10:17:45,INV-20250517-0131,CUST-1131,Colgate Total Advanced Health Toothpaste 120g,Personal Care,5,125.0,625.0,96.0,60,20,3,UPI
+2025-05-17 09:44:01,INV-20250517-0141,CUST-1144,Lays Indias Magic Masala Potato Chips 50g,Snacks,2,20.0,40.0,15.0,95,30,2,Credit Card
+2025-05-18 18:49:20,INV-20250518-0001,CUST-1119,Amul Taaza Homogenised Toned Milk 1L,Dairy,3,72.0,216.0,58.0,48,15,2,Cash
+2025-05-18 16:31:41,INV-20250518-0002,CUST-1120,Amul Taaza Homogenised Toned Milk 1L,Dairy,2,72.0,144.0,58.0,48,15,2,Debit Card
+2025-05-18 15:07:18,INV-20250518-0011,CUST-1132,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,3,55.0,165.0,42.0,32,10,1,Cash
+2025-05-18 10:40:30,INV-20250518-0021,CUST-1145,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,2,28.0,56.0,21.0,85,25,4,Credit Card
+2025-05-18 18:29:12,INV-20250518-0022,CUST-1146,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,1,28.0,28.0,21.0,85,25,4,Cash
+2025-05-18 09:47:50,INV-20250518-0023,CUST-1147,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,2,28.0,56.0,21.0,85,25,4,Credit Card
+2025-05-18 21:19:10,INV-20250518-0031,CUST-1008,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,5,165.0,825.0,138.0,42,15,3,UPI
+2025-05-18 14:24:34,INV-20250518-0032,CUST-1009,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,3,165.0,495.0,138.0,42,15,3,UPI
+2025-05-18 20:11:35,INV-20250518-0041,CUST-1021,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,1,56.0,56.0,44.0,110,35,2,UPI
+2025-05-18 20:04:44,INV-20250518-0042,CUST-1022,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,3,56.0,168.0,44.0,110,35,2,Cash
+2025-05-18 15:32:47,INV-20250518-0043,CUST-1023,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,2,56.0,112.0,44.0,110,35,2,Credit Card
+2025-05-18 16:16:31,INV-20250518-0051,CUST-1034,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,2,275.0,550.0,230.0,28,12,3,UPI
+2025-05-18 11:47:58,INV-20250518-0052,CUST-1035,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,4,275.0,1100.0,230.0,28,12,3,Debit Card
+2025-05-18 09:39:04,INV-20250518-0053,CUST-1036,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,4,275.0,1100.0,230.0,28,12,3,UPI
+2025-05-18 20:54:15,INV-20250518-0061,CUST-1047,Coca-Cola Original Taste 750ml PET Bottle,Beverages,3,40.0,120.0,29.0,64,20,2,Credit Card
+2025-05-18 11:10:00,INV-20250518-0071,CUST-1060,Surf Excel Easy Wash Detergent Powder 1kg,Household,4,145.0,580.0,118.0,38,15,5,Debit Card
+2025-05-18 09:07:26,INV-20250518-0081,CUST-1073,Dettol Original Liquid Handwash Refill 175ml,Personal Care,1,99.0,99.0,76.0,52,18,3,Cash
+2025-05-18 21:24:44,INV-20250518-0082,CUST-1074,Dettol Original Liquid Handwash Refill 175ml,Personal Care,4,99.0,396.0,76.0,52,18,3,Debit Card
+2025-05-18 11:46:10,INV-20250518-0091,CUST-1086,Britannia Good Day Cashew Cookies 200g,Snacks,1,45.0,45.0,34.0,70,25,2,Debit Card
+2025-05-18 16:39:32,INV-20250518-0092,CUST-1087,Britannia Good Day Cashew Cookies 200g,Snacks,2,45.0,90.0,34.0,70,25,2,UPI
+2025-05-18 14:24:11,INV-20250518-0101,CUST-1099,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,5,195.0,975.0,152.0,22,10,4,Debit Card
+2025-05-18 19:47:35,INV-20250518-0111,CUST-1112,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,Cash
+2025-05-18 17:28:50,INV-20250518-0121,CUST-1125,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,2,185.0,370.0,148.0,40,15,3,UPI
+2025-05-18 18:52:49,INV-20250518-0122,CUST-1126,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,3,185.0,555.0,148.0,40,15,3,UPI
+2025-05-18 13:44:34,INV-20250518-0131,CUST-1138,Colgate Total Advanced Health Toothpaste 120g,Personal Care,2,125.0,250.0,96.0,60,20,3,Cash
+2025-05-18 09:01:32,INV-20250518-0132,CUST-1139,Colgate Total Advanced Health Toothpaste 120g,Personal Care,3,125.0,375.0,96.0,60,20,3,UPI
+2025-05-18 15:47:12,INV-20250518-0133,CUST-1140,Colgate Total Advanced Health Toothpaste 120g,Personal Care,5,125.0,625.0,96.0,60,20,3,UPI
+2025-05-18 19:27:51,INV-20250518-0141,CUST-1001,Lays Indias Magic Masala Potato Chips 50g,Snacks,2,20.0,40.0,15.0,95,30,2,UPI
+2025-05-18 18:36:09,INV-20250518-0142,CUST-1002,Lays Indias Magic Masala Potato Chips 50g,Snacks,3,20.0,60.0,15.0,95,30,2,Credit Card
+2025-05-18 12:01:30,INV-20250518-0143,CUST-1003,Lays Indias Magic Masala Potato Chips 50g,Snacks,2,20.0,40.0,15.0,95,30,2,Credit Card
+2025-05-19 16:42:24,INV-20250519-0001,CUST-1126,Amul Taaza Homogenised Toned Milk 1L,Dairy,3,72.0,216.0,58.0,48,15,2,Cash
+2025-05-19 13:58:28,INV-20250519-0011,CUST-1139,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,3,55.0,165.0,42.0,32,10,1,UPI
+2025-05-19 13:24:26,INV-20250519-0012,CUST-1140,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,2,55.0,110.0,42.0,32,10,1,UPI
+2025-05-19 09:04:04,INV-20250519-0021,CUST-1002,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,3,28.0,84.0,21.0,85,25,4,UPI
+2025-05-19 14:05:42,INV-20250519-0031,CUST-1015,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,3,165.0,495.0,138.0,42,15,3,UPI
+2025-05-19 18:17:05,INV-20250519-0032,CUST-1016,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,3,165.0,495.0,138.0,42,15,3,UPI
+2025-05-19 16:00:37,INV-20250519-0041,CUST-1028,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,3,56.0,168.0,44.0,110,35,2,Debit Card
+2025-05-19 10:48:18,INV-20250519-0042,CUST-1029,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,1,56.0,56.0,44.0,110,35,2,Credit Card
+2025-05-19 10:05:18,INV-20250519-0051,CUST-1041,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,3,275.0,825.0,230.0,28,12,3,UPI
+2025-05-19 14:41:15,INV-20250519-0052,CUST-1042,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,2,275.0,550.0,230.0,28,12,3,Cash
+2025-05-19 18:06:57,INV-20250519-0061,CUST-1054,Coca-Cola Original Taste 750ml PET Bottle,Beverages,3,40.0,120.0,29.0,64,20,2,Credit Card
+2025-05-19 17:30:24,INV-20250519-0071,CUST-1067,Surf Excel Easy Wash Detergent Powder 1kg,Household,2,145.0,290.0,118.0,38,15,5,UPI
+2025-05-19 20:53:04,INV-20250519-0081,CUST-1080,Dettol Original Liquid Handwash Refill 175ml,Personal Care,2,99.0,198.0,76.0,52,18,3,UPI
+2025-05-19 14:59:08,INV-20250519-0091,CUST-1093,Britannia Good Day Cashew Cookies 200g,Snacks,3,45.0,135.0,34.0,70,25,2,Credit Card
+2025-05-19 14:36:34,INV-20250519-0101,CUST-1106,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,2,195.0,390.0,152.0,22,10,4,UPI
+2025-05-19 11:12:37,INV-20250519-0102,CUST-1107,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,1,195.0,195.0,152.0,22,10,4,UPI
+2025-05-19 18:22:44,INV-20250519-0111,CUST-1119,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,UPI
+2025-05-19 14:20:35,INV-20250519-0121,CUST-1132,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,2,185.0,370.0,148.0,40,15,3,Cash
+2025-05-19 09:24:48,INV-20250519-0122,CUST-1133,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,3,185.0,555.0,148.0,40,15,3,UPI
+2025-05-19 19:03:38,INV-20250519-0131,CUST-1145,Colgate Total Advanced Health Toothpaste 120g,Personal Care,1,125.0,125.0,96.0,60,20,3,UPI
+2025-05-19 12:00:15,INV-20250519-0132,CUST-1146,Colgate Total Advanced Health Toothpaste 120g,Personal Care,2,125.0,250.0,96.0,60,20,3,UPI
+2025-05-19 09:51:10,INV-20250519-0141,CUST-1008,Lays Indias Magic Masala Potato Chips 50g,Snacks,2,20.0,40.0,15.0,95,30,2,UPI
+2025-05-20 17:23:05,INV-20250520-0001,CUST-1133,Amul Taaza Homogenised Toned Milk 1L,Dairy,2,72.0,144.0,58.0,48,15,2,Debit Card
+2025-05-20 21:41:27,INV-20250520-0002,CUST-1134,Amul Taaza Homogenised Toned Milk 1L,Dairy,1,72.0,72.0,58.0,48,15,2,UPI
+2025-05-20 21:10:32,INV-20250520-0011,CUST-1146,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,2,55.0,110.0,42.0,32,10,1,UPI
+2025-05-20 11:37:06,INV-20250520-0021,CUST-1009,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,2,28.0,56.0,21.0,85,25,4,UPI
+2025-05-20 10:42:14,INV-20250520-0022,CUST-1010,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,3,28.0,84.0,21.0,85,25,4,Debit Card
+2025-05-20 11:57:05,INV-20250520-0031,CUST-1022,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,2,165.0,330.0,138.0,42,15,3,UPI
+2025-05-20 19:39:42,INV-20250520-0041,CUST-1035,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,1,56.0,56.0,44.0,110,35,2,Cash
+2025-05-20 12:04:50,INV-20250520-0051,CUST-1048,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,2,275.0,550.0,230.0,28,12,3,UPI
+2025-05-20 21:54:33,INV-20250520-0061,CUST-1061,Coca-Cola Original Taste 750ml PET Bottle,Beverages,1,40.0,40.0,29.0,64,20,2,Cash
+2025-05-20 12:03:33,INV-20250520-0062,CUST-1062,Coca-Cola Original Taste 750ml PET Bottle,Beverages,1,40.0,40.0,29.0,64,20,2,UPI
+2025-05-20 17:14:11,INV-20250520-0071,CUST-1074,Surf Excel Easy Wash Detergent Powder 1kg,Household,3,145.0,435.0,118.0,38,15,5,Credit Card
+2025-05-20 21:11:18,INV-20250520-0081,CUST-1087,Dettol Original Liquid Handwash Refill 175ml,Personal Care,2,99.0,198.0,76.0,52,18,3,UPI
+2025-05-20 14:56:28,INV-20250520-0082,CUST-1088,Dettol Original Liquid Handwash Refill 175ml,Personal Care,2,99.0,198.0,76.0,52,18,3,Credit Card
+2025-05-20 17:20:48,INV-20250520-0091,CUST-1100,Britannia Good Day Cashew Cookies 200g,Snacks,1,45.0,45.0,34.0,70,25,2,UPI
+2025-05-20 09:46:09,INV-20250520-0092,CUST-1101,Britannia Good Day Cashew Cookies 200g,Snacks,1,45.0,45.0,34.0,70,25,2,UPI
+2025-05-20 18:14:25,INV-20250520-0101,CUST-1113,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,2,195.0,390.0,152.0,22,10,4,Cash
+2025-05-20 15:52:09,INV-20250520-0102,CUST-1114,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,3,195.0,585.0,152.0,22,10,4,UPI
+2025-05-20 15:42:11,INV-20250520-0111,CUST-1126,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,1,60.0,60.0,46.0,18,8,2,UPI
+2025-05-20 09:49:20,INV-20250520-0112,CUST-1127,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,UPI
+2025-05-20 14:24:20,INV-20250520-0121,CUST-1139,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,2,185.0,370.0,148.0,40,15,3,Cash
+2025-05-20 09:28:59,INV-20250520-0122,CUST-1140,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,1,185.0,185.0,148.0,40,15,3,UPI
+2025-05-20 20:59:22,INV-20250520-0131,CUST-1002,Colgate Total Advanced Health Toothpaste 120g,Personal Care,3,125.0,375.0,96.0,60,20,3,UPI
+2025-05-20 18:34:38,INV-20250520-0132,CUST-1003,Colgate Total Advanced Health Toothpaste 120g,Personal Care,2,125.0,250.0,96.0,60,20,3,Debit Card
+2025-05-20 09:06:27,INV-20250520-0141,CUST-1015,Lays Indias Magic Masala Potato Chips 50g,Snacks,3,20.0,60.0,15.0,95,30,2,UPI
+2025-05-21 12:23:14,INV-20250521-0001,CUST-1140,Amul Taaza Homogenised Toned Milk 1L,Dairy,2,72.0,144.0,58.0,48,15,2,UPI
+2025-05-21 11:11:15,INV-20250521-0011,CUST-1003,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,1,55.0,55.0,42.0,32,10,1,UPI
+2025-05-21 12:08:42,INV-20250521-0012,CUST-1004,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,3,55.0,165.0,42.0,32,10,1,UPI
+2025-05-21 14:18:25,INV-20250521-0021,CUST-1016,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,3,28.0,84.0,21.0,85,25,4,Credit Card
+2025-05-21 14:45:47,INV-20250521-0031,CUST-1029,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,1,165.0,165.0,138.0,42,15,3,UPI
+2025-05-21 14:29:11,INV-20250521-0041,CUST-1042,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,3,56.0,168.0,44.0,110,35,2,UPI
+2025-05-21 09:43:39,INV-20250521-0051,CUST-1055,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,3,275.0,825.0,230.0,28,12,3,UPI
+2025-05-21 15:54:25,INV-20250521-0052,CUST-1056,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,1,275.0,275.0,230.0,28,12,3,UPI
+2025-05-21 11:35:41,INV-20250521-0061,CUST-1068,Coca-Cola Original Taste 750ml PET Bottle,Beverages,2,40.0,80.0,29.0,64,20,2,Cash
+2025-05-21 14:49:25,INV-20250521-0071,CUST-1081,Surf Excel Easy Wash Detergent Powder 1kg,Household,1,145.0,145.0,118.0,38,15,5,UPI
+2025-05-21 10:11:37,INV-20250521-0081,CUST-1094,Dettol Original Liquid Handwash Refill 175ml,Personal Care,3,99.0,297.0,76.0,52,18,3,Credit Card
+2025-05-21 21:42:59,INV-20250521-0082,CUST-1095,Dettol Original Liquid Handwash Refill 175ml,Personal Care,2,99.0,198.0,76.0,52,18,3,Credit Card
+2025-05-21 20:32:13,INV-20250521-0091,CUST-1107,Britannia Good Day Cashew Cookies 200g,Snacks,3,45.0,135.0,34.0,70,25,2,Credit Card
+2025-05-21 16:22:11,INV-20250521-0101,CUST-1120,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,2,195.0,390.0,152.0,22,10,4,Credit Card
+2025-05-21 17:43:08,INV-20250521-0102,CUST-1121,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,3,195.0,585.0,152.0,22,10,4,Debit Card
+2025-05-21 11:56:27,INV-20250521-0111,CUST-1133,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,UPI
+2025-05-21 15:01:34,INV-20250521-0112,CUST-1134,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,UPI
+2025-05-21 14:11:29,INV-20250521-0121,CUST-1146,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,2,185.0,370.0,148.0,40,15,3,UPI
+2025-05-21 11:13:10,INV-20250521-0122,CUST-1147,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,1,185.0,185.0,148.0,40,15,3,UPI
+2025-05-21 12:01:37,INV-20250521-0131,CUST-1009,Colgate Total Advanced Health Toothpaste 120g,Personal Care,1,125.0,125.0,96.0,60,20,3,Credit Card
+2025-05-21 10:44:18,INV-20250521-0132,CUST-1010,Colgate Total Advanced Health Toothpaste 120g,Personal Care,2,125.0,250.0,96.0,60,20,3,UPI
+2025-05-21 15:29:17,INV-20250521-0141,CUST-1022,Lays Indias Magic Masala Potato Chips 50g,Snacks,3,20.0,60.0,15.0,95,30,2,Credit Card
+2025-05-22 20:39:26,INV-20250522-0001,CUST-1147,Amul Taaza Homogenised Toned Milk 1L,Dairy,1,72.0,72.0,58.0,48,15,2,Cash
+2025-05-22 11:35:12,INV-20250522-0011,CUST-1010,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,1,55.0,55.0,42.0,32,10,1,UPI
+2025-05-22 11:43:17,INV-20250522-0012,CUST-1011,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,1,55.0,55.0,42.0,32,10,1,Credit Card
+2025-05-22 15:51:50,INV-20250522-0021,CUST-1023,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,1,28.0,28.0,21.0,85,25,4,Cash
+2025-05-22 19:20:03,INV-20250522-0022,CUST-1024,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,2,28.0,56.0,21.0,85,25,4,UPI
+2025-05-22 15:18:05,INV-20250522-0031,CUST-1036,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,3,165.0,495.0,138.0,42,15,3,UPI
+2025-05-22 12:44:07,INV-20250522-0032,CUST-1037,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,1,165.0,165.0,138.0,42,15,3,Cash
+2025-05-22 19:42:38,INV-20250522-0041,CUST-1049,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,3,56.0,168.0,44.0,110,35,2,UPI
+2025-05-22 18:01:12,INV-20250522-0051,CUST-1062,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,1,275.0,275.0,230.0,28,12,3,Debit Card
+2025-05-22 18:24:57,INV-20250522-0052,CUST-1063,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,2,275.0,550.0,230.0,28,12,3,UPI
+2025-05-22 09:38:49,INV-20250522-0061,CUST-1075,Coca-Cola Original Taste 750ml PET Bottle,Beverages,3,40.0,120.0,29.0,64,20,2,Credit Card
+2025-05-22 15:25:55,INV-20250522-0062,CUST-1076,Coca-Cola Original Taste 750ml PET Bottle,Beverages,1,40.0,40.0,29.0,64,20,2,UPI
+2025-05-22 17:43:51,INV-20250522-0071,CUST-1088,Surf Excel Easy Wash Detergent Powder 1kg,Household,3,145.0,435.0,118.0,38,15,5,UPI
+2025-05-22 20:40:44,INV-20250522-0081,CUST-1101,Dettol Original Liquid Handwash Refill 175ml,Personal Care,2,99.0,198.0,76.0,52,18,3,Credit Card
+2025-05-22 11:25:19,INV-20250522-0082,CUST-1102,Dettol Original Liquid Handwash Refill 175ml,Personal Care,3,99.0,297.0,76.0,52,18,3,Debit Card
+2025-05-22 16:18:34,INV-20250522-0091,CUST-1114,Britannia Good Day Cashew Cookies 200g,Snacks,3,45.0,135.0,34.0,70,25,2,UPI
+2025-05-22 09:49:51,INV-20250522-0092,CUST-1115,Britannia Good Day Cashew Cookies 200g,Snacks,3,45.0,135.0,34.0,70,25,2,UPI
+2025-05-22 19:08:13,INV-20250522-0101,CUST-1127,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,1,195.0,195.0,152.0,22,10,4,Credit Card
+2025-05-22 14:55:58,INV-20250522-0102,CUST-1128,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,3,195.0,585.0,152.0,22,10,4,UPI
+2025-05-22 11:55:35,INV-20250522-0111,CUST-1140,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,1,60.0,60.0,46.0,18,8,2,UPI
+2025-05-22 10:23:46,INV-20250522-0112,CUST-1141,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,1,60.0,60.0,46.0,18,8,2,Debit Card
+2025-05-22 21:11:39,INV-20250522-0121,CUST-1003,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,2,185.0,370.0,148.0,40,15,3,Credit Card
+2025-05-22 18:33:59,INV-20250522-0122,CUST-1004,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,3,185.0,555.0,148.0,40,15,3,Debit Card
+2025-05-22 10:02:49,INV-20250522-0131,CUST-1016,Colgate Total Advanced Health Toothpaste 120g,Personal Care,1,125.0,125.0,96.0,60,20,3,Credit Card
+2025-05-22 17:50:40,INV-20250522-0132,CUST-1017,Colgate Total Advanced Health Toothpaste 120g,Personal Care,1,125.0,125.0,96.0,60,20,3,Credit Card
+2025-05-22 14:29:08,INV-20250522-0141,CUST-1029,Lays Indias Magic Masala Potato Chips 50g,Snacks,1,20.0,20.0,15.0,95,30,2,UPI
+2025-05-23 10:14:51,INV-20250523-0001,CUST-1004,Amul Taaza Homogenised Toned Milk 1L,Dairy,3,72.0,216.0,58.0,48,15,2,UPI
+2025-05-23 11:36:30,INV-20250523-0011,CUST-1017,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,2,55.0,110.0,42.0,32,10,1,Credit Card
+2025-05-23 20:49:42,INV-20250523-0012,CUST-1018,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,2,55.0,110.0,42.0,32,10,1,UPI
+2025-05-23 11:06:44,INV-20250523-0021,CUST-1030,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,1,28.0,28.0,21.0,85,25,4,Credit Card
+2025-05-23 13:41:05,INV-20250523-0022,CUST-1031,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,1,28.0,28.0,21.0,85,25,4,Cash
+2025-05-23 15:56:00,INV-20250523-0031,CUST-1043,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,2,165.0,330.0,138.0,42,15,3,UPI
+2025-05-23 19:03:10,INV-20250523-0041,CUST-1056,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,1,56.0,56.0,44.0,110,35,2,Cash
+2025-05-23 11:48:20,INV-20250523-0042,CUST-1057,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,2,56.0,112.0,44.0,110,35,2,UPI
+2025-05-23 17:53:12,INV-20250523-0051,CUST-1069,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,2,275.0,550.0,230.0,28,12,3,Cash
+2025-05-23 10:06:51,INV-20250523-0061,CUST-1082,Coca-Cola Original Taste 750ml PET Bottle,Beverages,2,40.0,80.0,29.0,64,20,2,UPI
+2025-05-23 21:05:20,INV-20250523-0062,CUST-1083,Coca-Cola Original Taste 750ml PET Bottle,Beverages,3,40.0,120.0,29.0,64,20,2,UPI
+2025-05-23 11:50:19,INV-20250523-0071,CUST-1095,Surf Excel Easy Wash Detergent Powder 1kg,Household,1,145.0,145.0,118.0,38,15,5,Credit Card
+2025-05-23 10:30:56,INV-20250523-0081,CUST-1108,Dettol Original Liquid Handwash Refill 175ml,Personal Care,2,99.0,198.0,76.0,52,18,3,Credit Card
+2025-05-23 09:32:34,INV-20250523-0082,CUST-1109,Dettol Original Liquid Handwash Refill 175ml,Personal Care,3,99.0,297.0,76.0,52,18,3,Credit Card
+2025-05-23 16:40:41,INV-20250523-0091,CUST-1121,Britannia Good Day Cashew Cookies 200g,Snacks,2,45.0,90.0,34.0,70,25,2,Credit Card
+2025-05-23 21:41:05,INV-20250523-0101,CUST-1134,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,3,195.0,585.0,152.0,22,10,4,UPI
+2025-05-23 21:44:57,INV-20250523-0111,CUST-1147,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,Credit Card
+2025-05-23 11:15:53,INV-20250523-0112,CUST-1148,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,UPI
+2025-05-23 20:46:21,INV-20250523-0121,CUST-1010,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,1,185.0,185.0,148.0,40,15,3,UPI
+2025-05-23 09:27:53,INV-20250523-0122,CUST-1011,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,2,185.0,370.0,148.0,40,15,3,Credit Card
+2025-05-23 16:27:54,INV-20250523-0131,CUST-1023,Colgate Total Advanced Health Toothpaste 120g,Personal Care,3,125.0,375.0,96.0,60,20,3,Credit Card
+2025-05-23 19:44:51,INV-20250523-0132,CUST-1024,Colgate Total Advanced Health Toothpaste 120g,Personal Care,1,125.0,125.0,96.0,60,20,3,Credit Card
+2025-05-23 14:29:23,INV-20250523-0141,CUST-1036,Lays Indias Magic Masala Potato Chips 50g,Snacks,3,20.0,60.0,15.0,95,30,2,UPI
+2025-05-24 12:03:54,INV-20250524-0001,CUST-1011,Amul Taaza Homogenised Toned Milk 1L,Dairy,1,72.0,72.0,58.0,48,15,2,UPI
+2025-05-24 09:32:37,INV-20250524-0011,CUST-1024,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,3,55.0,165.0,42.0,32,10,1,UPI
+2025-05-24 21:03:34,INV-20250524-0012,CUST-1025,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,2,55.0,110.0,42.0,32,10,1,UPI
+2025-05-24 18:22:15,INV-20250524-0013,CUST-1026,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,4,55.0,220.0,42.0,32,10,1,Debit Card
+2025-05-24 15:07:55,INV-20250524-0021,CUST-1037,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,5,28.0,140.0,21.0,85,25,4,Credit Card
+2025-05-24 10:12:27,INV-20250524-0031,CUST-1050,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,5,165.0,825.0,138.0,42,15,3,Credit Card
+2025-05-24 16:52:02,INV-20250524-0041,CUST-1063,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,3,56.0,168.0,44.0,110,35,2,Credit Card
+2025-05-24 18:27:01,INV-20250524-0042,CUST-1064,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,5,56.0,280.0,44.0,110,35,2,Credit Card
+2025-05-24 16:22:11,INV-20250524-0043,CUST-1065,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,1,56.0,56.0,44.0,110,35,2,UPI
+2025-05-24 11:58:40,INV-20250524-0051,CUST-1076,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,5,275.0,1375.0,230.0,28,12,3,Credit Card
+2025-05-24 15:41:31,INV-20250524-0052,CUST-1077,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,4,275.0,1100.0,230.0,28,12,3,Cash
+2025-05-24 10:13:39,INV-20250524-0053,CUST-1078,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,4,275.0,1100.0,230.0,28,12,3,UPI
+2025-05-24 09:01:11,INV-20250524-0061,CUST-1089,Coca-Cola Original Taste 750ml PET Bottle,Beverages,1,40.0,40.0,29.0,64,20,2,UPI
+2025-05-24 10:46:35,INV-20250524-0062,CUST-1090,Coca-Cola Original Taste 750ml PET Bottle,Beverages,5,40.0,200.0,29.0,64,20,2,UPI
+2025-05-24 15:07:32,INV-20250524-0071,CUST-1102,Surf Excel Easy Wash Detergent Powder 1kg,Household,1,145.0,145.0,118.0,38,15,5,UPI
+2025-05-24 15:18:03,INV-20250524-0081,CUST-1115,Dettol Original Liquid Handwash Refill 175ml,Personal Care,1,99.0,99.0,76.0,52,18,3,Credit Card
+2025-05-24 21:09:44,INV-20250524-0082,CUST-1116,Dettol Original Liquid Handwash Refill 175ml,Personal Care,4,99.0,396.0,76.0,52,18,3,UPI
+2025-05-24 10:18:47,INV-20250524-0083,CUST-1117,Dettol Original Liquid Handwash Refill 175ml,Personal Care,5,99.0,495.0,76.0,52,18,3,Cash
+2025-05-24 13:15:32,INV-20250524-0091,CUST-1128,Britannia Good Day Cashew Cookies 200g,Snacks,2,45.0,90.0,34.0,70,25,2,Cash
+2025-05-24 15:46:40,INV-20250524-0092,CUST-1129,Britannia Good Day Cashew Cookies 200g,Snacks,4,45.0,180.0,34.0,70,25,2,UPI
+2025-05-24 12:31:24,INV-20250524-0101,CUST-1141,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,1,195.0,195.0,152.0,22,10,4,Cash
+2025-05-24 11:42:42,INV-20250524-0102,CUST-1142,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,5,195.0,975.0,152.0,22,10,4,UPI
+2025-05-24 19:23:13,INV-20250524-0111,CUST-1004,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,UPI
+2025-05-24 10:04:50,INV-20250524-0112,CUST-1005,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,5,60.0,300.0,46.0,18,8,2,Cash
+2025-05-24 12:29:02,INV-20250524-0113,CUST-1006,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,1,60.0,60.0,46.0,18,8,2,UPI
+2025-05-24 10:52:38,INV-20250524-0121,CUST-1017,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,5,185.0,925.0,148.0,40,15,3,UPI
+2025-05-24 10:44:13,INV-20250524-0131,CUST-1030,Colgate Total Advanced Health Toothpaste 120g,Personal Care,4,125.0,500.0,96.0,60,20,3,Cash
+2025-05-24 17:22:04,INV-20250524-0132,CUST-1031,Colgate Total Advanced Health Toothpaste 120g,Personal Care,2,125.0,250.0,96.0,60,20,3,UPI
+2025-05-24 18:40:16,INV-20250524-0141,CUST-1043,Lays Indias Magic Masala Potato Chips 50g,Snacks,3,20.0,60.0,15.0,95,30,2,Cash
+2025-05-24 11:24:57,INV-20250524-0142,CUST-1044,Lays Indias Magic Masala Potato Chips 50g,Snacks,3,20.0,60.0,15.0,95,30,2,UPI
+2025-05-25 19:48:54,INV-20250525-0001,CUST-1018,Amul Taaza Homogenised Toned Milk 1L,Dairy,4,72.0,288.0,58.0,48,15,2,UPI
+2025-05-25 10:32:04,INV-20250525-0011,CUST-1031,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,5,55.0,275.0,42.0,32,10,1,Debit Card
+2025-05-25 17:18:15,INV-20250525-0012,CUST-1032,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,3,55.0,165.0,42.0,32,10,1,Debit Card
+2025-05-25 12:44:53,INV-20250525-0021,CUST-1044,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,5,28.0,140.0,21.0,85,25,4,Credit Card
+2025-05-25 18:26:39,INV-20250525-0022,CUST-1045,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,1,28.0,28.0,21.0,85,25,4,UPI
+2025-05-25 10:22:23,INV-20250525-0031,CUST-1057,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,2,165.0,330.0,138.0,42,15,3,Cash
+2025-05-25 18:26:42,INV-20250525-0041,CUST-1070,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,2,56.0,112.0,44.0,110,35,2,UPI
+2025-05-25 11:56:11,INV-20250525-0042,CUST-1071,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,1,56.0,56.0,44.0,110,35,2,Credit Card
+2025-05-25 11:29:27,INV-20250525-0043,CUST-1072,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,2,56.0,112.0,44.0,110,35,2,UPI
+2025-05-25 16:36:44,INV-20250525-0051,CUST-1083,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,3,275.0,825.0,230.0,28,12,3,UPI
+2025-05-25 15:40:19,INV-20250525-0052,CUST-1084,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,3,275.0,825.0,230.0,28,12,3,Debit Card
+2025-05-25 13:34:02,INV-20250525-0053,CUST-1085,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,1,275.0,275.0,230.0,28,12,3,UPI
+2025-05-25 19:44:02,INV-20250525-0061,CUST-1096,Coca-Cola Original Taste 750ml PET Bottle,Beverages,2,40.0,80.0,29.0,64,20,2,Cash
+2025-05-25 12:40:26,INV-20250525-0071,CUST-1109,Surf Excel Easy Wash Detergent Powder 1kg,Household,5,145.0,725.0,118.0,38,15,5,Credit Card
+2025-05-25 21:17:08,INV-20250525-0072,CUST-1110,Surf Excel Easy Wash Detergent Powder 1kg,Household,1,145.0,145.0,118.0,38,15,5,Cash
+2025-05-25 15:19:00,INV-20250525-0073,CUST-1111,Surf Excel Easy Wash Detergent Powder 1kg,Household,2,145.0,290.0,118.0,38,15,5,UPI
+2025-05-25 13:39:33,INV-20250525-0081,CUST-1122,Dettol Original Liquid Handwash Refill 175ml,Personal Care,5,99.0,495.0,76.0,52,18,3,Cash
+2025-05-25 13:18:39,INV-20250525-0091,CUST-1135,Britannia Good Day Cashew Cookies 200g,Snacks,5,45.0,225.0,34.0,70,25,2,UPI
+2025-05-25 17:02:05,INV-20250525-0101,CUST-1148,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,4,195.0,780.0,152.0,22,10,4,Credit Card
+2025-05-25 20:52:44,INV-20250525-0102,CUST-1149,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,2,195.0,390.0,152.0,22,10,4,Debit Card
+2025-05-25 10:04:59,INV-20250525-0103,CUST-1000,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,5,195.0,975.0,152.0,22,10,4,UPI
+2025-05-25 14:22:48,INV-20250525-0111,CUST-1011,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,5,60.0,300.0,46.0,18,8,2,UPI
+2025-05-25 11:39:18,INV-20250525-0112,CUST-1012,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,UPI
+2025-05-25 11:41:10,INV-20250525-0113,CUST-1013,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,5,60.0,300.0,46.0,18,8,2,Debit Card
+2025-05-25 18:10:18,INV-20250525-0121,CUST-1024,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,1,185.0,185.0,148.0,40,15,3,Credit Card
+2025-05-25 10:30:53,INV-20250525-0122,CUST-1025,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,1,185.0,185.0,148.0,40,15,3,UPI
+2025-05-25 12:00:38,INV-20250525-0131,CUST-1037,Colgate Total Advanced Health Toothpaste 120g,Personal Care,5,125.0,625.0,96.0,60,20,3,Credit Card
+2025-05-25 17:51:47,INV-20250525-0132,CUST-1038,Colgate Total Advanced Health Toothpaste 120g,Personal Care,3,125.0,375.0,96.0,60,20,3,Credit Card
+2025-05-25 20:21:24,INV-20250525-0141,CUST-1050,Lays Indias Magic Masala Potato Chips 50g,Snacks,3,20.0,60.0,15.0,95,30,2,UPI
+2025-05-25 19:43:30,INV-20250525-0142,CUST-1051,Lays Indias Magic Masala Potato Chips 50g,Snacks,2,20.0,40.0,15.0,95,30,2,UPI
+2025-05-25 11:31:10,INV-20250525-0143,CUST-1052,Lays Indias Magic Masala Potato Chips 50g,Snacks,3,20.0,60.0,15.0,95,30,2,Credit Card
+2025-05-26 14:32:44,INV-20250526-0001,CUST-1025,Amul Taaza Homogenised Toned Milk 1L,Dairy,1,72.0,72.0,58.0,48,15,2,UPI
+2025-05-26 10:22:24,INV-20250526-0002,CUST-1026,Amul Taaza Homogenised Toned Milk 1L,Dairy,1,72.0,72.0,58.0,48,15,2,UPI
+2025-05-26 17:45:08,INV-20250526-0011,CUST-1038,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,3,55.0,165.0,42.0,32,10,1,UPI
+2025-05-26 09:59:24,INV-20250526-0021,CUST-1051,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,2,28.0,56.0,21.0,85,25,4,UPI
+2025-05-26 10:11:19,INV-20250526-0031,CUST-1064,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,1,165.0,165.0,138.0,42,15,3,Credit Card
+2025-05-26 19:21:37,INV-20250526-0032,CUST-1065,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,2,165.0,330.0,138.0,42,15,3,Cash
+2025-05-26 13:54:14,INV-20250526-0041,CUST-1077,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,2,56.0,112.0,44.0,110,35,2,UPI
+2025-05-26 16:26:39,INV-20250526-0051,CUST-1090,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,2,275.0,550.0,230.0,28,12,3,UPI
+2025-05-26 09:34:41,INV-20250526-0052,CUST-1091,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,1,275.0,275.0,230.0,28,12,3,Cash
+2025-05-26 21:04:53,INV-20250526-0061,CUST-1103,Coca-Cola Original Taste 750ml PET Bottle,Beverages,1,40.0,40.0,29.0,64,20,2,UPI
+2025-05-26 18:06:10,INV-20250526-0062,CUST-1104,Coca-Cola Original Taste 750ml PET Bottle,Beverages,1,40.0,40.0,29.0,64,20,2,UPI
+2025-05-26 12:18:05,INV-20250526-0071,CUST-1116,Surf Excel Easy Wash Detergent Powder 1kg,Household,3,145.0,435.0,118.0,38,15,5,UPI
+2025-05-26 12:00:32,INV-20250526-0072,CUST-1117,Surf Excel Easy Wash Detergent Powder 1kg,Household,1,145.0,145.0,118.0,38,15,5,UPI
+2025-05-26 14:38:11,INV-20250526-0081,CUST-1129,Dettol Original Liquid Handwash Refill 175ml,Personal Care,3,99.0,297.0,76.0,52,18,3,UPI
+2025-05-26 21:54:02,INV-20250526-0082,CUST-1130,Dettol Original Liquid Handwash Refill 175ml,Personal Care,2,99.0,198.0,76.0,52,18,3,Credit Card
+2025-05-26 19:16:26,INV-20250526-0091,CUST-1142,Britannia Good Day Cashew Cookies 200g,Snacks,2,45.0,90.0,34.0,70,25,2,UPI
+2025-05-26 19:09:44,INV-20250526-0092,CUST-1143,Britannia Good Day Cashew Cookies 200g,Snacks,3,45.0,135.0,34.0,70,25,2,Credit Card
+2025-05-26 10:29:47,INV-20250526-0101,CUST-1005,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,1,195.0,195.0,152.0,22,10,4,Debit Card
+2025-05-26 10:03:01,INV-20250526-0102,CUST-1006,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,3,195.0,585.0,152.0,22,10,4,Debit Card
+2025-05-26 12:43:47,INV-20250526-0111,CUST-1018,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,3,60.0,180.0,46.0,18,8,2,UPI
+2025-05-26 16:33:10,INV-20250526-0112,CUST-1019,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,1,60.0,60.0,46.0,18,8,2,Cash
+2025-05-26 12:20:54,INV-20250526-0121,CUST-1031,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,1,185.0,185.0,148.0,40,15,3,UPI
+2025-05-26 10:43:26,INV-20250526-0122,CUST-1032,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,1,185.0,185.0,148.0,40,15,3,Cash
+2025-05-26 09:41:42,INV-20250526-0131,CUST-1044,Colgate Total Advanced Health Toothpaste 120g,Personal Care,1,125.0,125.0,96.0,60,20,3,Debit Card
+2025-05-26 18:44:27,INV-20250526-0132,CUST-1045,Colgate Total Advanced Health Toothpaste 120g,Personal Care,3,125.0,375.0,96.0,60,20,3,UPI
+2025-05-26 17:27:38,INV-20250526-0141,CUST-1057,Lays Indias Magic Masala Potato Chips 50g,Snacks,3,20.0,60.0,15.0,95,30,2,Credit Card
+2025-05-27 15:18:17,INV-20250527-0001,CUST-1032,Amul Taaza Homogenised Toned Milk 1L,Dairy,2,72.0,144.0,58.0,48,15,2,UPI
+2025-05-27 18:18:54,INV-20250527-0002,CUST-1033,Amul Taaza Homogenised Toned Milk 1L,Dairy,1,72.0,72.0,58.0,48,15,2,Cash
+2025-05-27 16:41:26,INV-20250527-0011,CUST-1045,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,2,55.0,110.0,42.0,32,10,1,UPI
+2025-05-27 21:54:28,INV-20250527-0021,CUST-1058,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,3,28.0,84.0,21.0,85,25,4,Cash
+2025-05-27 11:36:29,INV-20250527-0031,CUST-1071,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,3,165.0,495.0,138.0,42,15,3,Cash
+2025-05-27 10:50:47,INV-20250527-0041,CUST-1084,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,2,56.0,112.0,44.0,110,35,2,Credit Card
+2025-05-27 14:51:27,INV-20250527-0042,CUST-1085,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,3,56.0,168.0,44.0,110,35,2,Cash
+2025-05-27 14:02:23,INV-20250527-0051,CUST-1097,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,2,275.0,550.0,230.0,28,12,3,UPI
+2025-05-27 15:42:55,INV-20250527-0061,CUST-1110,Coca-Cola Original Taste 750ml PET Bottle,Beverages,2,40.0,80.0,29.0,64,20,2,UPI
+2025-05-27 20:58:17,INV-20250527-0062,CUST-1111,Coca-Cola Original Taste 750ml PET Bottle,Beverages,1,40.0,40.0,29.0,64,20,2,UPI
+2025-05-27 11:27:46,INV-20250527-0071,CUST-1123,Surf Excel Easy Wash Detergent Powder 1kg,Household,1,145.0,145.0,118.0,38,15,5,Debit Card
+2025-05-27 11:20:49,INV-20250527-0072,CUST-1124,Surf Excel Easy Wash Detergent Powder 1kg,Household,2,145.0,290.0,118.0,38,15,5,UPI
+2025-05-27 11:14:12,INV-20250527-0081,CUST-1136,Dettol Original Liquid Handwash Refill 175ml,Personal Care,3,99.0,297.0,76.0,52,18,3,UPI
+2025-05-27 21:09:12,INV-20250527-0091,CUST-1149,Britannia Good Day Cashew Cookies 200g,Snacks,1,45.0,45.0,34.0,70,25,2,UPI
+2025-05-27 18:30:33,INV-20250527-0092,CUST-1000,Britannia Good Day Cashew Cookies 200g,Snacks,2,45.0,90.0,34.0,70,25,2,Credit Card
+2025-05-27 13:35:18,INV-20250527-0101,CUST-1012,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,2,195.0,390.0,152.0,22,10,4,UPI
+2025-05-27 17:56:51,INV-20250527-0102,CUST-1013,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,2,195.0,390.0,152.0,22,10,4,Cash
+2025-05-27 16:37:59,INV-20250527-0111,CUST-1025,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,1,60.0,60.0,46.0,18,8,2,Debit Card
+2025-05-27 10:17:45,INV-20250527-0112,CUST-1026,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,3,60.0,180.0,46.0,18,8,2,Credit Card
+2025-05-27 09:03:29,INV-20250527-0121,CUST-1038,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,1,185.0,185.0,148.0,40,15,3,UPI
+2025-05-27 16:24:46,INV-20250527-0131,CUST-1051,Colgate Total Advanced Health Toothpaste 120g,Personal Care,2,125.0,250.0,96.0,60,20,3,Cash
+2025-05-27 11:58:18,INV-20250527-0132,CUST-1052,Colgate Total Advanced Health Toothpaste 120g,Personal Care,2,125.0,250.0,96.0,60,20,3,Credit Card
+2025-05-27 19:39:14,INV-20250527-0141,CUST-1064,Lays Indias Magic Masala Potato Chips 50g,Snacks,3,20.0,60.0,15.0,95,30,2,Credit Card
+2025-05-28 18:42:46,INV-20250528-0001,CUST-1039,Amul Taaza Homogenised Toned Milk 1L,Dairy,2,72.0,144.0,58.0,48,15,2,Cash
+2025-05-28 09:01:18,INV-20250528-0002,CUST-1040,Amul Taaza Homogenised Toned Milk 1L,Dairy,3,72.0,216.0,58.0,48,15,2,UPI
+2025-05-28 17:32:56,INV-20250528-0011,CUST-1052,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,1,55.0,55.0,42.0,32,10,1,UPI
+2025-05-28 09:06:30,INV-20250528-0012,CUST-1053,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,1,55.0,55.0,42.0,32,10,1,UPI
+2025-05-28 20:50:47,INV-20250528-0021,CUST-1065,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,3,28.0,84.0,21.0,85,25,4,UPI
+2025-05-28 09:04:48,INV-20250528-0031,CUST-1078,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,2,165.0,330.0,138.0,42,15,3,UPI
+2025-05-28 10:26:48,INV-20250528-0032,CUST-1079,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,1,165.0,165.0,138.0,42,15,3,UPI
+2025-05-28 20:00:10,INV-20250528-0041,CUST-1091,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,2,56.0,112.0,44.0,110,35,2,UPI
+2025-05-28 19:31:45,INV-20250528-0042,CUST-1092,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,3,56.0,168.0,44.0,110,35,2,Debit Card
+2025-05-28 16:21:32,INV-20250528-0051,CUST-1104,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,2,275.0,550.0,230.0,28,12,3,Credit Card
+2025-05-28 18:46:02,INV-20250528-0052,CUST-1105,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,1,275.0,275.0,230.0,28,12,3,UPI
+2025-05-28 09:43:17,INV-20250528-0061,CUST-1117,Coca-Cola Original Taste 750ml PET Bottle,Beverages,3,40.0,120.0,29.0,64,20,2,UPI
+2025-05-28 15:19:29,INV-20250528-0071,CUST-1130,Surf Excel Easy Wash Detergent Powder 1kg,Household,3,145.0,435.0,118.0,38,15,5,UPI
+2025-05-28 12:19:57,INV-20250528-0072,CUST-1131,Surf Excel Easy Wash Detergent Powder 1kg,Household,3,145.0,435.0,118.0,38,15,5,Debit Card
+2025-05-28 19:36:57,INV-20250528-0081,CUST-1143,Dettol Original Liquid Handwash Refill 175ml,Personal Care,2,99.0,198.0,76.0,52,18,3,Credit Card
+2025-05-28 15:12:01,INV-20250528-0091,CUST-1006,Britannia Good Day Cashew Cookies 200g,Snacks,3,45.0,135.0,34.0,70,25,2,UPI
+2025-05-28 17:35:26,INV-20250528-0101,CUST-1019,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,2,195.0,390.0,152.0,22,10,4,Credit Card
+2025-05-28 19:14:35,INV-20250528-0111,CUST-1032,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,Credit Card
+2025-05-28 14:45:17,INV-20250528-0112,CUST-1033,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,3,60.0,180.0,46.0,18,8,2,Cash
+2025-05-28 18:57:25,INV-20250528-0121,CUST-1045,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,2,185.0,370.0,148.0,40,15,3,Credit Card
+2025-05-28 20:57:02,INV-20250528-0131,CUST-1058,Colgate Total Advanced Health Toothpaste 120g,Personal Care,3,125.0,375.0,96.0,60,20,3,Credit Card
+2025-05-28 19:36:22,INV-20250528-0132,CUST-1059,Colgate Total Advanced Health Toothpaste 120g,Personal Care,3,125.0,375.0,96.0,60,20,3,UPI
+2025-05-28 18:00:07,INV-20250528-0141,CUST-1071,Lays Indias Magic Masala Potato Chips 50g,Snacks,1,20.0,20.0,15.0,95,30,2,UPI
+2025-05-29 15:04:41,INV-20250529-0001,CUST-1046,Amul Taaza Homogenised Toned Milk 1L,Dairy,3,72.0,216.0,58.0,48,15,2,Credit Card
+2025-05-29 21:45:44,INV-20250529-0002,CUST-1047,Amul Taaza Homogenised Toned Milk 1L,Dairy,1,72.0,72.0,58.0,48,15,2,Cash
+2025-05-29 18:40:24,INV-20250529-0011,CUST-1059,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,3,55.0,165.0,42.0,32,10,1,UPI
+2025-05-29 16:23:06,INV-20250529-0021,CUST-1072,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,1,28.0,28.0,21.0,85,25,4,UPI
+2025-05-29 19:32:02,INV-20250529-0031,CUST-1085,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,3,165.0,495.0,138.0,42,15,3,Debit Card
+2025-05-29 14:32:13,INV-20250529-0041,CUST-1098,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,3,56.0,168.0,44.0,110,35,2,Debit Card
+2025-05-29 20:02:37,INV-20250529-0051,CUST-1111,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,1,275.0,275.0,230.0,28,12,3,Credit Card
+2025-05-29 10:41:05,INV-20250529-0061,CUST-1124,Coca-Cola Original Taste 750ml PET Bottle,Beverages,1,40.0,40.0,29.0,64,20,2,UPI
+2025-05-29 14:38:10,INV-20250529-0062,CUST-1125,Coca-Cola Original Taste 750ml PET Bottle,Beverages,3,40.0,120.0,29.0,64,20,2,UPI
+2025-05-29 14:24:03,INV-20250529-0071,CUST-1137,Surf Excel Easy Wash Detergent Powder 1kg,Household,2,145.0,290.0,118.0,38,15,5,Cash
+2025-05-29 17:04:36,INV-20250529-0081,CUST-1000,Dettol Original Liquid Handwash Refill 175ml,Personal Care,3,99.0,297.0,76.0,52,18,3,Debit Card
+2025-05-29 17:32:12,INV-20250529-0082,CUST-1001,Dettol Original Liquid Handwash Refill 175ml,Personal Care,2,99.0,198.0,76.0,52,18,3,UPI
+2025-05-29 14:55:13,INV-20250529-0091,CUST-1013,Britannia Good Day Cashew Cookies 200g,Snacks,3,45.0,135.0,34.0,70,25,2,UPI
+2025-05-29 10:51:24,INV-20250529-0101,CUST-1026,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,2,195.0,390.0,152.0,22,10,4,UPI
+2025-05-29 12:23:36,INV-20250529-0111,CUST-1039,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,2,60.0,120.0,46.0,18,8,2,UPI
+2025-05-29 16:56:37,INV-20250529-0121,CUST-1052,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,3,185.0,555.0,148.0,40,15,3,UPI
+2025-05-29 09:48:30,INV-20250529-0122,CUST-1053,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,3,185.0,555.0,148.0,40,15,3,Cash
+2025-05-29 12:43:46,INV-20250529-0131,CUST-1065,Colgate Total Advanced Health Toothpaste 120g,Personal Care,3,125.0,375.0,96.0,60,20,3,Cash
+2025-05-29 19:48:44,INV-20250529-0132,CUST-1066,Colgate Total Advanced Health Toothpaste 120g,Personal Care,2,125.0,250.0,96.0,60,20,3,UPI
+2025-05-29 12:25:04,INV-20250529-0141,CUST-1078,Lays Indias Magic Masala Potato Chips 50g,Snacks,2,20.0,40.0,15.0,95,30,2,Credit Card
+2025-05-30 09:12:21,INV-20250530-0001,CUST-1053,Amul Taaza Homogenised Toned Milk 1L,Dairy,3,72.0,216.0,58.0,48,15,2,Credit Card
+2025-05-30 14:36:29,INV-20250530-0011,CUST-1066,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,3,55.0,165.0,42.0,32,10,1,Credit Card
+2025-05-30 15:54:34,INV-20250530-0021,CUST-1079,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,2,28.0,56.0,21.0,85,25,4,UPI
+2025-05-30 20:33:35,INV-20250530-0022,CUST-1080,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,2,28.0,56.0,21.0,85,25,4,Cash
+2025-05-30 12:33:36,INV-20250530-0031,CUST-1092,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,3,165.0,495.0,138.0,42,15,3,UPI
+2025-05-30 09:21:20,INV-20250530-0041,CUST-1105,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,2,56.0,112.0,44.0,110,35,2,UPI
+2025-05-30 15:27:46,INV-20250530-0051,CUST-1118,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,2,275.0,550.0,230.0,28,12,3,UPI
+2025-05-30 10:43:58,INV-20250530-0061,CUST-1131,Coca-Cola Original Taste 750ml PET Bottle,Beverages,3,40.0,120.0,29.0,64,20,2,Cash
+2025-05-30 17:26:36,INV-20250530-0071,CUST-1144,Surf Excel Easy Wash Detergent Powder 1kg,Household,2,145.0,290.0,118.0,38,15,5,UPI
+2025-05-30 09:44:18,INV-20250530-0081,CUST-1007,Dettol Original Liquid Handwash Refill 175ml,Personal Care,2,99.0,198.0,76.0,52,18,3,Credit Card
+2025-05-30 13:29:27,INV-20250530-0082,CUST-1008,Dettol Original Liquid Handwash Refill 175ml,Personal Care,1,99.0,99.0,76.0,52,18,3,Cash
+2025-05-30 21:28:20,INV-20250530-0091,CUST-1020,Britannia Good Day Cashew Cookies 200g,Snacks,2,45.0,90.0,34.0,70,25,2,UPI
+2025-05-30 12:24:46,INV-20250530-0092,CUST-1021,Britannia Good Day Cashew Cookies 200g,Snacks,1,45.0,45.0,34.0,70,25,2,Debit Card
+2025-05-30 18:59:58,INV-20250530-0101,CUST-1033,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,1,195.0,195.0,152.0,22,10,4,Debit Card
+2025-05-30 21:05:25,INV-20250530-0111,CUST-1046,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,1,60.0,60.0,46.0,18,8,2,UPI
+2025-05-30 10:27:09,INV-20250530-0121,CUST-1059,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,3,185.0,555.0,148.0,40,15,3,Credit Card
+2025-05-30 13:11:48,INV-20250530-0122,CUST-1060,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,1,185.0,185.0,148.0,40,15,3,UPI
+2025-05-30 12:43:29,INV-20250530-0131,CUST-1072,Colgate Total Advanced Health Toothpaste 120g,Personal Care,1,125.0,125.0,96.0,60,20,3,Debit Card
+2025-05-30 12:25:05,INV-20250530-0132,CUST-1073,Colgate Total Advanced Health Toothpaste 120g,Personal Care,1,125.0,125.0,96.0,60,20,3,UPI
+2025-05-30 14:50:48,INV-20250530-0141,CUST-1085,Lays Indias Magic Masala Potato Chips 50g,Snacks,1,20.0,20.0,15.0,95,30,2,UPI
+2025-05-31 18:26:28,INV-20250531-0001,CUST-1060,Amul Taaza Homogenised Toned Milk 1L,Dairy,2,72.0,144.0,58.0,48,15,2,Cash
+2025-05-31 18:45:11,INV-20250531-0002,CUST-1061,Amul Taaza Homogenised Toned Milk 1L,Dairy,4,72.0,288.0,58.0,48,15,2,UPI
+2025-05-31 17:06:41,INV-20250531-0003,CUST-1062,Amul Taaza Homogenised Toned Milk 1L,Dairy,2,72.0,144.0,58.0,48,15,2,Credit Card
+2025-05-31 16:28:08,INV-20250531-0011,CUST-1073,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,4,55.0,220.0,42.0,32,10,1,Credit Card
+2025-05-31 19:59:42,INV-20250531-0012,CUST-1074,Harvest Gold 100% Atta Whole Wheat Bread 400g,Bakery,3,55.0,165.0,42.0,32,10,1,UPI
+2025-05-31 15:07:29,INV-20250531-0021,CUST-1086,Tata Salt Vacuum Evaporated Iodised Salt 1kg,Staples,5,28.0,140.0,21.0,85,25,4,Credit Card
+2025-05-31 21:18:06,INV-20250531-0031,CUST-1099,Fortune Sunlite Refined Sunflower Oil 1L Pouch,Staples,3,165.0,495.0,138.0,42,15,3,Credit Card
+2025-05-31 12:37:57,INV-20250531-0041,CUST-1112,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,4,56.0,224.0,44.0,110,35,2,Credit Card
+2025-05-31 12:55:25,INV-20250531-0042,CUST-1113,Nestle Maggi 2-Minute Masala Instant Noodles 280g,Instant Food,2,56.0,112.0,44.0,110,35,2,Debit Card
+2025-05-31 20:09:31,INV-20250531-0051,CUST-1125,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,4,275.0,1100.0,230.0,28,12,3,Credit Card
+2025-05-31 18:35:16,INV-20250531-0052,CUST-1126,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,3,275.0,825.0,230.0,28,12,3,UPI
+2025-05-31 16:05:08,INV-20250531-0053,CUST-1127,Aashirvaad Superior MP Shudh Chakki Atta 5kg,Staples,1,275.0,275.0,230.0,28,12,3,Credit Card
+2025-05-31 16:47:00,INV-20250531-0061,CUST-1138,Coca-Cola Original Taste 750ml PET Bottle,Beverages,5,40.0,200.0,29.0,64,20,2,UPI
+2025-05-31 15:30:43,INV-20250531-0062,CUST-1139,Coca-Cola Original Taste 750ml PET Bottle,Beverages,5,40.0,200.0,29.0,64,20,2,Cash
+2025-05-31 12:53:31,INV-20250531-0063,CUST-1140,Coca-Cola Original Taste 750ml PET Bottle,Beverages,5,40.0,200.0,29.0,64,20,2,Credit Card
+2025-05-31 14:17:00,INV-20250531-0071,CUST-1001,Surf Excel Easy Wash Detergent Powder 1kg,Household,5,145.0,725.0,118.0,38,15,5,UPI
+2025-05-31 09:17:56,INV-20250531-0072,CUST-1002,Surf Excel Easy Wash Detergent Powder 1kg,Household,4,145.0,580.0,118.0,38,15,5,Debit Card
+2025-05-31 21:52:58,INV-20250531-0073,CUST-1003,Surf Excel Easy Wash Detergent Powder 1kg,Household,3,145.0,435.0,118.0,38,15,5,UPI
+2025-05-31 18:01:54,INV-20250531-0081,CUST-1014,Dettol Original Liquid Handwash Refill 175ml,Personal Care,1,99.0,99.0,76.0,52,18,3,UPI
+2025-05-31 10:48:42,INV-20250531-0082,CUST-1015,Dettol Original Liquid Handwash Refill 175ml,Personal Care,5,99.0,495.0,76.0,52,18,3,Cash
+2025-05-31 17:02:40,INV-20250531-0091,CUST-1027,Britannia Good Day Cashew Cookies 200g,Snacks,5,45.0,225.0,34.0,70,25,2,UPI
+2025-05-31 19:46:04,INV-20250531-0101,CUST-1040,Lipton Green Tea Honey Lemon Flavour 25 Bags,Beverages,4,195.0,780.0,152.0,22,10,4,UPI
+2025-05-31 17:48:03,INV-20250531-0111,CUST-1053,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,3,60.0,180.0,46.0,18,8,2,UPI
+2025-05-31 21:59:23,INV-20250531-0112,CUST-1054,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,5,60.0,300.0,46.0,18,8,2,UPI
+2025-05-31 19:30:04,INV-20250531-0113,CUST-1055,Epigamia Artisanal Greek Yogurt Strawberry 90g,Dairy,3,60.0,180.0,46.0,18,8,2,Credit Card
+2025-05-31 21:06:15,INV-20250531-0121,CUST-1066,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,2,185.0,370.0,148.0,40,15,3,Credit Card
+2025-05-31 12:09:20,INV-20250531-0122,CUST-1067,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,4,185.0,740.0,148.0,40,15,3,Credit Card
+2025-05-31 12:13:43,INV-20250531-0123,CUST-1068,Cadbury Dairy Milk Silk Chocolate Bar 150g,Confectionery,3,185.0,555.0,148.0,40,15,3,UPI
+2025-05-31 14:00:28,INV-20250531-0131,CUST-1079,Colgate Total Advanced Health Toothpaste 120g,Personal Care,2,125.0,250.0,96.0,60,20,3,UPI
+2025-05-31 15:47:33,INV-20250531-0132,CUST-1080,Colgate Total Advanced Health Toothpaste 120g,Personal Care,2,125.0,250.0,96.0,60,20,3,UPI
+2025-05-31 17:27:50,INV-20250531-0141,CUST-1092,Lays Indias Magic Masala Potato Chips 50g,Snacks,4,20.0,80.0,15.0,95,30,2,Cash
+2025-05-31 19:54:09,INV-20250531-0142,CUST-1093,Lays Indias Magic Masala Potato Chips 50g,Snacks,1,20.0,20.0,15.0,95,30,2,UPI
+2025-05-31 20:41:27,INV-20250531-0143,CUST-1094,Lays Indias Magic Masala Potato Chips 50g,Snacks,2,20.0,40.0,15.0,95,30,2,UPI
