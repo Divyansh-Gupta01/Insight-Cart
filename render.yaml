@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: insight-cart-api
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn server:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: CORS_ORIGINS
+        value: "*"
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_USER
+        value: insightcart.automated@gmail.com
+      - key: SMTP_PASSWORD
+        value: hcal tnho zccf cxqy
+      - key: SMTP_FROM_EMAIL
+        value: insightcart.automated@gmail.com
+      - key: SMTP_TLS
+        value: "true"
