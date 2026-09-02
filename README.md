@@ -1,62 +1,144 @@
-# Insight Cart
+# Insight Cart — Retail Intelligence & Demand Forecasting System
 
-A production-ready, Flipkart-inspired e-commerce storefront built with React, Redux Toolkit, and React Router.
+Insight Cart is a full-stack retail intelligence platform designed for inventory management, demand forecasting, and automated stockout prevention. The system processes transactional sales data from spreadsheets and live POS webhooks, fits time-series forecasting models, and generates automated restock reports delivered via email.
 
-## Tech Stack
-- React 18 + Vite
-- React Router DOM v6
-- Redux Toolkit (cart, products, wishlist, user, ui slices)
-- Axios (centralized instance in `src/services/api.js`)
-- Plain CSS (component-scoped `.css` files) following a shared design-token system in `src/index.css`
-- `react-toastify` for toast notifications
+---
 
-## Getting Started
+## System Architecture
+
+The application is structured into a modular client-server architecture:
+
+- **Frontend Application (`/frontend`):** Built with React 18, Tailwind CSS, and Recharts. Provides dashboard analytics, interactive demand projections, inventory matrices, data intake managers, and authentication interfaces.
+- **Backend API (`/backend`):** Built with FastAPI (Python 3.11+). Exposes REST endpoints for data ingestion, analytical computations, forecasting, email dispatching, and authentication.
+- **Data Layer:** PostgreSQL (production) with SQLAlchemy async ORM and SQLite support for local development. Includes automated table indexing, deduplication logic, and session token management.
+- **Analytics & Forecasting Engine:** Uses Meta Prophet and Pandas for trend decomposition, seasonality analysis, ABC Pareto classification, and inventory exhaustion projections.
+- **Notification Service:** SMTP client supporting TLS/SSL encryption and in-memory ReportLab PDF binary generation for restock and store digests.
+
+---
+
+## Core Capabilities
+
+### 1. Data Ingestion & Normalization
+- **Spreadsheet Ingestion:** Supports CSV and Excel (`.xlsx`, `.xls`) file formats with automatic column aliasing, header detection, date formatting, and numerical sanitization.
+- **Live POS Streaming:** Dedicated REST and webhook endpoints for real-time transaction streaming from point-of-sale systems (Tally, Shopify, Square, Vyapar).
+- **Idempotency & Deduplication:** Ensures duplicate invoice entries are ignored while maintaining accurate running shelf inventory counts.
+
+### 2. Time-Series Demand Forecasting
+- **7-Day SKU Predictions:** Fits time-series models across individual SKUs and aggregate store revenue to capture day-of-week seasonality and demand variance.
+- **Restock Decision Logic:** Combines current stock, historical sales velocity, and supplier lead times to compute exact recommended reorder quantities and safety stock buffers.
+
+### 3. Automated Report Generation & Email Dispatch
+- **PDF Report Rendering:** Generates formatted Restock Reports and full Store Dossiers in memory using ReportLab.
+- **Scheduled Dispatch:** Configurable for daily morning delivery or weekly Monday digests to specified management email addresses.
+- **SMTP Protocol:** Connects to standard mail servers (Google SMTP, Amazon SES, SendGrid, Brevo) with secure TLS authentication.
+
+### 4. Authentication & Security
+- **Store Accounts:** Multi-tenant architecture with bcrypt password salting and hashing.
+- **Password Recovery:** 6-digit numeric one-time password (OTP) verification workflow with 10-minute expirations and single-use database token invalidation.
+
+---
+
+## Technology Stack
+
+- **Frontend:** React 18, Tailwind CSS, Framer Motion, Recharts, Lucide React, Sonner
+- **Backend:** FastAPI, Uvicorn, Pydantic v2, ReportLab, SQLAlchemy, AnyIO
+- **Data Science:** Pandas, NumPy, Prophet
+- **Database:** PostgreSQL, SQLite
+- **Deployment:** Vercel (Frontend), Render / Docker (Backend)
+
+---
+
+## Local Development Setup
+
+### Prerequisites
+- Node.js 18+ and npm
+- Python 3.11+
+
+### 1. Repository Setup
 ```bash
+git clone https://github.com/YOUR_USERNAME/insight-cart.git
+cd insight-cart
+```
+
+### 2. Backend Installation
+```bash
+cd backend
+python -m venv venv
+
+# Windows
+.\venv\Scripts\activate
+# macOS/Linux
+source venv/bin/activate
+
+pip install -r requirements.txt
+uvicorn server:app --host 127.0.0.1 --port 8000 --reload
+```
+
+### 3. Frontend Installation
+```bash
+cd ../frontend
 npm install
-cp .env.example .env   # optional — defaults to fakestoreapi.com
-npm run dev
+npm start
+```
+The application will be accessible at `http://localhost:3000`.
+
+---
+
+## Configuration
+
+Set the following environment variables in `backend/.env`:
+
+```env
+# Network
+CORS_ORIGINS=http://localhost:3000
+
+# SMTP Email Configuration
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your_email@domain.com
+SMTP_PASSWORD=your_app_password
+SMTP_FROM_EMAIL=your_email@domain.com
+SMTP_TLS=true
 ```
 
-Build for production:
+---
+
+## API Reference
+
+| Method | Endpoint | Description |
+|---|---|---|
+| `POST` | `/api/register` | Register new store owner account |
+| `POST` | `/api/login` | Authenticate and obtain session token |
+| `POST` | `/api/auth/forgot-password` | Dispatch 6-digit OTP code to registered email |
+| `POST` | `/api/auth/verify-otp` | Validate OTP code and receive password reset token |
+| `POST` | `/api/auth/reset-password` | Update password with verified reset token |
+| `POST` | `/api/upload` | Upload sales or inventory spreadsheet (CSV / Excel) |
+| `POST` | `/api/pos/stream-sales` | Ingest live transaction items from POS |
+| `GET` | `/api/insights` | Retrieve executive KPIs, Pareto distribution, and metrics |
+| `GET` | `/api/forecast` | Retrieve 7-day demand predictions (SKU or store-wide) |
+| `GET` | `/api/inventory` | Retrieve inventory status, stockout risk, and reorder levels |
+| `POST` | `/api/reports/send-email` | Trigger immediate PDF report dispatch via SMTP |
+
+---
+
+## Automated Testing
+
+Execute the test suite using pytest:
+
 ```bash
-npm run build
-npm run preview
+cd backend
+pytest -o addopts="" tests/test_auth_and_sql.py tests/test_production_processing.py
 ```
 
-## Folder Structure
-```
-src/
-├── assets/             Images & icons
-├── components/          Reusable UI building blocks (Navbar, ProductCard, etc.)
-├── pages/                One folder per route/page
-├── redux/                Redux Toolkit slices + store
-├── services/             Axios instance
-├── routes/               Central route table (code-split, lazy-loaded)
-├── layouts/               MainLayout (navbar + footer shell)
-├── hooks/                  Custom hooks
-└── utils/                   Helpers (toast wrapper, static category data)
-```
+---
 
-## Features
-- Sticky responsive navbar with search, suggestions, wishlist/cart badges, dark mode toggle, mobile menu
-- Home: hero carousel, category strip, trending/featured rails, best offers grid
-- Product Listing: category/price/rating filters, sorting, pagination, skeleton loaders
-- Product Details: zoomable gallery, ratings & reviews, add-to-cart/buy-now, related products
-- Cart: quantity controls, remove item, price summary, checkout
-- Wishlist: move-to-cart, remove
-- Auth: Login, Register, Forgot Password (mocked thunks — swap with real API calls)
-- Dark mode (persisted to localStorage), toast notifications, lazy-loaded routes (code splitting)
+## Deployment
 
-## Connecting a Real Backend
-1. Set `VITE_API_BASE_URL` in `.env` to your API's base URL.
-2. Update `src/redux/productSlice.js` and `src/redux/userSlice.js` to match your API's response shape.
-3. Remove the mocked `setTimeout` logic in `userSlice.js`'s thunks once a real auth endpoint is wired up.
+- **Backend (Render):** Deploy using the included `render.yaml` blueprint. Set environment variables in the Render dashboard.
+- **Frontend (Vercel):** Connect the repository to Vercel, set root directory to `frontend`, and configure `REACT_APP_BACKEND_URL` to point to the deployed backend URL.
 
-## Color Palette
-| Token | Hex |
-|---|---|
-| Primary | `#2874F0` |
-| Secondary | `#172337` |
-| Accent | `#FF9F00` |
-| Background | `#F1F3F6` |
-| White | `#FFFFFF` |
+---
+
+## License
+
+This project is licensed under the MIT License.
