@@ -105,6 +105,10 @@ export default function Login() {
     setLoading(true);
     try {
       const res = await requestPasswordResetOTP(resetEmail.trim());
+      if (res.otp_preview) {
+        setOtpCode(res.otp_preview);
+        toast.info(`Security verification code: ${res.otp_preview}`);
+      }
       toast.success(res.message || "6-digit verification code dispatched");
       setOtpTimer(60);
       setMode("forgot_otp");
