@@ -577,36 +577,24 @@ async def _live_inventory_rows(store_id: int = 1):
 
 
 async def _active_daily_sales():
-    """Return list of {date, revenue, orders} from live data or seed."""
+    """Return list of {date, revenue, orders} from cached active sales DataFrame or baseline."""
     try:
-        if await _has_live_sales():
-            rows = []
-            try:
-                rows = await db.sales_rows.find({}, {"_id": 0}).to_list(200000)
-            except Exception:
-                pass
-            if not rows:
-                rows = list(_mem_sales_rows)
-
-            if rows:
-                df = pd.DataFrame(rows)
-                df["_date"] = pd.to_datetime(df["date"], errors="coerce")
-                df = df.dropna(subset=["_date"])
-                if not df.empty:
-                    d = (
-                        df.groupby(df["_date"].dt.date)
-                        .agg(revenue=("amount", "sum"), orders=("amount", "count"))
-                        .reset_index()
-                        .sort_values("_date")
-                    )
-                    return [
-                        {
-                            "date": str(r["_date"]),
-                            "revenue": int(round(r["revenue"])),
-                            "orders": int(r["orders"]),
-                        }
-                        for _, r in d.iterrows()
-                    ]
+        df = await _get_active_sales_df()
+        if not df.empty and "_date" in df.columns:
+            d = (
+                df.groupby(df["_date"].dt.date)
+                .agg(revenue=("amount", "sum"), orders=("amount", "count"))
+                .reset_index()
+                .sort_values("_date")
+            )
+            return [
+                {
+                    "date": str(r["_date"]),
+                    "revenue": int(round(r["revenue"])),
+                    "orders": int(r["orders"]),
+                }
+                for _, r in d.iterrows()
+            ]
     except Exception as e:
         logger.warning(f"Database query error in _active_daily_sales: {e}")
     return _daily_sales(31)
@@ -1477,9 +1465,9 @@ async def list_deliveries(limit: int = 20):
 
 async def _build_report_pdf_bytes(section: str = "all") -> Tuple[bytes, str, str]:
     """Generate in-memory PDF binary bytes and metadata for any report section."""
-    if await _has_live_sales():
-        live = await _live_sales_payload()
-        data = live if live else _insights_payload()
+    sales_df = await _get_active_sales_df()
+    if not sales_df.empty:
+        data = compute_sales_metrics(sales_df)
     else:
         data = _insights_payload()
 
@@ -1490,7 +1478,6 @@ async def _build_report_pdf_bytes(section: str = "all") -> Tuple[bytes, str, str
     fc_res = generate_sales_forecast(hist, days_to_predict=7)
     fc = fc_res.get("forecast", [])
 
-    sales_df = await _get_active_sales_df()
     enriched_items, _ = compute_inventory_decisions(inv, sales_df)
     actions = generate_action_center(enriched_items, sales_df)
 
