@@ -23,3 +23,5 @@ services:
         value: insightcart.automated@gmail.com
       - key: SMTP_TLS
         value: "true"
+      - key: RESEND_API_KEY
+        sync: false
