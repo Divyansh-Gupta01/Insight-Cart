@@ -1,6 +1,6 @@
 # Insight Cart — Retail Intelligence & Demand Forecasting System
 
-Live Demo: https://insight-cart.vercel.app
+Live Demo: https://insight-cart-two.vercel.app
 
 Insight Cart is a full-stack retail intelligence platform designed for inventory management, demand forecasting, and automated stockout prevention. The system processes transactional sales data from spreadsheets and live POS webhooks, fits time-series forecasting models, and generates automated restock reports delivered via email.
 
