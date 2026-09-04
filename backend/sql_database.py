@@ -545,38 +545,39 @@ async def save_incremental_sales_and_inventory(
         }
 
 
-async def load_store_sales_dataframe(store_id: int) -> pd.DataFrame:
-    """Load all historical transactions for a store into a pandas DataFrame."""
+async def load_store_sales_dataframe(store_id: int, limit: int = 40000) -> pd.DataFrame:
+    """Load historical transactions for a store into a pandas DataFrame using column projection for high speed and low memory."""
     async with AsyncSessionLocal() as session:
-        result = await session.execute(
-            select(SalesTransaction).where(SalesTransaction.store_id == store_id).order_by(SalesTransaction.transaction_date.asc())
+        stmt = (
+            select(
+                SalesTransaction.transaction_date.label("date"),
+                SalesTransaction.invoice_id,
+                SalesTransaction.customer_id,
+                SalesTransaction.product_name.label("product"),
+                SalesTransaction.category,
+                SalesTransaction.quantity,
+                SalesTransaction.total_amount.label("amount"),
+                SalesTransaction.unit_cost.label("cost"),
+                SalesTransaction.gross_profit,
+                SalesTransaction.payment_method,
+            )
+            .where(SalesTransaction.store_id == store_id)
+            .order_by(SalesTransaction.transaction_date.desc())
+            .limit(limit)
         )
-        rows = result.scalars().all()
+        result = await session.execute(stmt)
+        rows = result.mappings().all()
         if not rows:
             return pd.DataFrame()
 
-        data = [
-            {
-                "date": r.transaction_date,
-                "invoice_id": r.invoice_id,
-                "customer_id": r.customer_id,
-                "product": r.product_name,
-                "clean_product": r.product_name,
-                "category": r.category,
-                "clean_category": r.category,
-                "quantity": r.quantity,
-                "clean_qty": r.quantity,
-                "amount": r.total_amount,
-                "clean_amount": r.total_amount,
-                "cost": r.unit_cost,
-                "clean_cost": r.unit_cost,
-                "gross_profit": r.gross_profit,
-                "payment_method": r.payment_method,
-                "clean_payment": r.payment_method,
-            }
-            for r in rows
-        ]
-        return pd.DataFrame(data)
+        df = pd.DataFrame(rows)
+        df["clean_product"] = df["product"]
+        df["clean_category"] = df["category"]
+        df["clean_qty"] = df["quantity"]
+        df["clean_amount"] = df["amount"]
+        df["clean_cost"] = df["cost"]
+        df["clean_payment"] = df["payment_method"]
+        return df.sort_values("date")
 
 
 async def load_store_inventory_list(store_id: int) -> List[Dict[str, Any]]:
