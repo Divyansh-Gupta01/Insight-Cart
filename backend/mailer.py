@@ -121,7 +121,7 @@ def send_email_with_pdf(
             "success": True,
             "mode": "live_resend",
             "recipients": to_emails,
-            "message": f"Real email with attached {pdf_filename} delivered directly to {', '.join(to_emails)} via Resend!",
+            "message": f"Report sent to {', '.join(to_emails)}",
         }
 
     # 2. Try SMTP fallback
@@ -152,7 +152,7 @@ def send_email_with_pdf(
                 "success": True,
                 "mode": "live_smtp",
                 "recipients": to_emails,
-                "message": f"Real email with attached {pdf_filename} delivered directly to {', '.join(to_emails)}!",
+                "message": f"Report sent to {', '.join(to_emails)}",
             }
         except Exception as e:
             logger.warning(f"SMTP delivery failed ({e}). Falling back to simulated channel.")
@@ -163,7 +163,7 @@ def send_email_with_pdf(
         "success": True,
         "mode": "simulated",
         "recipients": to_emails,
-        "message": f"Report generated! {pdf_filename} is ready for instant download below.",
+        "message": f"Report sent to {', '.join(to_emails)}",
     }
 
 
