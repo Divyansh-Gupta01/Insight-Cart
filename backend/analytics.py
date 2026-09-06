@@ -67,13 +67,15 @@ def compute_abc_classification(sales_df: pd.DataFrame) -> Dict[str, str]:
 
     amt_col = "amount" if "amount" in df.columns else "clean_amount"
     cost_col = "cost" if "cost" in df.columns else "clean_cost"
+    qty_col = "quantity" if "quantity" in df.columns else "clean_qty"
 
     has_cost = cost_col in df.columns and (pd.to_numeric(df[cost_col], errors="coerce").fillna(0.0) > 0).any()
 
     if has_cost:
+        qty_s = pd.to_numeric(df[qty_col], errors="coerce").fillna(1.0) if qty_col in df.columns else 1.0
         df["_contrib"] = (
             pd.to_numeric(df[amt_col], errors="coerce").fillna(0.0) -
-            pd.to_numeric(df[cost_col], errors="coerce").fillna(0.0)
+            (pd.to_numeric(df[cost_col], errors="coerce").fillna(0.0) * qty_s)
         ).clip(lower=0.0)
     else:
         df["_contrib"] = pd.to_numeric(df[amt_col], errors="coerce").fillna(0.0)
@@ -197,7 +199,7 @@ def compute_inventory_decisions(
             p_clean = str(p_name).strip()
             total_qty = float(pd.to_numeric(group[qty_col], errors="coerce").fillna(1.0).sum())
             total_rev = float(pd.to_numeric(group[amt_col], errors="coerce").fillna(0.0).sum())
-            total_cost = float(pd.to_numeric(group[cost_col], errors="coerce").fillna(0.0).sum()) if cost_col in group.columns else 0.0
+            total_cost = float((pd.to_numeric(group[cost_col], errors="coerce").fillna(0.0) * pd.to_numeric(group[qty_col], errors="coerce").fillna(1.0)).sum()) if cost_col in group.columns else 0.0
 
             last_sale_dt = group["_date"].max()
             days_since_sale = max(0, (now_dt - last_sale_dt.tz_localize(timezone.utc) if last_sale_dt.tzinfo is None else now_dt - last_sale_dt).days)
@@ -585,7 +587,9 @@ def compute_sales_metrics(
 
     # Real Gross Profit & Margin
     if "cost" in filtered_df.columns and (filtered_df["cost"] > 0).any():
-        total_cost = float(filtered_df["cost"].sum())
+        qty_col = "quantity" if "quantity" in filtered_df.columns else "clean_qty"
+        qty_s = pd.to_numeric(filtered_df[qty_col], errors="coerce").fillna(1.0) if qty_col in filtered_df.columns else 1.0
+        total_cost = float((pd.to_numeric(filtered_df["cost"], errors="coerce").fillna(0.0) * qty_s).sum())
         gross_profit = int(round(total_rev - total_cost))
         profit_margin = round((gross_profit / total_rev * 100.0), 1) if total_rev > 0 else 0.0
     else:
@@ -622,7 +626,9 @@ def compute_sales_metrics(
         p_aov = p_rev / p_orders if p_orders > 0 else 0.0
         p_custs = float(prior_df["customer_id"].nunique()) if "customer_id" in prior_df.columns and prior_df["customer_id"].notna().any() else p_orders * 0.72
         if "cost" in prior_df.columns and (prior_df["cost"] > 0).any():
-            p_cost = float(prior_df["cost"].sum())
+            p_qty_col = "quantity" if "quantity" in prior_df.columns else "clean_qty"
+            p_qty_s = pd.to_numeric(prior_df[p_qty_col], errors="coerce").fillna(1.0) if p_qty_col in prior_df.columns else 1.0
+            p_cost = float((pd.to_numeric(prior_df["cost"], errors="coerce").fillna(0.0) * p_qty_s).sum())
             p_gp = p_rev - p_cost
         else:
             p_gp = p_rev * (profit_margin / 100.0)
