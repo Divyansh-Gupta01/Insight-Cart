@@ -165,7 +165,7 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden ambient-bg noise">
       {/* Ambient orbs */}
       <div
         className="pointer-events-none absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full opacity-25 blur-3xl"

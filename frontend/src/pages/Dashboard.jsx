@@ -55,7 +55,7 @@ export default function Dashboard() {
   const active = TABS.findIndex((t) => t.id === tab);
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen relative ambient-bg noise">
       <Navbar
         onUpload={() => openUpload("file")}
         datasetInfo={datasetInfo}
