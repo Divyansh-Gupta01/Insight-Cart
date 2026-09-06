@@ -174,7 +174,7 @@ export default function Reports() {
                 >
                   <div className="flex items-center justify-between">
                     <span className="text-xs uppercase tracking-wider font-semibold text-[color:var(--ink-dim)]">Option B</span>
-                    <span className="text-[10px] uppercase tracking-widest px-2 py-0.5 rounded-full bg-white/5 text-[color:var(--ink-dim)]">360° View</span>
+                    <span className="text-[10px] uppercase tracking-widest px-2 py-0.5 rounded-full bg-slate-100 text-[color:var(--ink-dim)]">360° View</span>
                   </div>
                   <div className="font-editorial text-xl text-[color:var(--ink)] mt-2">Store Report</div>
                   <div className="text-xs text-[color:var(--ink-muted)] mt-1">
@@ -213,7 +213,7 @@ export default function Reports() {
                   className={`p-3.5 rounded-2xl border text-left flex items-center justify-between transition-all ${
                     cadence === "weekly"
                       ? "border-[color:var(--accent)] bg-[color:var(--accent-soft)]/20 font-medium"
-                      : "border-[color:var(--hairline-strong)] hover:border-white/20 surface text-[color:var(--ink-muted)]"
+                      : "border-[color:var(--hairline-strong)] hover:border-slate-300 surface text-[color:var(--ink-muted)]"
                   }`}
                 >
                   <div className="flex items-center gap-3">
@@ -238,7 +238,7 @@ export default function Reports() {
                   value={emailInput}
                   onChange={(e) => setEmailInput(e.target.value)}
                   placeholder="owner@store.com, manager@store.com"
-                  className="w-full bg-black/40 border hairline-strong rounded-xl pl-10 pr-4 py-2.5 text-xs text-[color:var(--ink)] focus:outline-none focus:border-[color:var(--accent)] font-mono-data"
+                  className="w-full bg-slate-50 border hairline-strong rounded-xl pl-10 pr-4 py-2.5 text-xs text-[color:var(--ink)] focus:outline-none focus:border-[color:var(--accent)] font-mono-data"
                   required
                 />
               </div>

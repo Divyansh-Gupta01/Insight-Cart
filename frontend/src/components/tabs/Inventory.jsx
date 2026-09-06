@@ -48,8 +48,8 @@ function AbcBadge({ abcClass }) {
         isA
           ? "bg-[color:var(--accent)]/15 text-[color:var(--accent)] border-[color:var(--accent)]/30"
           : isB
-          ? "bg-white/10 text-[color:var(--ink-2)] border-white/15"
-          : "bg-white/5 text-[color:var(--ink-dim)] border-white/10"
+          ? "bg-slate-100 text-slate-700 border-slate-200"
+          : "bg-slate-50 text-slate-500 border-slate-200"
       }`}
       title={`ABC Pareto Tier ${abcClass} · ${isA ? "Top 80% Revenue/Profit Driver" : isB ? "Secondary 15% Driver" : "Tail 5% SKU"}`}
     >

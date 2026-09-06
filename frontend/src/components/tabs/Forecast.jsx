@@ -217,17 +217,17 @@ export default function Forecast({ dateRange }) {
 
         <ResponsiveContainer width="100%" height={360}>
           <LineChart data={merged} margin={{ top: 10, right: 20, left: 0, bottom: 0 }}>
-            <CartesianGrid stroke="rgba(255,255,255,0.04)" strokeDasharray="0" vertical={false} />
+            <CartesianGrid stroke="rgba(15,23,42,0.06)" strokeDasharray="0" vertical={false} />
             <XAxis
               dataKey="date"
-              tick={{ fill: "#5a5a56", fontSize: 10 }}
+              tick={{ fill: "#64748b", fontSize: 10 }}
               tickFormatter={(v) => (v ? v.slice(5) : "")}
               axisLine={false}
               tickLine={false}
               interval={3}
             />
             <YAxis
-              tick={{ fill: "#5a5a56", fontSize: 11 }}
+              tick={{ fill: "#64748b", fontSize: 11 }}
               tickFormatter={(v) => (isSku ? v : fmtCompact(v))}
               axisLine={false}
               tickLine={false}
@@ -240,29 +240,30 @@ export default function Forecast({ dateRange }) {
                 return [fmtINR(v), n === "actual" ? "Historical" : "Forecast"];
               }}
               contentStyle={{
-                background: "rgba(20,20,24,0.94)",
-                border: "1px solid rgba(255,255,255,0.12)",
+                background: "#ffffff",
+                border: "1px solid rgba(15,23,42,0.12)",
                 borderRadius: 12,
+                boxShadow: "0 10px 25px -5px rgba(15,23,42,0.1)",
               }}
             />
             {boundaryDate && (
-              <ReferenceLine x={boundaryDate} stroke="rgba(255,255,255,0.12)" strokeDasharray="3 3" />
+              <ReferenceLine x={boundaryDate} stroke="rgba(15,23,42,0.2)" strokeDasharray="3 3" />
             )}
             <Line
               type="monotone"
               dataKey="actual"
-              stroke="#efece5"
-              strokeWidth={1.6}
+              stroke="#94a3b8"
+              strokeWidth={1.8}
               dot={false}
               activeDot={{ r: 4 }}
             />
             <Line
               type="monotone"
               dataKey="forecast"
-              stroke="#d4ff3a"
-              strokeWidth={1.8}
+              stroke="#15803d"
+              strokeWidth={2}
               strokeDasharray="6 4"
-              dot={{ r: 3, fill: "#d4ff3a" }}
+              dot={{ r: 3.5, fill: "#15803d" }}
             />
           </LineChart>
         </ResponsiveContainer>

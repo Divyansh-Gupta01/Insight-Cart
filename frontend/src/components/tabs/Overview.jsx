@@ -5,7 +5,7 @@ import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer, Tooltip, PieChart, 
 import CountUp from "@/lib/CountUp";
 import { fmtINR, fmtCompact } from "@/lib/format";
 
-const CAT_COLORS = ["#d4ff3a", "#a8d474", "#efece5", "#a1a19a", "#8a8a83", "#5a5a56", "#d4d1c8", "#b9e625"];
+const CAT_COLORS = ["#15803d", "#059669", "#10b981", "#3b82f6", "#6366f1", "#8b5cf6", "#f59e0b", "#ec4899"];
 
 function TrendBadge({ value }) {
   const positive = value >= 0;
@@ -98,11 +98,11 @@ export default function Overview({ insights, dateRange }) {
                 <AreaChart data={sparkline} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
                   <defs>
                     <linearGradient id="heroSpark" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#d4ff3a" stopOpacity={0.35} />
-                      <stop offset="100%" stopColor="#d4ff3a" stopOpacity={0} />
+                      <stop offset="0%" stopColor="#10b981" stopOpacity={0.25} />
+                      <stop offset="100%" stopColor="#10b981" stopOpacity={0} />
                     </linearGradient>
                   </defs>
-                  <Area type="monotone" dataKey="revenue" stroke="#d4ff3a" strokeWidth={1.6} fill="url(#heroSpark)" />
+                  <Area type="monotone" dataKey="revenue" stroke="#15803d" strokeWidth={1.8} fill="url(#heroSpark)" />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
@@ -152,12 +152,12 @@ export default function Overview({ insights, dateRange }) {
               const isExpanded = expandedAction === act.id;
 
               const badgeClass = isRestock
-                ? "bg-[#ff5c5c]/10 text-[#ff8a7a] border-[#ff5c5c]/25"
+                ? "bg-red-50 text-red-700 border-red-200"
                 : isReduce
-                ? "bg-[#f4c26e]/10 text-[#f4c26e] border-[#f4c26e]/25"
-                : "bg-[#d4ff3a]/10 text-[#d4ff3a] border-[#d4ff3a]/25";
+                ? "bg-amber-50 text-amber-700 border-amber-200"
+                : "bg-emerald-50 text-emerald-800 border-emerald-200";
 
-              const dotColor = isRestock ? "#ff5c5c" : isReduce ? "#f4c26e" : "#d4ff3a";
+              const dotColor = isRestock ? "#dc2626" : isReduce ? "#d97706" : "#15803d";
 
               return (
                 <motion.div
@@ -271,14 +271,14 @@ export default function Overview({ insights, dateRange }) {
             <AreaChart data={daily_sales} margin={{ top: 10, right: 8, left: 0, bottom: 0 }}>
               <defs>
                 <linearGradient id="revGradPrem" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#efece5" stopOpacity={0.22} />
-                  <stop offset="100%" stopColor="#efece5" stopOpacity={0} />
+                  <stop offset="0%" stopColor="#15803d" stopOpacity={0.15} />
+                  <stop offset="100%" stopColor="#15803d" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <XAxis dataKey="date" tick={{ fill: "#5a5a56", fontSize: 11 }} tickFormatter={(v) => v.slice(8)} axisLine={false} tickLine={false} interval={2} />
-              <YAxis tick={{ fill: "#5a5a56", fontSize: 11 }} tickFormatter={(v) => fmtCompact(v)} axisLine={false} tickLine={false} width={54} />
-              <Tooltip formatter={(v) => [fmtINR(v), "Revenue"]} contentStyle={{ background: "rgba(20,20,24,0.94)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 12 }} />
-              <Area type="monotone" dataKey="revenue" stroke="#efece5" strokeWidth={1.4} fill="url(#revGradPrem)" activeDot={{ r: 4, fill: "#d4ff3a", stroke: "#d4ff3a" }} />
+              <XAxis dataKey="date" tick={{ fill: "#64748b", fontSize: 11 }} tickFormatter={(v) => v.slice(8)} axisLine={false} tickLine={false} interval={2} />
+              <YAxis tick={{ fill: "#64748b", fontSize: 11 }} tickFormatter={(v) => fmtCompact(v)} axisLine={false} tickLine={false} width={54} />
+              <Tooltip formatter={(v) => [fmtINR(v), "Revenue"]} contentStyle={{ background: "#ffffff", border: "1px solid rgba(15,23,42,0.12)", borderRadius: 12, boxShadow: "0 10px 25px -5px rgba(15,23,42,0.1)" }} />
+              <Area type="monotone" dataKey="revenue" stroke="#15803d" strokeWidth={1.8} fill="url(#revGradPrem)" activeDot={{ r: 5, fill: "#15803d", stroke: "#ffffff", strokeWidth: 2 }} />
             </AreaChart>
           </ResponsiveContainer>
         </div>
@@ -297,7 +297,7 @@ export default function Overview({ insights, dateRange }) {
                 <Pie data={categories} dataKey="sales" nameKey="category" innerRadius={55} outerRadius={85} paddingAngle={3}>
                   {categories.map((_, i) => <Cell key={i} fill={CAT_COLORS[i % CAT_COLORS.length]} stroke="none" />)}
                 </Pie>
-                <Tooltip formatter={(v, n) => [fmtINR(v), n]} contentStyle={{ background: "rgba(20,20,24,0.94)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 12 }} />
+                <Tooltip formatter={(v, n) => [fmtINR(v), n]} contentStyle={{ background: "#ffffff", border: "1px solid rgba(15,23,42,0.12)", borderRadius: 12, boxShadow: "0 10px 25px -5px rgba(15,23,42,0.1)" }} />
               </PieChart>
             </ResponsiveContainer>
             <div className="space-y-2">

@@ -224,7 +224,7 @@ export default function UploadModal({ open, onOpenChange, onUploaded, initialTab
 
             <div>
               <label className="metadata-label block mb-1">Webhook Endpoint URL</label>
-              <div className="flex items-center gap-2 bg-black/40 border hairline-strong rounded-xl px-3 py-2 text-xs font-mono-data text-[color:var(--ink)]">
+              <div className="flex items-center gap-2 bg-slate-50 border hairline-strong rounded-xl px-3 py-2 text-xs font-mono-data text-[color:var(--ink)]">
                 <span className="text-[color:var(--accent)]">POST</span>
                 <span className="flex-1 truncate">{webhookUrl}</span>
               </div>
@@ -241,14 +241,14 @@ export default function UploadModal({ open, onOpenChange, onUploaded, initialTab
                   {copied ? "Copied" : "Copy Key"}
                 </button>
               </div>
-              <div className="flex items-center justify-between bg-black/40 border hairline-strong rounded-xl px-3 py-2 text-xs font-mono-data text-[color:var(--ink)]">
+              <div className="flex items-center justify-between bg-slate-50 border hairline-strong rounded-xl px-3 py-2 text-xs font-mono-data text-[color:var(--ink)]">
                 <span>{userProfile?.api_key || "ci_live_key_..."}</span>
               </div>
             </div>
 
             <div>
               <label className="metadata-label block mb-1">JSON Payload Example</label>
-              <pre className="bg-black/60 border hairline rounded-xl p-3 text-[11px] font-mono-data text-[color:var(--ink-2)] overflow-x-auto">
+              <pre className="bg-slate-50 border hairline rounded-xl p-3 text-[11px] font-mono-data text-[color:var(--ink-2)] overflow-x-auto">
 {`[
   {
     "invoice_id": "INV-20250501",

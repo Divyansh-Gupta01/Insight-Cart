@@ -36,12 +36,12 @@ export default function Trends({ insights }) {
           <div className="mt-8">
             <ResponsiveContainer width="100%" height={280}>
               <BarChart data={day_of_week} margin={{ top: 10, right: 8, left: 0, bottom: 0 }}>
-                <XAxis dataKey="day" tick={{ fill: "#8a8a83", fontSize: 12 }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fill: "#5a5a56", fontSize: 11 }} tickFormatter={(v) => fmtCompact(v)} axisLine={false} tickLine={false} width={54} />
-                <Tooltip formatter={(v) => [fmtINR(v), "Revenue"]} cursor={{ fill: "rgba(255,255,255,0.03)" }} contentStyle={{ background: "rgba(20,20,24,0.94)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 12 }} />
+                <XAxis dataKey="day" tick={{ fill: "#64748b", fontSize: 12 }} axisLine={false} tickLine={false} />
+                <YAxis tick={{ fill: "#64748b", fontSize: 11 }} tickFormatter={(v) => fmtCompact(v)} axisLine={false} tickLine={false} width={54} />
+                <Tooltip formatter={(v) => [fmtINR(v), "Revenue"]} cursor={{ fill: "rgba(15,23,42,0.03)" }} contentStyle={{ background: "#ffffff", border: "1px solid rgba(15,23,42,0.12)", borderRadius: 12, boxShadow: "0 10px 25px -5px rgba(15,23,42,0.1)" }} />
                 <Bar dataKey="revenue" radius={[6, 6, 0, 0]}>
                   {day_of_week.map((d, i) => (
-                    <Cell key={i} fill={i >= 5 ? "#d4ff3a" : "#efece5"} fillOpacity={i >= 5 ? 1 : 0.75} />
+                    <Cell key={i} fill={i >= 5 ? "#15803d" : "#cbd5e1"} />
                   ))}
                 </Bar>
               </BarChart>
@@ -55,12 +55,12 @@ export default function Trends({ insights }) {
           <div className="mt-8">
             <ResponsiveContainer width="100%" height={280}>
               <BarChart data={monthly} margin={{ top: 10, right: 8, left: 0, bottom: 0 }}>
-                <XAxis dataKey="month" tick={{ fill: "#8a8a83", fontSize: 11 }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fill: "#5a5a56", fontSize: 11 }} tickFormatter={(v) => fmtCompact(v)} axisLine={false} tickLine={false} width={54} />
-                <Tooltip formatter={(v) => [fmtINR(v), "Revenue"]} cursor={{ fill: "rgba(255,255,255,0.03)" }} contentStyle={{ background: "rgba(20,20,24,0.94)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 12 }} />
+                <XAxis dataKey="month" tick={{ fill: "#64748b", fontSize: 11 }} axisLine={false} tickLine={false} />
+                <YAxis tick={{ fill: "#64748b", fontSize: 11 }} tickFormatter={(v) => fmtCompact(v)} axisLine={false} tickLine={false} width={54} />
+                <Tooltip formatter={(v) => [fmtINR(v), "Revenue"]} cursor={{ fill: "rgba(15,23,42,0.03)" }} contentStyle={{ background: "#ffffff", border: "1px solid rgba(15,23,42,0.12)", borderRadius: 12, boxShadow: "0 10px 25px -5px rgba(15,23,42,0.1)" }} />
                 <Bar dataKey="revenue" radius={[6, 6, 0, 0]}>
                   {monthly.map((_, i) => (
-                    <Cell key={i} fill={i === monthly.length - 1 ? "#d4ff3a" : "#efece5"} fillOpacity={i === monthly.length - 1 ? 1 : 0.55} />
+                    <Cell key={i} fill={i === monthly.length - 1 ? "#15803d" : "#cbd5e1"} />
                   ))}
                 </Bar>
               </BarChart>
@@ -78,20 +78,17 @@ export default function Trends({ insights }) {
           </div>
           <div className="flex items-center gap-2 text-xs text-[color:var(--ink-muted)]">
             <span>Quiet</span>
-            <div className="flex gap-0.5">
-              {[0.1, 0.25, 0.45, 0.7, 1].map((o, i) => (
-                <div key={i} className="w-5 h-3 rounded-sm" style={{ background: `rgba(212, 255, 58, ${o})` }} />
-              ))}
-            </div>
+            <div className="w-3 h-3 rounded-xs border border-slate-200 bg-emerald-50" />
+            <div className="w-3 h-3 rounded-xs border border-emerald-400 bg-emerald-700" />
             <span>Peak</span>
           </div>
         </div>
         <div className="overflow-x-auto">
-          <div className="inline-block min-w-full">
-            <div className="flex items-center gap-1 ml-12 mb-1.5">
-              {[...Array(24)].map((_, h) => (
-                <div key={h} className="w-6 text-[10px] text-[color:var(--ink-dim)] font-mono-data text-center tabular">
-                  {h % 3 === 0 ? String(h).padStart(2, "0") : ""}
+          <div className="min-w-[640px]">
+            <div className="flex items-center gap-1 mb-2 pl-12 text-[10px] font-mono-data text-[color:var(--ink-dim)]">
+              {[0, 3, 6, 9, 12, 15, 18, 21].map((h) => (
+                <div key={h} className="w-16">
+                  {String(h).padStart(2, "0")}:00
                 </div>
               ))}
             </div>
@@ -99,7 +96,7 @@ export default function Trends({ insights }) {
               <div key={row.day} className="flex items-center gap-1 mb-1">
                 <div className="w-12 text-xs text-[color:var(--ink-muted)] font-medium">{row.day}</div>
                 {row.cells.map((v, h) => {
-                  const opacity = Math.max(0.05, v / maxVal);
+                  const opacity = Math.max(0.08, v / maxVal);
                   return (
                     <motion.div
                       key={h}
@@ -107,7 +104,7 @@ export default function Trends({ insights }) {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: (row.day.charCodeAt(0) * 24 + h) * 0.0008 }}
                       className="w-6 h-6 rounded-sm hover:ring-1 hover:ring-[color:var(--accent)] transition-shadow cursor-pointer"
-                      style={{ background: `rgba(212, 255, 58, ${opacity})`, border: "1px solid rgba(255,255,255,0.03)" }}
+                      style={{ background: `rgba(21, 128, 61, ${opacity})`, border: "1px solid rgba(15,23,42,0.06)" }}
                       title={`${row.day} ${h}:00 · ${v}`}
                     />
                   );

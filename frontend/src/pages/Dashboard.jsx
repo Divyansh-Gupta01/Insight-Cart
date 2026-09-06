@@ -66,7 +66,7 @@ export default function Dashboard() {
 
       {/* Floating pill nav */}
       <div className="sticky top-4 z-30 px-4 sm:px-8 flex justify-center pointer-events-none">
-        <div className="surface-2 pointer-events-auto rounded-full px-2 py-1.5 flex items-center gap-0.5 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.6)] backdrop-blur-md" data-testid="dashboard-tabs">
+        <div className="surface-2 pointer-events-auto rounded-full px-2 py-1.5 flex items-center gap-0.5 shadow-[0_8px_30px_-6px_rgba(15,23,42,0.08)] backdrop-blur-md border border-[color:var(--hairline-strong)]" data-testid="dashboard-tabs">
           {TABS.map((t) => (
             <button
               key={t.id}
@@ -79,7 +79,7 @@ export default function Dashboard() {
                 <motion.div
                   layoutId="active-nav-pill"
                   className="absolute inset-0 rounded-full"
-                  style={{ background: "rgba(255,255,255,0.07)" }}
+                  style={{ background: "rgba(15, 23, 42, 0.06)" }}
                   transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
                 />
               )}

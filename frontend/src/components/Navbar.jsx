@@ -61,8 +61,8 @@ export default function Navbar({
             <div
               className="hidden md:inline-flex items-center gap-2 px-3 h-10 rounded-full border"
               style={{
-                borderColor: "rgba(212,255,58,0.35)",
-                background: "rgba(212,255,58,0.08)",
+                borderColor: "rgba(21,128,61,0.25)",
+                background: "rgba(21,128,61,0.06)",
               }}
               data-testid="navbar-live-badge"
             >
