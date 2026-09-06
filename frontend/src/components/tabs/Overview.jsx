@@ -464,18 +464,25 @@ export default function Overview({ insights, dateRange }) {
                       innerRadius={60}
                       outerRadius={88}
                       paddingAngle={3}
-                      onMouseEnter={(_, index) => setActiveCategoryIndex(index)}
-                      onMouseLeave={() => setActiveCategoryIndex(null)}
+                      stroke="none"
+                      animationDuration={900}
                     >
-                      {displayCategories.map((entry, index) => (
-                        <Cell
-                          key={`cat-cell-${index}`}
-                          fill={entry.color}
-                          opacity={activeCategoryIndex === null || activeCategoryIndex === index ? 1 : 0.28}
-                          className="transition-opacity duration-200 cursor-pointer"
-                          stroke="none"
-                        />
-                      ))}
+                      {displayCategories.map((entry, index) => {
+                        const isHovered = activeCategoryIndex === index;
+                        const isFaded = activeCategoryIndex !== null && !isHovered;
+                        return (
+                          <Cell
+                            key={`cat-cell-${index}`}
+                            fill={entry.color}
+                            opacity={isFaded ? 0.35 : 1}
+                            stroke={isHovered ? "#0f172a" : "#ffffff"}
+                            strokeWidth={isHovered ? 2.5 : 1.5}
+                            onMouseEnter={() => setActiveCategoryIndex(index)}
+                            onMouseLeave={() => setActiveCategoryIndex(null)}
+                            className="transition-all duration-150 cursor-pointer"
+                          />
+                        );
+                      })}
                     </Pie>
                     <Tooltip
                       formatter={(v, n) => [fmtINR(v), n]}
