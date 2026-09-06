@@ -10,9 +10,15 @@ const CAT_COLORS = ["#15803d", "#059669", "#10b981", "#3b82f6", "#6366f1", "#8b5
 function TrendBadge({ value }) {
   const positive = value >= 0;
   return (
-    <span className="inline-flex items-center gap-1 text-[11px] font-mono-data tabular text-[color:var(--ink-muted)]">
-      {positive ? <ArrowUpRight className="w-3 h-3" style={{ color: "var(--positive)" }} /> : <ArrowDownRight className="w-3 h-3" style={{ color: "var(--negative)" }} />}
-      <span style={{ color: positive ? "var(--positive)" : "var(--negative)" }}>{Math.abs(value)}%</span>
+    <span className="inline-flex items-center gap-1 text-[11px] font-mono-data tabular-nums text-[color:var(--ink-muted)]">
+      {positive ? (
+        <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={1.75} style={{ color: "var(--color-positive)" }} />
+      ) : (
+        <ArrowDownRight className="w-3.5 h-3.5" strokeWidth={1.75} style={{ color: "var(--color-negative)" }} />
+      )}
+      <span style={{ color: positive ? "var(--color-positive)" : "var(--color-negative)" }}>
+        {Math.abs(value)}%
+      </span>
       <span className="text-[color:var(--ink-dim)]">vs Apr</span>
     </span>
   );
@@ -22,49 +28,138 @@ function MetricLabel({ children }) {
   return <div className="metadata-label">{children}</div>;
 }
 
+function OverviewSkeleton() {
+  return (
+    <div className="space-y-10 sm:space-y-12">
+      {/* Hero skeleton */}
+      <section className="pt-2 sm:pt-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
+          <div className="lg:col-span-7 space-y-4">
+            <div className="h-6 w-36 rounded-full skeleton-pulse" />
+            <div className="h-16 w-3/4 rounded-xl skeleton-pulse" />
+            <div className="h-5 w-1/2 rounded-lg skeleton-pulse" />
+          </div>
+          <div className="lg:col-span-5">
+            <div className="surface p-5 rounded-2xl elevation-raised space-y-4">
+              <div className="flex justify-between">
+                <div className="h-4 w-28 rounded skeleton-pulse" />
+                <div className="h-4 w-16 rounded-full skeleton-pulse" />
+              </div>
+              <div className="grid grid-cols-3 gap-3">
+                <div className="h-14 rounded-xl skeleton-pulse" />
+                <div className="h-14 rounded-xl skeleton-pulse" />
+                <div className="h-14 rounded-xl skeleton-pulse" />
+              </div>
+              <div className="h-14 rounded-xl skeleton-pulse" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* KPI grid skeleton */}
+      <section>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-5">
+          <div className="md:col-span-6 md:row-span-2 h-72 rounded-2xl surface-elev p-6 skeleton-pulse" />
+          <div className="md:col-span-3 h-32 rounded-2xl surface-elev p-5 skeleton-pulse" />
+          <div className="md:col-span-3 h-32 rounded-2xl surface-elev p-5 skeleton-pulse" />
+          <div className="md:col-span-3 h-32 rounded-2xl surface-elev p-5 skeleton-pulse" />
+          <div className="md:col-span-3 h-32 rounded-2xl surface-elev p-5 skeleton-pulse" />
+        </div>
+      </section>
+
+      {/* Actions skeleton */}
+      <section>
+        <div className="h-8 w-48 rounded-lg skeleton-pulse mb-6" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="h-48 rounded-2xl surface-elev p-6 skeleton-pulse" />
+          <div className="h-48 rounded-2xl surface-elev p-6 skeleton-pulse" />
+          <div className="h-48 rounded-2xl surface-elev p-6 skeleton-pulse" />
+        </div>
+      </section>
+    </div>
+  );
+}
+
 export default function Overview({ insights, dateRange }) {
   const [expandedAction, setExpandedAction] = useState(null);
   if (!insights) {
-    return (
-      <div className="min-h-[400px] flex items-center justify-center">
-        <div className="text-[color:var(--ink-muted)] text-sm tracking-widest uppercase">Reading signals…</div>
-      </div>
-    );
+    return <OverviewSkeleton />;
   }
   const { kpis, daily_sales, categories, top_products, payments } = insights;
 
-  // Little sparkline behind hero — last 14 days
+  // 14-day sparkline
   const sparkline = daily_sales.slice(-14);
-  const rangeLabel = dateRange ? `${dateRange.from.toLocaleDateString("en-IN", { day: "2-digit", month: "short" })} – ${dateRange.to.toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" })}` : "May 2025";
+  const rangeLabel = dateRange
+    ? `${dateRange.from.toLocaleDateString("en-IN", { day: "2-digit", month: "short" })} – ${dateRange.to.toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" })}`
+    : "May 2025";
 
   return (
-    <div className="space-y-16 sm:space-y-24">
+    <div className="space-y-10 sm:space-y-12">
       {/* Editorial hero */}
-      <section className="pt-12 sm:pt-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
-          <div className="lg:col-span-8">
-            <MetricLabel>Snapshot · {rangeLabel}</MetricLabel>
-            <h1 className="editorial-headline text-5xl sm:text-6xl lg:text-8xl mt-6">
+      <section className="pt-2 sm:pt-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-end">
+          {/* Left Column: Brand Headline & Description */}
+          <div className="lg:col-span-7">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-slate-200/80 mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-[color:var(--accent)]" />
+              <span className="metadata-label !text-[10px] !tracking-[0.16em]">Snapshot · {rangeLabel}</span>
+            </div>
+            <h1 className="editorial-headline text-4xl sm:text-5xl lg:text-7xl">
               Your retail,
               <br />
               <span className="italic text-[color:var(--accent)]">understood.</span>
             </h1>
-            <p className="mt-8 max-w-lg text-[color:var(--ink-2)] text-lg leading-relaxed">
+            <p className="mt-3 max-w-md text-[color:var(--ink-muted)] text-sm sm:text-base leading-relaxed">
               Turn sales and inventory data into decisions. Six focused surfaces, one calm interface.
             </p>
           </div>
-          <div className="lg:col-span-4 lg:justify-self-end">
-            <div className="grid grid-cols-3 gap-6">
-              {[
-                { k: "Modules", v: "6", id: "meta-modules" },
-                { k: "SKUs", v: "20", id: "meta-skus" },
-                { k: "Customers", v: (kpis.total_customers || 0).toLocaleString("en-IN"), id: "kpi-total_customers" },
-              ].map((s) => (
-                <div key={s.k} data-testid={s.id}>
-                  <MetricLabel>{s.k}</MetricLabel>
-                  <div className="mt-3 font-editorial text-4xl">{s.v}</div>
+
+          {/* Right Column: Store Pulse Panel (Kills Dead Space) */}
+          <div className="lg:col-span-5">
+            <div className="surface p-5 rounded-2xl elevation-raised">
+              <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                <span className="metadata-label">Store Pulse · Live Status</span>
+                <span className="inline-flex items-center gap-1.5 text-[11px] font-mono-data text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
+                  Optimal
+                </span>
+              </div>
+
+              <div className="grid grid-cols-3 gap-3 text-center mb-3">
+                {[
+                  { k: "Modules", v: "6", id: "meta-modules" },
+                  { k: "Active SKUs", v: "20", id: "meta-skus" },
+                  { k: "Customers", v: (kpis.total_customers || 0).toLocaleString("en-IN"), id: "kpi-total_customers" },
+                ].map((s) => (
+                  <div key={s.k} data-testid={s.id} className="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+                    <div className="metadata-label !text-[9px] truncate">{s.k}</div>
+                    <div className="mt-1 font-mono-data font-bold text-lg text-[color:var(--ink)] tabular-nums">{s.v}</div>
+                  </div>
+                ))}
+              </div>
+
+              {/* 14-day velocity sparkline */}
+              <div className="pt-2">
+                <div className="flex items-center justify-between text-[11px] font-mono-data text-[color:var(--ink-muted)] mb-1">
+                  <span>14-Day Sales Velocity</span>
+                  <span className="text-[color:var(--accent)] font-semibold tabular-nums">
+                    {fmtCompact(sparkline.reduce((acc, curr) => acc + (curr.revenue || 0), 0))} total
+                  </span>
                 </div>
-              ))}
+                <div className="h-14 w-full">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <AreaChart data={sparkline} margin={{ top: 2, right: 0, left: 0, bottom: 0 }}>
+                      <defs>
+                        <linearGradient id="pulseSpark" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stopColor="#15803d" stopOpacity={0.2} />
+                          <stop offset="100%" stopColor="#15803d" stopOpacity={0} />
+                        </linearGradient>
+                      </defs>
+                      <Area type="monotone" dataKey="revenue" stroke="#15803d" strokeWidth={1.5} fill="url(#pulseSpark)" />
+                    </AreaChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -75,31 +170,35 @@ export default function Overview({ insights, dateRange }) {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-5">
           {/* Revenue — hero card */}
           <motion.div
-            initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
-            className="surface-elev lift p-8 md:col-span-6 md:row-span-2 relative overflow-hidden"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="surface-elev lift p-6 sm:p-7 md:col-span-6 md:row-span-2 relative overflow-hidden flex flex-col justify-between"
             data-testid="kpi-total_sales"
           >
-            <div className="flex items-start justify-between">
-              <MetricLabel>Total revenue</MetricLabel>
-              <TrendBadge value={kpis.trends.total_sales} />
-            </div>
-            <div className="mt-10 flex items-baseline gap-3">
-              <span className="editorial-num text-6xl sm:text-7xl">
-                <CountUp value={kpis.total_sales} prefix="₹" duration={1400} testId="kpi-total_sales-value" />
-              </span>
-            </div>
-            <div className="mt-4 text-sm text-[color:var(--ink-muted)] max-w-xs">
-              Total sold across all channels for the selected window.
+            <div>
+              <div className="flex items-start justify-between">
+                <MetricLabel>Total revenue</MetricLabel>
+                <TrendBadge value={kpis.trends.total_sales} />
+              </div>
+              <div className="mt-8 flex items-baseline gap-3">
+                <span className="kpi-num text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+                  <CountUp value={kpis.total_sales} prefix="₹" duration={1200} testId="kpi-total_sales-value" />
+                </span>
+              </div>
+              <div className="mt-3 text-xs sm:text-sm text-[color:var(--ink-muted)] max-w-xs leading-relaxed">
+                Total sold across all billing channels for the selected window.
+              </div>
             </div>
 
             {/* Sparkline overlay */}
-            <div className="absolute bottom-0 left-0 right-0 h-32 opacity-70 pointer-events-none">
+            <div className="h-28 w-full mt-4 opacity-75 pointer-events-none">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={sparkline} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
                   <defs>
                     <linearGradient id="heroSpark" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#10b981" stopOpacity={0.25} />
-                      <stop offset="100%" stopColor="#10b981" stopOpacity={0} />
+                      <stop offset="0%" stopColor="#15803d" stopOpacity={0.22} />
+                      <stop offset="100%" stopColor="#15803d" stopOpacity={0} />
                     </linearGradient>
                   </defs>
                   <Area type="monotone" dataKey="revenue" stroke="#15803d" strokeWidth={1.8} fill="url(#heroSpark)" />
@@ -116,16 +215,18 @@ export default function Overview({ insights, dateRange }) {
           ].map((k, i) => (
             <motion.div
               key={k.id}
-              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.05 + i * 0.05 }}
-              className="surface-elev lift p-6 md:col-span-3 flex flex-col justify-between"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.35, delay: 0.04 * (i + 1) }}
+              className="surface-elev lift p-5 sm:p-6 md:col-span-3 flex flex-col justify-between"
               data-testid={`kpi-${k.id}`}
             >
               <div className="flex items-start justify-between">
                 <MetricLabel>{k.label}</MetricLabel>
                 <TrendBadge value={k.trend} />
               </div>
-              <div className="editorial-num text-4xl sm:text-5xl mt-8">
-                <CountUp value={k.value} prefix={k.prefix} suffix={k.suffix || ""} decimals={k.decimals || 0} duration={1200} />
+              <div className="kpi-num text-3xl sm:text-4xl mt-6">
+                <CountUp value={k.value} prefix={k.prefix} suffix={k.suffix || ""} decimals={k.decimals || 0} duration={1100} />
               </div>
             </motion.div>
           ))}
@@ -152,20 +253,20 @@ export default function Overview({ insights, dateRange }) {
               const isExpanded = expandedAction === act.id;
 
               const badgeClass = isRestock
-                ? "bg-red-50 text-red-700 border-red-200"
+                ? "badge-negative font-medium"
                 : isReduce
-                ? "bg-amber-50 text-amber-700 border-amber-200"
-                : "bg-emerald-50 text-emerald-800 border-emerald-200";
+                ? "badge-caution font-medium"
+                : "badge-positive font-medium";
 
-              const dotColor = isRestock ? "#dc2626" : isReduce ? "#d97706" : "#15803d";
+              const dotColor = isRestock ? "var(--color-negative)" : isReduce ? "var(--color-caution)" : "var(--color-positive)";
 
               return (
                 <motion.div
                   key={act.id}
-                  initial={{ opacity: 0, y: 10 }}
+                  initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.05 * i }}
-                  className="surface-elev p-6 flex flex-col justify-between lift"
+                  transition={{ duration: 0.35, delay: 0.05 * i }}
+                  className="surface-elev p-6 flex flex-col justify-between lift rounded-2xl"
                   data-testid={`action-card-${act.id}`}
                 >
                   <div>
@@ -187,7 +288,7 @@ export default function Overview({ insights, dateRange }) {
                       className="flex items-center justify-between w-full text-xs text-[color:var(--accent)] font-mono-data tracking-wider uppercase hover:opacity-80 transition-opacity"
                     >
                       <span>{isExpanded ? "Hide breakdown" : "Why this action?"}</span>
-                      {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                      {isExpanded ? <ChevronUp className="w-4 h-4" strokeWidth={1.75} /> : <ChevronDown className="w-4 h-4" strokeWidth={1.75} />}
                     </button>
 
                     {isExpanded && act.why && (
@@ -197,48 +298,48 @@ export default function Overview({ insights, dateRange }) {
                         exit={{ opacity: 0, height: 0 }}
                         className="mt-4 pt-3 border-t border-[color:var(--hairline)] space-y-3 text-xs"
                       >
-                        <div className="text-[color:var(--ink-2)] leading-relaxed italic bg-white/[0.02] p-3 rounded-lg border hairline">
+                        <div className="text-[color:var(--ink-2)] leading-relaxed italic bg-slate-50 p-3 rounded-xl border hairline">
                           "{act.why.reasoning}"
                         </div>
                         <div className="grid grid-cols-2 gap-2 font-mono-data text-[11px] pt-1">
                           {act.why.current_stock !== undefined && (
-                            <div className="p-2 rounded bg-white/[0.02]">
+                            <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
                               <span className="text-[color:var(--ink-dim)] block">Current stock:</span>
-                              <span className="text-[color:var(--ink)] font-bold">{act.why.current_stock} units</span>
+                              <span className="text-[color:var(--ink)] font-bold tabular-nums">{act.why.current_stock} units</span>
                             </div>
                           )}
                           {act.why.stockout_days !== undefined && (
-                            <div className="p-2 rounded bg-white/[0.02]">
+                            <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
                               <span className="text-[color:var(--ink-dim)] block">Stockout timeline:</span>
-                              <span className="text-[color:var(--negative)] font-bold">{act.why.stockout_days} days ({act.why.stockout_date})</span>
+                              <span className="text-[color:var(--color-negative)] font-bold tabular-nums">{act.why.stockout_days} days ({act.why.stockout_date})</span>
                             </div>
                           )}
                           {act.why.lead_time_days !== undefined && (
-                            <div className="p-2 rounded bg-white/[0.02]">
+                            <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
                               <span className="text-[color:var(--ink-dim)] block">Lead time:</span>
-                              <span className="text-[color:var(--ink)] font-bold">{act.why.lead_time_days} days {act.why.is_assumed_lead_time ? "(Assumed)" : "(Supplier)"}</span>
+                              <span className="text-[color:var(--ink)] font-bold tabular-nums">{act.why.lead_time_days} days {act.why.is_assumed_lead_time ? "(Assumed)" : "(Supplier)"}</span>
                             </div>
                           )}
                           {act.why.recommended_order_qty !== undefined && (
-                            <div className="p-2 rounded bg-white/[0.02]">
+                            <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
                               <span className="text-[color:var(--ink-dim)] block">Order qty (Q):</span>
-                              <span className="text-[color:var(--accent)] font-bold">{act.why.recommended_order_qty} units</span>
+                              <span className="text-[color:var(--accent)] font-bold tabular-nums">{act.why.recommended_order_qty} units</span>
                             </div>
                           )}
                           {act.why.capital_tied_up !== undefined && (
-                            <div className="p-2 rounded bg-white/[0.02]">
+                            <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
                               <span className="text-[color:var(--ink-dim)] block">Capital locked:</span>
-                              <span className="text-[color:var(--warning)] font-bold">₹{act.why.capital_tied_up.toLocaleString("en-IN")}</span>
+                              <span className="text-[color:var(--color-caution)] font-bold tabular-nums">₹{act.why.capital_tied_up.toLocaleString("en-IN")}</span>
                             </div>
                           )}
                           {act.why.growth_rate_pct !== undefined && (
-                            <div className="p-2 rounded bg-white/[0.02]">
+                            <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
                               <span className="text-[color:var(--ink-dim)] block">Weekly growth:</span>
-                              <span className="text-[color:var(--positive)] font-bold">+{act.why.growth_rate_pct}%</span>
+                              <span className="text-[color:var(--color-positive)] font-bold tabular-nums">+{act.why.growth_rate_pct}%</span>
                             </div>
                           )}
                           {act.why.abc_class && (
-                            <div className="p-2 rounded bg-white/[0.02]">
+                            <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
                               <span className="text-[color:var(--ink-dim)] block">ABC tier:</span>
                               <span className="text-[color:var(--ink)] font-bold">Class {act.why.abc_class}</span>
                             </div>
@@ -255,7 +356,7 @@ export default function Overview({ insights, dateRange }) {
       )}
 
       {/* Sales over time — wide canvas */}
-      <section className="surface-elev p-8 sm:p-10" data-testid="chart-sales-over-time">
+      <section className="surface-elev p-6 sm:p-8 rounded-2xl" data-testid="chart-sales-over-time">
         <div className="flex items-end justify-between flex-wrap gap-4">
           <div>
             <MetricLabel>Time series</MetricLabel>
@@ -263,11 +364,11 @@ export default function Overview({ insights, dateRange }) {
           </div>
           <div className="text-right">
             <div className="metadata-label">Peak</div>
-            <div className="font-editorial text-2xl mt-1">{fmtINR(Math.max(...daily_sales.map((d) => d.revenue)))}</div>
+            <div className="font-editorial text-2xl mt-1 tabular-nums">{fmtINR(Math.max(...daily_sales.map((d) => d.revenue)))}</div>
           </div>
         </div>
         <div className="mt-8">
-          <ResponsiveContainer width="100%" height={320}>
+          <ResponsiveContainer width="100%" height={300}>
             <AreaChart data={daily_sales} margin={{ top: 10, right: 8, left: 0, bottom: 0 }}>
               <defs>
                 <linearGradient id="revGradPrem" x1="0" y1="0" x2="0" y2="1">
@@ -287,14 +388,14 @@ export default function Overview({ insights, dateRange }) {
       {/* Composition: Categories + Top products */}
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Categories donut */}
-        <div className="lg:col-span-5 surface-elev p-8" data-testid="chart-categories">
+        <div className="lg:col-span-5 surface-elev p-6 sm:p-8 rounded-2xl" data-testid="chart-categories">
           <MetricLabel>Category mix</MetricLabel>
           <h3 className="editorial-headline text-2xl sm:text-3xl mt-2">Where the revenue lives.</h3>
 
-          <div className="mt-6 grid grid-cols-[auto_1fr] gap-8 items-center">
-            <ResponsiveContainer width={180} height={180}>
+          <div className="mt-6 grid grid-cols-[auto_1fr] gap-6 sm:gap-8 items-center">
+            <ResponsiveContainer width={170} height={170}>
               <PieChart>
-                <Pie data={categories} dataKey="sales" nameKey="category" innerRadius={55} outerRadius={85} paddingAngle={3}>
+                <Pie data={categories} dataKey="sales" nameKey="category" innerRadius={50} outerRadius={80} paddingAngle={3}>
                   {categories.map((_, i) => <Cell key={i} fill={CAT_COLORS[i % CAT_COLORS.length]} stroke="none" />)}
                 </Pie>
                 <Tooltip formatter={(v, n) => [fmtINR(v), n]} contentStyle={{ background: "#ffffff", border: "1px solid rgba(15,23,42,0.12)", borderRadius: 12, boxShadow: "0 10px 25px -5px rgba(15,23,42,0.1)" }} />
@@ -304,8 +405,8 @@ export default function Overview({ insights, dateRange }) {
               {categories.slice(0, 6).map((c, i) => (
                 <div key={c.category} className="flex items-center gap-3">
                   <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: CAT_COLORS[i % CAT_COLORS.length] }} />
-                  <span className="text-sm text-[color:var(--ink-2)] flex-1 truncate">{c.category}</span>
-                  <span className="font-mono-data text-xs text-[color:var(--ink-muted)] tabular">{c.percent}%</span>
+                  <span className="text-xs sm:text-sm text-[color:var(--ink-2)] flex-1 truncate">{c.category}</span>
+                  <span className="font-mono-data text-xs text-[color:var(--ink-muted)] tabular-nums">{c.percent}%</span>
                 </div>
               ))}
             </div>
@@ -313,32 +414,34 @@ export default function Overview({ insights, dateRange }) {
         </div>
 
         {/* Top products editorial list */}
-        <div className="lg:col-span-7 surface-elev p-8" data-testid="table-top-products">
+        <div className="lg:col-span-7 surface-elev p-6 sm:p-8 rounded-2xl" data-testid="table-top-products">
           <div className="flex items-start justify-between">
             <div>
               <MetricLabel>Bestsellers</MetricLabel>
               <h3 className="editorial-headline text-2xl sm:text-3xl mt-2">Top five, moving fastest.</h3>
             </div>
           </div>
-          <div className="mt-8 divide-y divide-[color:var(--hairline)]">
+          <div className="mt-6 divide-y divide-[color:var(--hairline)]">
             {top_products.map((p, i) => (
               <motion.div
                 key={p.name}
-                initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.05 * i }}
-                className="py-4 flex items-center gap-6 group"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.04 * i }}
+                className="py-3.5 flex items-center gap-4 sm:gap-6 group"
               >
-                <div className="font-editorial text-4xl text-[color:var(--ink-dim)] group-hover:text-[color:var(--accent)] transition-colors w-10 tabular">
+                <div className="font-editorial text-3xl sm:text-4xl text-[color:var(--ink-dim)] group-hover:text-[color:var(--accent)] transition-colors w-9 tabular-nums">
                   {String(i + 1).padStart(2, "0")}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-[color:var(--ink)] text-base">{p.name}</div>
-                  <div className="text-xs text-[color:var(--ink-dim)] tracking-widest uppercase mt-1">{p.category}</div>
+                  <div className="text-[color:var(--ink)] text-sm sm:text-base font-medium">{p.name}</div>
+                  <div className="text-[11px] text-[color:var(--ink-dim)] tracking-wider uppercase mt-0.5">{p.category}</div>
                 </div>
                 <div className="text-right hidden sm:block">
-                  <div className="font-mono-data text-sm text-[color:var(--ink-muted)] tabular">{p.qty.toLocaleString()} units</div>
+                  <div className="font-mono-data text-xs sm:text-sm text-[color:var(--ink-muted)] tabular-nums">{p.qty.toLocaleString()} units</div>
                 </div>
-                <div className="text-right w-32">
-                  <div className="font-editorial text-2xl">{fmtINR(p.sales)}</div>
+                <div className="text-right w-28 sm:w-32">
+                  <div className="font-editorial text-xl sm:text-2xl tabular-nums">{fmtINR(p.sales)}</div>
                 </div>
               </motion.div>
             ))}
@@ -348,24 +451,25 @@ export default function Overview({ insights, dateRange }) {
 
       {/* Payments */}
       <section data-testid="table-payments">
-        <div className="surface-elev p-8">
+        <div className="surface-elev p-6 sm:p-8 rounded-2xl">
           <MetricLabel>Payment channels</MetricLabel>
           <h3 className="editorial-headline text-2xl sm:text-3xl mt-2">How customers pay.</h3>
-          <div className="mt-8 space-y-6 max-w-2xl">
+          <div className="mt-6 space-y-5 max-w-2xl">
             {payments.map((p, i) => (
               <div key={p.method}>
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm text-[color:var(--ink)]">{p.method}</span>
-                  <span className="font-mono-data text-xs text-[color:var(--ink-muted)] tabular">{p.percent}%</span>
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-sm text-[color:var(--ink)] font-medium">{p.method}</span>
+                  <span className="font-mono-data text-xs text-[color:var(--ink-muted)] tabular-nums">{p.percent}%</span>
                 </div>
-                <div className="relative h-[3px] bg-[color:var(--hairline)] rounded-full overflow-hidden">
+                <div className="relative h-1.5 bg-slate-100 rounded-full overflow-hidden">
                   <motion.div
-                    initial={{ width: 0 }} animate={{ width: `${p.percent}%` }} transition={{ duration: 1.2, delay: 0.1 * i, ease: [0.2, 0.8, 0.2, 1] }}
-                    className="h-full rounded-full"
-                    style={{ background: i === 0 ? "var(--accent)" : "var(--ink-2)" }}
+                    initial={{ width: 0 }}
+                    animate={{ width: `${p.percent}%` }}
+                    transition={{ duration: 1.0, delay: 0.08 * i, ease: [0.16, 1, 0.3, 1] }}
+                    className="h-full rounded-full bg-[color:var(--accent)]"
                   />
                 </div>
-                <div className="mt-1 text-[10px] font-mono-data text-[color:var(--ink-dim)] tabular">{fmtINR(p.amount)}</div>
+                <div className="mt-1 text-[11px] font-mono-data text-[color:var(--ink-dim)] tabular-nums">{fmtINR(p.amount)}</div>
               </div>
             ))}
           </div>

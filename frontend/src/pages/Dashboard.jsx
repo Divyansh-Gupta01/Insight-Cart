@@ -65,38 +65,57 @@ export default function Dashboard() {
       />
 
       {/* Floating pill nav */}
-      <div className="sticky top-4 z-30 px-4 sm:px-8 flex justify-center pointer-events-none">
-        <div className="surface-2 pointer-events-auto rounded-full px-2 py-1.5 flex items-center gap-0.5 shadow-[0_8px_30px_-6px_rgba(15,23,42,0.08)] backdrop-blur-md border border-[color:var(--hairline-strong)]" data-testid="dashboard-tabs">
-          {TABS.map((t) => (
-            <button
-              key={t.id}
-              data-testid={`tab-${t.id}`}
-              onClick={() => setTab(t.id)}
-              data-active={tab === t.id}
-              className="pill-nav relative"
-            >
-              {tab === t.id && (
-                <motion.div
-                  layoutId="active-nav-pill"
-                  className="absolute inset-0 rounded-full"
-                  style={{ background: "rgba(15, 23, 42, 0.06)" }}
-                  transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
-                />
-              )}
-              <span className="relative z-10">{t.label}</span>
-            </button>
-          ))}
+      <div className="sticky top-4 z-30 px-4 sm:px-8 flex justify-center pointer-events-none mt-2">
+        <div
+          role="tablist"
+          aria-label="Dashboard views"
+          className="pointer-events-auto rounded-full px-1.5 py-1 flex items-center gap-1 elevation-floating"
+          data-testid="dashboard-tabs"
+        >
+          {TABS.map((t) => {
+            const isActive = tab === t.id;
+            return (
+              <button
+                key={t.id}
+                role="tab"
+                id={`tab-${t.id}`}
+                aria-selected={isActive}
+                aria-controls={`tabpanel-${t.id}`}
+                tabIndex={isActive ? 0 : -1}
+                data-testid={`tab-${t.id}`}
+                onClick={() => setTab(t.id)}
+                data-active={isActive}
+                className={`relative px-3.5 py-1.5 rounded-full text-xs font-semibold transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-700 focus-visible:ring-offset-2 ${
+                  isActive ? "text-[color:var(--ink)]" : "text-[color:var(--ink-muted)] hover:text-[color:var(--ink)]"
+                }`}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="active-nav-pill"
+                    className="absolute inset-0 rounded-full bg-slate-100/90 border border-slate-200/60 shadow-sm"
+                    transition={{ type: "spring", stiffness: 420, damping: 32 }}
+                  />
+                )}
+                <span className="relative z-10">{t.label}</span>
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      <div className="mx-auto max-w-[1600px] px-4 sm:px-8 lg:px-12 pt-10 pb-24 relative z-10">
+      <div className="mx-auto max-w-[1600px] px-4 sm:px-8 lg:px-12 pt-6 pb-20 relative z-10">
         <AnimatePresence mode="wait">
           <motion.div
             key={tab}
-            initial={{ opacity: 0, y: 4 }}
+            role="tabpanel"
+            id={`tabpanel-${tab}`}
+            aria-labelledby={`tab-${tab}`}
+            tabIndex={0}
+            className="focus:outline-none"
+            initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.12, ease: "easeOut" }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.16, ease: [0.16, 1, 0.3, 1] }}
           >
             {tab === "overview" && <Overview insights={insights} dateRange={dateRange} />}
             {tab === "intake" && <DataIntake onUpload={openUpload} datasetInfo={datasetInfo} onReset={handleUploaded} />}

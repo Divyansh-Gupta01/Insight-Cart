@@ -27,18 +27,23 @@ export default function Navbar({
   };
 
   return (
-    <div className="relative z-40 px-4 sm:px-8 lg:px-12 pt-6">
+    <div className="relative z-40 px-4 sm:px-8 lg:px-12 pt-5">
       <div className="flex items-center justify-between gap-4">
         {/* Brand */}
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full border hairline-strong flex items-center justify-center">
-            <div className="w-1.5 h-1.5 rounded-full accent-bg dot-pulse" />
+        <div className="flex items-center gap-3 group">
+          <div className="w-9 h-9 rounded-xl border hairline-strong bg-white shadow-[0_1px_3px_rgba(15,23,42,0.04)] flex items-center justify-center transition-colors group-hover:border-slate-300">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 4H5.5L8 16H18.5L21 7H6.5" stroke="#0f172a" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+              <circle cx="9" cy="20" r="1.5" fill="#15803d" />
+              <circle cx="17.5" cy="20" r="1.5" fill="#15803d" />
+              <path d="M11 9.5L13.5 12L17 7.5" stroke="#15803d" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
           </div>
           <div>
             <div className="font-editorial text-xl leading-none tracking-tight">
               Insight Cart
             </div>
-            <div className="text-[10px] tracking-[0.22em] uppercase text-[color:var(--ink-dim)] mt-1">
+            <div className="text-[10px] tracking-[0.2em] uppercase text-[color:var(--ink-dim)] mt-1 font-semibold">
               {(() => {
                 try {
                   const u = JSON.parse(localStorage.getItem("ci_user") || "{}");
@@ -59,7 +64,7 @@ export default function Navbar({
           {/* Live dataset badge */}
           {isLive && (
             <div
-              className="hidden md:inline-flex items-center gap-2 px-3 h-10 rounded-full border"
+              className="hidden md:inline-flex items-center gap-2 px-3 h-9 rounded-full border"
               style={{
                 borderColor: "rgba(21,128,61,0.25)",
                 background: "rgba(21,128,61,0.06)",
@@ -76,10 +81,10 @@ export default function Navbar({
               <button
                 onClick={handleReset}
                 data-testid="navbar-reset-dataset"
-                className="p-1 rounded-full hover:bg-white/10 transition-colors"
+                className="p-1 rounded-full hover:bg-slate-100 transition-colors"
                 title="Revert to demo data"
               >
-                <RotateCcw className="w-3 h-3" />
+                <RotateCcw className="w-3.5 h-3.5" strokeWidth={1.75} />
               </button>
             </div>
           )}
@@ -88,19 +93,19 @@ export default function Navbar({
           <button
             data-testid="navbar-upload-btn"
             onClick={onUpload}
-            className="btn-primary h-10"
+            className="btn-primary h-9"
           >
-            <Upload className="w-3.5 h-3.5" />
+            <Upload className="w-3.5 h-3.5" strokeWidth={1.75} />
             <span>Upload data</span>
           </button>
 
           <button
             data-testid="navbar-logout"
             onClick={logout}
-            className="w-10 h-10 rounded-full border hairline hover:hairline-strong flex items-center justify-center text-[color:var(--ink-muted)] hover:text-[color:var(--ink)] transition-colors"
+            className="w-9 h-9 rounded-full border hairline hover:hairline-strong flex items-center justify-center text-[color:var(--ink-muted)] hover:text-[color:var(--ink)] hover:bg-slate-100 active:scale-95 transition-all"
             title="Log out"
           >
-            <LogOut className="w-4 h-4" />
+            <LogOut className="w-4 h-4" strokeWidth={1.75} />
           </button>
         </div>
       </div>

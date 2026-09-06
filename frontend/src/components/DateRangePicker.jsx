@@ -46,43 +46,49 @@ export default function DateRangePicker({ value, onChange }) {
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
-        <button data-testid="navbar-date-range" className="btn-ghost h-10 text-sm hidden md:inline-flex">
-          <CalIcon className="w-3.5 h-3.5 mr-1.5" />
+        <button data-testid="navbar-date-range" className="btn-ghost h-9 text-xs hidden md:inline-flex">
+          <CalIcon className="w-3.5 h-3.5 mr-1.5" strokeWidth={1.75} />
           <span className="font-mono-data text-xs">
             {label(from)} – {label(to)} {yearLabel(to)}
           </span>
         </button>
       </PopoverTrigger>
-      <PopoverContent align="end" className="w-auto p-0 bg-[color:var(--surface-2)] border-[color:var(--hairline-strong)] rounded-2xl overflow-hidden">
+      <PopoverContent align="end" className="w-auto p-0 bg-white border border-slate-200/90 shadow-[0_16px_40px_-8px_rgba(15,23,42,0.12)] rounded-2xl overflow-hidden">
         <div className="flex">
           {/* Presets */}
-          <div className="w-48 p-3 border-r border-[color:var(--hairline)] space-y-1">
+          <div className="w-44 p-3 border-r border-slate-100 space-y-1">
             <div className="metadata-label px-2 pb-2">Presets</div>
             {PRESETS.map((p) => (
               <button
                 key={p.id}
                 data-testid={`daterange-preset-${p.id}`}
                 onClick={() => apply(p)}
-                className="w-full text-left px-3 py-2 rounded-lg text-sm text-[color:var(--ink)] hover:bg-white/[0.05] transition-colors"
-                style={{ background: preset === p.id ? "rgba(212,255,58,0.08)" : "transparent", color: preset === p.id ? "var(--accent)" : "var(--ink)" }}
+                className="w-full text-left px-3 py-1.5 rounded-lg text-xs font-medium transition-colors"
+                style={{
+                  background: preset === p.id ? "rgba(21,128,61,0.08)" : "transparent",
+                  color: preset === p.id ? "var(--accent)" : "var(--ink)",
+                }}
               >
                 {p.label}
               </button>
             ))}
-            <div className="pt-2 mt-2 border-t border-[color:var(--hairline)]">
+            <div className="pt-2 mt-2 border-t border-slate-100">
               <button
                 data-testid="daterange-preset-custom"
                 onClick={() => setPreset("custom")}
-                className="w-full text-left px-3 py-2 rounded-lg text-sm hover:bg-white/[0.05] transition-colors"
-                style={{ background: preset === "custom" ? "rgba(212,255,58,0.08)" : "transparent", color: preset === "custom" ? "var(--accent)" : "var(--ink)" }}
+                className="w-full text-left px-3 py-1.5 rounded-lg text-xs font-medium transition-colors"
+                style={{
+                  background: preset === "custom" ? "rgba(21,128,61,0.08)" : "transparent",
+                  color: preset === "custom" ? "var(--accent)" : "var(--ink)",
+                }}
               >
                 Custom range
               </button>
               <button
                 onClick={reset}
-                className="w-full text-left px-3 py-2 mt-1 rounded-lg text-xs text-[color:var(--ink-muted)] hover:text-[color:var(--ink)] transition-colors inline-flex items-center gap-1"
+                className="w-full text-left px-3 py-1.5 mt-1 rounded-lg text-xs text-[color:var(--ink-muted)] hover:text-[color:var(--ink)] hover:bg-slate-100 transition-colors inline-flex items-center gap-1"
               >
-                <X className="w-3 h-3" /> Reset
+                <X className="w-3 h-3" strokeWidth={1.75} /> Reset
               </button>
             </div>
           </div>
