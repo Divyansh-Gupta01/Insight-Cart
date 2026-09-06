@@ -454,15 +454,15 @@ export default function Overview({ insights, dateRange }) {
             {/* Donut & Legend Container */}
             <div className="mt-6 flex flex-col sm:flex-row items-center gap-6 sm:gap-7">
               {/* Donut with Center Hole Display */}
-              <div className="relative flex items-center justify-center w-[190px] h-[190px] flex-shrink-0">
-                <ResponsiveContainer width={190} height={190}>
+              <div className="relative flex items-center justify-center w-[200px] h-[200px] flex-shrink-0">
+                <ResponsiveContainer width={200} height={200}>
                   <PieChart>
                     <Pie
                       data={displayCategories}
                       dataKey="sales"
                       nameKey="category"
-                      innerRadius={60}
-                      outerRadius={88}
+                      innerRadius={65}
+                      outerRadius={94}
                       paddingAngle={3}
                       stroke="none"
                       animationDuration={900}
@@ -484,30 +484,23 @@ export default function Overview({ insights, dateRange }) {
                         );
                       })}
                     </Pie>
-                    <Tooltip
-                      formatter={(v, n) => [fmtINR(v), n]}
-                      contentStyle={{
-                        background: "#ffffff",
-                        border: "1px solid rgba(15,23,42,0.12)",
-                        borderRadius: 12,
-                        boxShadow: "0 10px 25px -5px rgba(15,23,42,0.1)",
-                        fontSize: 12,
-                      }}
-                    />
                   </PieChart>
                 </ResponsiveContainer>
 
                 {/* Donut Center Label (Dominant or Hovered) */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-center px-2">
-                  <span className="text-[10px] font-mono-data uppercase tracking-wider text-slate-500 max-w-[100px] truncate">
+                <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-center px-3">
+                  <span className="metadata-label !text-[8.5px] tracking-[0.16em] text-slate-400 uppercase truncate max-w-[100px]">
+                    {activeCategoryIndex !== null ? "Selected" : "Leader"}
+                  </span>
+                  <div className="font-editorial text-lg sm:text-xl text-[color:var(--ink)] leading-snug truncate max-w-[118px] mt-0.5">
                     {activeCategory.category}
-                  </span>
-                  <span className="font-editorial text-2xl sm:text-3xl font-bold text-slate-900 leading-none mt-0.5 tabular-nums">
+                  </div>
+                  <div className="kpi-num text-base sm:text-lg text-[color:var(--accent)] font-bold tabular-nums leading-tight my-0.5">
                     {activeCategory.percent}%
-                  </span>
-                  <span className="text-[10px] font-mono-data text-emerald-700 font-medium tabular-nums mt-0.5">
-                    {fmtCompact(activeCategory.sales)}
-                  </span>
+                  </div>
+                  <div className="text-[10px] font-mono-data text-[color:var(--ink-muted)] tabular-nums">
+                    {fmtINR(activeCategory.sales)}
+                  </div>
                 </div>
               </div>
 

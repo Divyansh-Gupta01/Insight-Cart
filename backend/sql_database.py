@@ -580,6 +580,32 @@ async def load_store_sales_dataframe(store_id: int, limit: int = 40000) -> pd.Da
         return df.sort_values("date")
 
 
+async def has_store_sales(store_id: int) -> bool:
+    """Fast check if any sales transactions exist for the store (<1ms)."""
+    try:
+        async with AsyncSessionLocal() as session:
+            result = await session.execute(
+                select(SalesTransaction.id).where(SalesTransaction.store_id == store_id).limit(1)
+            )
+            return result.scalar() is not None
+    except Exception as e:
+        logger.warning(f"Fast check has_store_sales error: {e}")
+        return False
+
+
+async def has_store_inventory(store_id: int) -> bool:
+    """Fast check if any products exist in inventory for the store (<1ms)."""
+    try:
+        async with AsyncSessionLocal() as session:
+            result = await session.execute(
+                select(Product.id).where(Product.store_id == store_id).limit(1)
+            )
+            return result.scalar() is not None
+    except Exception as e:
+        logger.warning(f"Fast check has_store_inventory error: {e}")
+        return False
+
+
 async def load_store_inventory_list(store_id: int) -> List[Dict[str, Any]]:
     """Load current product catalog & shelf stock for a store."""
     async with AsyncSessionLocal() as session:

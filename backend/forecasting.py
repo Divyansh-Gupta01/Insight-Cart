@@ -671,6 +671,38 @@ def generate_sku_demand_forecast(
         except Exception:
             pass
 
+    # If date filter resulted in empty series, fallback to unfiltered history
+    if daily_units.empty and not p_df.empty:
+        daily_units = (
+            p_df.groupby(p_df["_date"].dt.date)
+            .agg(units=(qty_col, "sum"), revenue=(amt_col, "sum"))
+            .reset_index()
+            .rename(columns={"_date": "date"})
+        )
+        daily_units["date"] = pd.to_datetime(daily_units["date"])
+        min_date = daily_units["date"].min()
+        max_date = daily_units["date"].max()
+        full_idx = pd.date_range(start=min_date, end=max_date, freq="D")
+        daily_units = (
+            daily_units.set_index("date")
+            .reindex(full_idx, fill_value=0)
+            .rename_axis("date")
+            .reset_index()
+        )
+
+    if daily_units.empty:
+        return {
+            "product": product_name,
+            "unit_price": avg_price,
+            "history": [],
+            "forecast": [],
+            "total_forecast_units": 0,
+            "total_forecast_revenue": 0,
+            "avg_daily_demand": 0.0,
+            "model": "Insufficient historical data",
+            "metrics": {"wape": 0, "rmse": 0, "mae": 0, "smape": 0, "mape": 0},
+        }
+
     unit_series = daily_units["units"].to_numpy(dtype=float)
     dates = daily_units["date"].dt.strftime("%Y-%m-%d").tolist()
 
@@ -689,7 +721,7 @@ def generate_sku_demand_forecast(
         for d, u in zip(dates, unit_series)
     ]
 
-    last_dt = daily_units["date"].iloc[-1]
+    last_dt = daily_units["date"].iloc[-1] if not daily_units.empty else datetime.now(timezone.utc)
     forecast_list = []
     total_f_units = 0
     total_f_rev = 0

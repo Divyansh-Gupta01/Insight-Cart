@@ -43,6 +43,8 @@ from sql_database import (
     save_incremental_sales_and_inventory,
     load_store_sales_dataframe,
     load_store_inventory_list,
+    has_store_sales,
+    has_store_inventory,
     get_store_dataset_status,
     reset_store_data,
 )
@@ -75,6 +77,11 @@ async def lifespan(app: FastAPI):
     # Startup: Initialize both SQL (PostgreSQL/SQLite) and MongoDB indexes
     await init_sql_db()
     await init_db_indexes()
+    try:
+        # Pre-warm default store sales dataframe in background so first user request is instant
+        asyncio.create_task(_get_active_sales_df(1))
+    except Exception as e:
+        logger.warning(f"Could not pre-warm default store cache: {e}")
     yield
     # Shutdown
     await close_db()
@@ -227,7 +234,7 @@ async def _get_active_sales_df(store_id: int = 1) -> pd.DataFrame:
     now = time.time()
     if store_id in _active_sales_df_cache:
         cached_time, cached_df = _active_sales_df_cache[store_id]
-        if now - cached_time < 60:
+        if now - cached_time < 600:  # 10 minutes TTL (explicitly cleared on upload/stream/reset)
             return cached_df
 
     try:
@@ -241,20 +248,20 @@ async def _get_active_sales_df(store_id: int = 1) -> pd.DataFrame:
         logger.warning(f"Error loading sales DataFrame from SQL for store {store_id}: {e}")
 
     try:
-        if await _has_live_sales(store_id):
-            rows = []
+        rows = []
+        if await _is_db_ready():
             try:
-                rows = await db.sales_rows.find({}, {"_id": 0}).to_list(200000)
+                rows = await asyncio.wait_for(db.sales_rows.find({}, {"_id": 0}).to_list(200000), timeout=0.8)
             except Exception:
                 pass
-            if not rows:
-                rows = list(_mem_sales_rows)
-            if rows:
-                df = pd.DataFrame(rows)
-                df["_date"] = pd.to_datetime(df["date"], errors="coerce")
-                active_df = df.dropna(subset=["_date"])
-                _active_sales_df_cache[store_id] = (now, active_df)
-                return active_df
+        if not rows:
+            rows = list(_mem_sales_rows)
+        if rows:
+            df = pd.DataFrame(rows)
+            df["_date"] = pd.to_datetime(df["date"], errors="coerce")
+            active_df = df.dropna(subset=["_date"])
+            _active_sales_df_cache[store_id] = (now, active_df)
+            return active_df
     except Exception as e:
         logger.warning(f"Error fetching active sales df: {e}")
     return _demo_sales_dataframe()
@@ -449,16 +456,33 @@ def _set_cached_forecast(key: str, data: Dict[str, Any]):
     _fast_forecast_cache[key] = {"ts": time.time(), "data": data}
 
 
+_fast_inventory_cache: Dict[str, Dict[str, Any]] = {}
+
+
+def _get_cached_inventory(key: str) -> Optional[Dict[str, Any]]:
+    item = _fast_inventory_cache.get(key)
+    if item and (time.time() - item["ts"]) < 120:  # 2 minutes TTL
+        return item["data"]
+    return None
+
+
+def _set_cached_inventory(key: str, data: Dict[str, Any]):
+    _fast_inventory_cache[key] = {"ts": time.time(), "data": data}
+
+
 def _clear_all_analytics_caches():
     _fast_insights_cache.clear()
     _fast_forecast_cache.clear()
+    _fast_inventory_cache.clear()
+    _active_sales_df_cache.clear()
 
 
 # ---------- LIVE DATASET DATABASE HELPERS ----------
 async def _has_live_sales(store_id: int = 1) -> bool:
+    if store_id in _active_sales_df_cache and not _active_sales_df_cache[store_id][1].empty:
+        return True
     try:
-        df = await load_store_sales_dataframe(store_id)
-        if not df.empty:
+        if await has_store_sales(store_id):
             return True
     except Exception:
         pass
@@ -474,8 +498,7 @@ async def _has_live_sales(store_id: int = 1) -> bool:
 
 async def _has_live_inventory(store_id: int = 1) -> bool:
     try:
-        inv = await load_store_inventory_list(store_id)
-        if inv:
+        if await has_store_inventory(store_id):
             return True
     except Exception:
         pass
@@ -489,10 +512,15 @@ async def _has_live_inventory(store_id: int = 1) -> bool:
     return len(_mem_inventory_rows) > 0
 
 
-async def _live_sales_payload(store_id: int = 1, start_date: Optional[str] = None, end_date: Optional[str] = None):
-    # Check SQL database first (PostgreSQL/SQLite)
+async def _live_sales_payload(
+    store_id: int = 1,
+    start_date: Optional[str] = None,
+    end_date: Optional[str] = None,
+    sales_df: Optional[pd.DataFrame] = None,
+):
+    # Check SQL database first (PostgreSQL/SQLite) using provided or cached DataFrame
     try:
-        df = await load_store_sales_dataframe(store_id)
+        df = sales_df if (sales_df is not None and not sales_df.empty) else await _get_active_sales_df(store_id)
         if not df.empty:
             return compute_sales_metrics(df, start_date=start_date, end_date=end_date)
     except Exception as e:
@@ -501,7 +529,7 @@ async def _live_sales_payload(store_id: int = 1, start_date: Optional[str] = Non
     rows = []
     if await _is_db_ready():
         try:
-            rows = await asyncio.wait_for(db.sales_rows.find({}, {"_id": 0}).to_list(200000), timeout=2.0)
+            rows = await asyncio.wait_for(db.sales_rows.find({}, {"_id": 0}).to_list(200000), timeout=1.0)
         except Exception as e:
             logger.warning(f"Database query error in _live_sales_payload: {e}")
     if not rows:
@@ -576,10 +604,10 @@ async def _live_inventory_rows(store_id: int = 1):
     return out
 
 
-async def _active_daily_sales():
+async def _active_daily_sales(sales_df: Optional[pd.DataFrame] = None, store_id: int = 1):
     """Return list of {date, revenue, orders} from cached active sales DataFrame or baseline."""
     try:
-        df = await _get_active_sales_df()
+        df = sales_df if (sales_df is not None and not sales_df.empty) else await _get_active_sales_df(store_id)
         if not df.empty and "_date" in df.columns:
             d = (
                 df.groupby(df["_date"].dt.date)
@@ -722,7 +750,7 @@ async def get_current_user_and_store(
     x_api_key: Optional[str] = None,
 ) -> Dict[str, Any]:
     """Resolve active user & store from API key or Bearer token, falling back to demo store."""
-    if x_api_key:
+    if isinstance(x_api_key, str) and x_api_key:
         user = await get_user_by_api_key(x_api_key)
         if user:
             return {
@@ -734,7 +762,7 @@ async def get_current_user_and_store(
                 "email": user.email,
             }
 
-    if authorization and "Bearer " in authorization:
+    if isinstance(authorization, str) and "Bearer " in authorization:
         tok = authorization.replace("Bearer ", "").strip()
         if tok.startswith("user-"):
             parts = tok.split("-")
@@ -1127,36 +1155,41 @@ async def upload_dataset(
 
 
 @api_router.get("/products")
-async def get_products(category: Optional[str] = None):
-    if await _has_live_sales():
-        rows = await db.sales_rows.find(
-            {}, {"_id": 0, "product": 1, "category": 1}
-        ).to_list(200000)
-        seen = {}
-        for r in rows:
-            key = r["product"]
-            if key not in seen:
-                seen[key] = r.get("category", "Others")
-        products = [
-            {"id": f"SKU-{2000+i}", "name": p, "category": c}
-            for i, (p, c) in enumerate(seen.items())
-        ]
-    else:
-        inv = _inventory_rows()
+async def get_products(
+    category: Optional[str] = None,
+    authorization: Optional[str] = Header(None),
+):
+    store_ctx = await get_current_user_and_store(authorization)
+    store_id = store_ctx["store_id"]
+
+    inv = await load_store_inventory_list(store_id)
+    if inv:
         products = [
             {"id": r["id"], "name": r["product"], "category": r["category"]}
             for r in inv
         ]
+    else:
+        demo_inv = _inventory_rows()
+        products = [
+            {"id": r["id"], "name": r["product"], "category": r["category"]}
+            for r in demo_inv
+        ]
+
     if category and category != "All":
         products = [p for p in products if p["category"] == category]
     return {"products": products}
 
 
 @api_router.get("/categories")
-async def get_categories():
-    if await _has_live_sales():
-        rows = await db.sales_rows.find({}, {"_id": 0, "category": 1}).to_list(200000)
-        cats = sorted({(r.get("category") or "Others") for r in rows})
+async def get_categories(
+    authorization: Optional[str] = Header(None),
+):
+    store_ctx = await get_current_user_and_store(authorization)
+    store_id = store_ctx["store_id"]
+
+    inv = await load_store_inventory_list(store_id)
+    if inv:
+        cats = sorted({(r.get("category") or "Others") for r in inv if r.get("category")})
         return {"categories": ["All", *cats]}
     return {"categories": ["All", *CATEGORIES, "Bakery", "Household"]}
 
@@ -1168,6 +1201,10 @@ async def get_inventory(
 ):
     store_ctx = await get_current_user_and_store(authorization)
     store_id = store_ctx["store_id"]
+    cache_key = f"inv_{store_id}_{status}"
+    cached = _get_cached_inventory(cache_key)
+    if cached:
+        return cached
 
     live = await _live_inventory_rows(store_id)
     raw_rows = live if live else _inventory_rows()
@@ -1193,13 +1230,15 @@ async def get_inventory(
         "slow_moving": summary["slow_moving_count"],
         "high_risk": summary["high_risk_count"],
     }
-    return {
+    res = {
         "items": filtered_items,
         "counts": counts,
         "summary": summary,
         "source": "uploaded" if (await _has_live_inventory(store_id)) else "demo",
         "store": store_ctx["store_name"],
     }
+    _set_cached_inventory(cache_key, res)
+    return res
 
 
 @api_router.get("/insights")
@@ -1221,8 +1260,9 @@ async def get_insights(
     enriched_items, inv_summary = compute_inventory_decisions(raw_inv, sales_df)
     action_center = generate_action_center(enriched_items, sales_df)
 
-    if await _has_live_sales(store_id):
-        live = await _live_sales_payload(store_id, start_date=start_date, end_date=end_date)
+    has_live = (sales_df is not None and not sales_df.empty) or (await _has_live_sales(store_id))
+    if has_live:
+        live = await _live_sales_payload(store_id, start_date=start_date, end_date=end_date, sales_df=sales_df)
         if live:
             live["action_center"] = action_center
             live["inventory_summary"] = inv_summary
@@ -1275,7 +1315,7 @@ async def get_forecast(
         _set_cached_forecast(cache_key, forecast_result)
         return forecast_result
 
-    hist = await _active_daily_sales()
+    hist = await _active_daily_sales(sales_df=sales_df, store_id=store_id)
     forecast_result = generate_sales_forecast(
         daily_sales=hist,
         days_to_predict=days,
