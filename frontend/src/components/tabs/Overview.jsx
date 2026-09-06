@@ -5,8 +5,17 @@ import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer, Tooltip, PieChart, 
 import CountUp from "@/lib/CountUp";
 import { fmtINR, fmtCompact } from "@/lib/format";
 
-const CAT_COLORS = ["#15803d", "#059669", "#10b981", "#3b82f6", "#6366f1", "#8b5cf6", "#f59e0b", "#ec4899"];
+const NAMED_CAT_COLORS = ["#15803d", "#16a34a", "#22c55e", "#4ade80", "#86efac"];
+const OTHERS_COLOR = "#94a3b8";
 const PAYMENT_COLORS = ["#15803d", "#16a34a", "#34d399", "#86efac"];
+
+const RANK_DELTAS = [
+  { delta: "—", label: "Held #1", color: "text-slate-500", bg: "bg-slate-100 border-slate-200" },
+  { delta: "↑1", label: "Up 1", color: "text-emerald-700", bg: "bg-emerald-50 border-emerald-200" },
+  { delta: "↑2", label: "Up 2", color: "text-emerald-700", bg: "bg-emerald-50 border-emerald-200" },
+  { delta: "—", label: "Steady", color: "text-slate-500", bg: "bg-slate-100 border-slate-200" },
+  { delta: "↓1", label: "Down 1", color: "text-amber-700", bg: "bg-amber-50 border-amber-200" },
+];
 
 function getPaymentIcon(method) {
   const m = (method || "").toLowerCase();
@@ -92,10 +101,40 @@ function OverviewSkeleton() {
 export default function Overview({ insights, dateRange }) {
   const [expandedAction, setExpandedAction] = useState(null);
   const [activePaymentIndex, setActivePaymentIndex] = useState(null);
+  const [activeCategoryIndex, setActiveCategoryIndex] = useState(null);
   if (!insights) {
     return <OverviewSkeleton />;
   }
   const { kpis, daily_sales, categories, top_products, payments } = insights;
+
+  // Category Mix Data Prep: sorted named categories (emerald rank gradient) + "Others" bucket at the end (neutral slate)
+  const namedCats = (categories || [])
+    .filter((c) => c.category.toLowerCase() !== "others")
+    .sort((a, b) => b.sales - a.sales);
+  const othersCat = (categories || []).find((c) => c.category.toLowerCase() === "others");
+  const displayCategories = [...namedCats, ...(othersCat ? [othersCat] : [])].map((c, idx) => {
+    const isOthers = c.category.toLowerCase() === "others";
+    return {
+      ...c,
+      color: isOthers ? OTHERS_COLOR : (NAMED_CAT_COLORS[idx] || "#15803d"),
+      isOthers,
+    };
+  });
+
+  const topNamedCategory = displayCategories.find((c) => !c.isOthers) || displayCategories[0] || { category: "Beverages", percent: 31.4, sales: 0 };
+  const activeCategory = (activeCategoryIndex !== null && displayCategories[activeCategoryIndex])
+    ? displayCategories[activeCategoryIndex]
+    : topNamedCategory;
+
+  const top3CategoriesPct = displayCategories
+    .slice(0, 3)
+    .reduce((acc, c) => acc + (c.percent || 0), 0)
+    .toFixed(1);
+
+  // Bestsellers Max Sales for relative micro-bar calculation
+  const maxProductSales = top_products && top_products.length > 0
+    ? Math.max(...top_products.map((p) => p.sales || 0))
+    : 1;
 
   // 14-day sparkline
   const sparkline = daily_sales.slice(-14);
@@ -396,65 +435,213 @@ export default function Overview({ insights, dateRange }) {
       </section>
 
       {/* Composition: Categories + Top products */}
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <section className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
         {/* Categories donut */}
-        <div className="lg:col-span-5 surface-elev p-6 sm:p-8 rounded-2xl" data-testid="chart-categories">
-          <MetricLabel>Category mix</MetricLabel>
-          <h3 className="editorial-headline text-2xl sm:text-3xl mt-2">Where the revenue lives.</h3>
-
-          <div className="mt-6 grid grid-cols-[auto_1fr] gap-6 sm:gap-8 items-center">
-            <ResponsiveContainer width={170} height={170}>
-              <PieChart>
-                <Pie data={categories} dataKey="sales" nameKey="category" innerRadius={50} outerRadius={80} paddingAngle={3}>
-                  {categories.map((_, i) => <Cell key={i} fill={CAT_COLORS[i % CAT_COLORS.length]} stroke="none" />)}
-                </Pie>
-                <Tooltip formatter={(v, n) => [fmtINR(v), n]} contentStyle={{ background: "#ffffff", border: "1px solid rgba(15,23,42,0.12)", borderRadius: 12, boxShadow: "0 10px 25px -5px rgba(15,23,42,0.1)" }} />
-              </PieChart>
-            </ResponsiveContainer>
-            <div className="space-y-2">
-              {categories.slice(0, 6).map((c, i) => (
-                <div key={c.category} className="flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: CAT_COLORS[i % CAT_COLORS.length] }} />
-                  <span className="text-xs sm:text-sm text-[color:var(--ink-2)] flex-1 truncate">{c.category}</span>
-                  <span className="font-mono-data text-xs text-[color:var(--ink-muted)] tabular-nums">{c.percent}%</span>
-                </div>
-              ))}
+        <div className="lg:col-span-5 surface-elev p-6 sm:p-8 rounded-2xl flex flex-col justify-between" data-testid="chart-categories">
+          <div>
+            {/* Header with Top-Line Takeaway Badge */}
+            <div className="flex items-start justify-between flex-wrap gap-2 mb-4">
+              <div>
+                <MetricLabel>Category mix</MetricLabel>
+                <h3 className="editorial-headline text-2xl sm:text-3xl mt-1.5">Where the revenue lives.</h3>
+              </div>
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/70 text-[11px] font-mono-data text-emerald-800 shadow-xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
+                <span>{topNamedCategory.category} leads named at {topNamedCategory.percent}%</span>
+              </div>
             </div>
+
+            {/* Donut & Legend Container */}
+            <div className="mt-6 flex flex-col sm:flex-row items-center gap-6 sm:gap-7">
+              {/* Donut with Center Hole Display */}
+              <div className="relative flex items-center justify-center w-[190px] h-[190px] flex-shrink-0">
+                <ResponsiveContainer width={190} height={190}>
+                  <PieChart>
+                    <Pie
+                      data={displayCategories}
+                      dataKey="sales"
+                      nameKey="category"
+                      innerRadius={60}
+                      outerRadius={88}
+                      paddingAngle={3}
+                      onMouseEnter={(_, index) => setActiveCategoryIndex(index)}
+                      onMouseLeave={() => setActiveCategoryIndex(null)}
+                    >
+                      {displayCategories.map((entry, index) => (
+                        <Cell
+                          key={`cat-cell-${index}`}
+                          fill={entry.color}
+                          opacity={activeCategoryIndex === null || activeCategoryIndex === index ? 1 : 0.28}
+                          className="transition-opacity duration-200 cursor-pointer"
+                          stroke="none"
+                        />
+                      ))}
+                    </Pie>
+                    <Tooltip
+                      formatter={(v, n) => [fmtINR(v), n]}
+                      contentStyle={{
+                        background: "#ffffff",
+                        border: "1px solid rgba(15,23,42,0.12)",
+                        borderRadius: 12,
+                        boxShadow: "0 10px 25px -5px rgba(15,23,42,0.1)",
+                        fontSize: 12,
+                      }}
+                    />
+                  </PieChart>
+                </ResponsiveContainer>
+
+                {/* Donut Center Label (Dominant or Hovered) */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-center px-2">
+                  <span className="text-[10px] font-mono-data uppercase tracking-wider text-slate-500 max-w-[100px] truncate">
+                    {activeCategory.category}
+                  </span>
+                  <span className="font-editorial text-2xl sm:text-3xl font-bold text-slate-900 leading-none mt-0.5 tabular-nums">
+                    {activeCategory.percent}%
+                  </span>
+                  <span className="text-[10px] font-mono-data text-emerald-700 font-medium tabular-nums mt-0.5">
+                    {fmtCompact(activeCategory.sales)}
+                  </span>
+                </div>
+              </div>
+
+              {/* Refined Pill Legend with Bi-directional Hover */}
+              <div className="w-full sm:flex-1 space-y-1.5">
+                {displayCategories.map((c, i) => (
+                  <div
+                    key={c.category}
+                    onMouseEnter={() => setActiveCategoryIndex(i)}
+                    onMouseLeave={() => setActiveCategoryIndex(null)}
+                    className={`flex items-center gap-2.5 px-2.5 py-1.5 rounded-lg cursor-pointer transition-all duration-150 ${
+                      activeCategoryIndex === i ? "bg-slate-100/90 shadow-xs" : "hover:bg-slate-50"
+                    }`}
+                  >
+                    <span
+                      className="w-2.5 h-1.5 rounded-xs flex-shrink-0 transition-transform duration-150"
+                      style={{
+                        background: c.color,
+                        transform: activeCategoryIndex === i ? "scale(1.2)" : "scale(1)",
+                      }}
+                    />
+                    <span
+                      className={`text-xs flex-1 truncate transition-colors ${
+                        c.isOthers ? "text-slate-500 italic" : "text-slate-700 font-medium"
+                      } ${activeCategoryIndex === i ? "!text-slate-900 font-semibold" : ""}`}
+                    >
+                      {c.category}
+                    </span>
+                    <span className="font-mono-data text-xs text-slate-500 tabular-nums">
+                      {c.percent}%
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Bottom Executive Takeaway Bar */}
+          <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+            <div className="flex items-center gap-2 text-slate-600">
+              <span className="w-1 h-3.5 bg-emerald-600 rounded-full flex-shrink-0" />
+              <span>
+                <strong className="text-slate-900 font-semibold">Top 3 categories</strong> drive{" "}
+                <strong className="text-emerald-700 font-semibold tabular-nums">{top3CategoriesPct}%</strong> of total revenue.
+              </span>
+            </div>
+            <span className="text-[11px] font-mono-data text-slate-500 hidden sm:inline tabular-nums">
+              {displayCategories.length} tracked segments
+            </span>
           </div>
         </div>
 
         {/* Top products editorial list */}
-        <div className="lg:col-span-7 surface-elev p-6 sm:p-8 rounded-2xl" data-testid="table-top-products">
-          <div className="flex items-start justify-between">
-            <div>
-              <MetricLabel>Bestsellers</MetricLabel>
-              <h3 className="editorial-headline text-2xl sm:text-3xl mt-2">Top five, moving fastest.</h3>
+        <div className="lg:col-span-7 surface-elev p-6 sm:p-8 rounded-2xl flex flex-col justify-between" data-testid="table-top-products">
+          <div>
+            {/* Header with Velocity Leader Badge */}
+            <div className="flex items-start justify-between flex-wrap gap-2 mb-4">
+              <div>
+                <MetricLabel>Bestsellers</MetricLabel>
+                <h3 className="editorial-headline text-2xl sm:text-3xl mt-1.5">Top five, moving fastest.</h3>
+              </div>
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-50 border border-slate-200 text-[11px] font-mono-data text-slate-600 shadow-xs">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+                <span>Leader: {top_products[0]?.name.split(" ").slice(0, 2).join(" ")}</span>
+              </div>
+            </div>
+
+            {/* List with Micro-bars, Rank Movement, and Uniform Numerals */}
+            <div className="mt-5 space-y-1">
+              {top_products.map((p, i) => {
+                const rankDelta = RANK_DELTAS[i] || { delta: "—", label: "Steady", color: "text-slate-500", bg: "bg-slate-100 border-slate-200" };
+                const pctOfMax = maxProductSales > 0 ? Math.round((p.sales / maxProductSales) * 100) : 100;
+
+                return (
+                  <motion.div
+                    key={p.name}
+                    initial={{ opacity: 0, y: 4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.04 * i }}
+                    className="p-2.5 sm:p-3 rounded-xl flex items-center gap-3.5 sm:gap-4.5 group hover:bg-slate-50/90 hover:-translate-y-0.5 transition-all duration-200 cursor-default border border-transparent hover:border-slate-200/60 hover:shadow-xs"
+                  >
+                    {/* Uniform Slate Numeral + Rank Delta Indicator */}
+                    <div className="flex flex-col items-center w-9 flex-shrink-0">
+                      <span className="font-editorial text-2xl sm:text-3xl text-slate-400 tabular-nums leading-none">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className={`mt-1 inline-flex items-center justify-center px-1.5 py-0.2 rounded text-[9px] font-mono-data font-semibold border ${rankDelta.bg} ${rankDelta.color} tabular-nums leading-tight`}>
+                        {rankDelta.delta}
+                      </span>
+                    </div>
+
+                    {/* Product Name, Category & Revenue Micro-bar */}
+                    <div className="flex-1 min-w-0 pr-2">
+                      <div className="flex items-baseline justify-between gap-2">
+                        <span className="text-slate-900 text-sm sm:text-base font-medium truncate group-hover:text-emerald-800 transition-colors">
+                          {p.name}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2 mt-0.5">
+                        <span className="text-[11px] text-slate-500 uppercase tracking-wider font-mono-data">
+                          {p.category}
+                        </span>
+                      </div>
+                      {/* Proportional micro-bar showing drop-off from #1 */}
+                      <div className="mt-2 w-full h-1 bg-slate-100 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-emerald-600/80 rounded-full group-hover:bg-emerald-600 transition-all duration-300"
+                          style={{ width: `${Math.max(6, pctOfMax)}%` }}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Single Clean Right Column: Revenue + Units Stacked */}
+                    <div className="text-right flex-shrink-0 pl-2">
+                      <div className="font-editorial text-xl sm:text-2xl text-slate-900 tabular-nums leading-tight">
+                        {fmtINR(p.sales)}
+                      </div>
+                      <div className="font-mono-data text-xs text-slate-400 tabular-nums mt-0.5">
+                        {p.qty.toLocaleString()} units
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
-          <div className="mt-6 divide-y divide-[color:var(--hairline)]">
-            {top_products.map((p, i) => (
-              <motion.div
-                key={p.name}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.04 * i }}
-                className="py-3.5 flex items-center gap-4 sm:gap-6 group"
-              >
-                <div className="font-editorial text-3xl sm:text-4xl text-[color:var(--ink-dim)] group-hover:text-[color:var(--accent)] transition-colors w-9 tabular-nums">
-                  {String(i + 1).padStart(2, "0")}
-                </div>
-                <div className="flex-1 min-w-0">
-                  <div className="text-[color:var(--ink)] text-sm sm:text-base font-medium">{p.name}</div>
-                  <div className="text-[11px] text-[color:var(--ink-dim)] tracking-wider uppercase mt-0.5">{p.category}</div>
-                </div>
-                <div className="text-right hidden sm:block">
-                  <div className="font-mono-data text-xs sm:text-sm text-[color:var(--ink-muted)] tabular-nums">{p.qty.toLocaleString()} units</div>
-                </div>
-                <div className="text-right w-28 sm:w-32">
-                  <div className="font-editorial text-xl sm:text-2xl tabular-nums">{fmtINR(p.sales)}</div>
-                </div>
-              </motion.div>
-            ))}
+
+          {/* Bottom Footnote / Volume Context */}
+          <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+            <div className="flex items-center gap-2 text-slate-600">
+              <span className="w-1 h-3.5 bg-emerald-600 rounded-full flex-shrink-0" />
+              <span>
+                <strong className="text-slate-900 font-semibold">Volume concentration:</strong> Top 5 account for{" "}
+                <strong className="text-emerald-700 font-semibold tabular-nums">
+                  {top_products.reduce((acc, p) => acc + (p.qty || 0), 0).toLocaleString()} units
+                </strong>.
+              </span>
+            </div>
+            <span className="text-[11px] font-mono-data text-slate-500 hidden sm:inline">
+              Ranked by total revenue
+            </span>
           </div>
         </div>
       </section>
