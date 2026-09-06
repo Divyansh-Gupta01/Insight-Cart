@@ -1,11 +1,20 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, ArrowDownRight, ChevronDown, ChevronUp } from "lucide-react";
+import { ArrowUpRight, ArrowDownRight, ChevronDown, ChevronUp, CreditCard, Banknote, Landmark, QrCode } from "lucide-react";
 import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer, Tooltip, PieChart, Pie, Cell } from "recharts";
 import CountUp from "@/lib/CountUp";
 import { fmtINR, fmtCompact } from "@/lib/format";
 
 const CAT_COLORS = ["#15803d", "#059669", "#10b981", "#3b82f6", "#6366f1", "#8b5cf6", "#f59e0b", "#ec4899"];
+const PAYMENT_COLORS = ["#15803d", "#16a34a", "#34d399", "#86efac"];
+
+function getPaymentIcon(method) {
+  const m = (method || "").toLowerCase();
+  if (m.includes("upi")) return <QrCode className="w-3.5 h-3.5 text-emerald-700" strokeWidth={1.75} />;
+  if (m.includes("card")) return <CreditCard className="w-3.5 h-3.5 text-slate-700" strokeWidth={1.75} />;
+  if (m.includes("net") || m.includes("bank")) return <Landmark className="w-3.5 h-3.5 text-slate-700" strokeWidth={1.75} />;
+  return <Banknote className="w-3.5 h-3.5 text-emerald-700" strokeWidth={1.75} />;
+}
 
 function TrendBadge({ value }) {
   const positive = value >= 0;
@@ -82,6 +91,7 @@ function OverviewSkeleton() {
 
 export default function Overview({ insights, dateRange }) {
   const [expandedAction, setExpandedAction] = useState(null);
+  const [activePaymentIndex, setActivePaymentIndex] = useState(null);
   if (!insights) {
     return <OverviewSkeleton />;
   }
@@ -449,32 +459,160 @@ export default function Overview({ insights, dateRange }) {
         </div>
       </section>
 
-      {/* Payments */}
-      <section data-testid="table-payments">
-        <div className="surface-elev p-6 sm:p-8 rounded-2xl">
-          <MetricLabel>Payment channels</MetricLabel>
-          <h3 className="editorial-headline text-2xl sm:text-3xl mt-2">How customers pay.</h3>
-          <div className="mt-6 space-y-5 max-w-2xl">
-            {payments.map((p, i) => (
-              <div key={p.method}>
-                <div className="flex items-center justify-between mb-1.5">
-                  <span className="text-sm text-[color:var(--ink)] font-medium">{p.method}</span>
-                  <span className="font-mono-data text-xs text-[color:var(--ink-muted)] tabular-nums">{p.percent}%</span>
+      {/* Payments — Redesigned 2-Column Mix & Live Donut */}
+      {(() => {
+        const totalPayments = payments ? payments.reduce((acc, curr) => acc + (curr.amount || 0), 0) : 0;
+        const sortedPayments = payments ? [...payments].sort((a, b) => b.percent - a.percent) : [];
+        const topPayment = sortedPayments[0] || (payments && payments[0]) || { method: "UPI", percent: 40.9, amount: 69595 };
+        const displayPayment = (payments && activePaymentIndex !== null && payments[activePaymentIndex]) ? payments[activePaymentIndex] : topPayment;
+
+        return (
+          <section data-testid="table-payments">
+            <div className="surface-elev p-6 sm:p-8 rounded-2xl">
+              {/* Header & Top-Line Takeaway */}
+              <div className="flex items-end justify-between flex-wrap gap-4 mb-6">
+                <div>
+                  <MetricLabel>Payment channels</MetricLabel>
+                  <h3 className="editorial-headline text-2xl sm:text-3xl mt-1.5">How customers pay.</h3>
                 </div>
-                <div className="relative h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: `${p.percent}%` }}
-                    transition={{ duration: 1.0, delay: 0.08 * i, ease: [0.16, 1, 0.3, 1] }}
-                    className="h-full rounded-full bg-[color:var(--accent)]"
-                  />
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-50 border border-slate-200 text-xs font-mono-data shadow-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 animate-pulse" />
+                  <span className="text-slate-600">
+                    <strong className="text-slate-900 font-semibold">{topPayment?.method}</strong> leads at{" "}
+                    <strong className="text-emerald-700 font-bold">{topPayment?.percent}%</strong>
+                  </span>
+                  <span className="text-slate-300">|</span>
+                  <span className="text-slate-500 font-semibold tabular-nums">{fmtCompact(topPayment?.amount || 0)}</span>
                 </div>
-                <div className="mt-1 text-[11px] font-mono-data text-[color:var(--ink-dim)] tabular-nums">{fmtINR(p.amount)}</div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-2">
+                {/* Left 7 Columns: Interactive Payment Bar List */}
+                <div className="lg:col-span-7 space-y-3.5">
+                  {payments.map((p, i) => {
+                    const isHovered = activePaymentIndex === i;
+                    const isTop = p.method === topPayment?.method;
+                    const barColor = isTop ? "var(--accent)" : i === 1 ? "#16a34a" : i === 2 ? "#34d399" : "#94a3b8";
+                    return (
+                      <div
+                        key={p.method}
+                        onMouseEnter={() => setActivePaymentIndex(i)}
+                        onMouseLeave={() => setActivePaymentIndex(null)}
+                        className={`p-3 rounded-xl transition-all duration-150 cursor-pointer border ${
+                          isHovered
+                            ? "bg-slate-50 border-slate-200 shadow-sm"
+                            : "bg-transparent border-transparent hover:bg-slate-50/70"
+                        }`}
+                      >
+                        <div className="flex items-center justify-between gap-3 mb-2">
+                          <div className="flex items-center gap-2.5">
+                            <div className="w-7 h-7 rounded-lg bg-slate-100/90 border border-slate-200/60 flex items-center justify-center flex-shrink-0">
+                              {getPaymentIcon(p.method)}
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <span className="text-sm font-semibold text-[color:var(--ink)]">{p.method}</span>
+                              {isTop && (
+                                <span className="text-[9px] font-mono-data font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-emerald-100/70 text-emerald-800 border border-emerald-200">
+                                  Leader
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                          <div className="text-right flex items-baseline gap-3">
+                            <span className="text-xs font-mono-data text-[color:var(--ink-muted)] tabular-nums">
+                              {fmtINR(p.amount)}
+                            </span>
+                            <span className="font-mono-data text-sm font-bold text-[color:var(--ink)] w-14 text-right tabular-nums">
+                              {p.percent}%
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* High-Contrast Track and Staggered Animated Bar */}
+                        <div className="relative h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200/50">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: `${p.percent}%` }}
+                            transition={{ duration: 0.8, delay: 0.08 * i, ease: [0.16, 1, 0.3, 1] }}
+                            className="h-full rounded-full transition-colors"
+                            style={{ background: isHovered ? "var(--accent)" : barColor }}
+                          />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Right 5 Columns: Centered Live Donut Mix with Central Metric */}
+                <div className="lg:col-span-5 flex flex-col items-center justify-center p-2">
+                  <div className="relative w-[240px] h-[240px] flex items-center justify-center">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <PieChart>
+                        <Pie
+                          data={payments}
+                          dataKey="amount"
+                          nameKey="method"
+                          innerRadius={72}
+                          outerRadius={102}
+                          paddingAngle={3}
+                          stroke="none"
+                          animationDuration={900}
+                        >
+                          {payments.map((p, index) => {
+                            const isHovered = activePaymentIndex === index;
+                            const isFaded = activePaymentIndex !== null && !isHovered;
+                            const color = PAYMENT_COLORS[index % PAYMENT_COLORS.length];
+                            return (
+                              <Cell
+                                key={p.method}
+                                fill={color}
+                                opacity={isFaded ? 0.35 : 1}
+                                stroke={isHovered ? "#0f172a" : "#ffffff"}
+                                strokeWidth={isHovered ? 2.5 : 1.5}
+                                onMouseEnter={() => setActivePaymentIndex(index)}
+                                onMouseLeave={() => setActivePaymentIndex(null)}
+                                className="transition-all duration-200 cursor-pointer"
+                              />
+                            );
+                          })}
+                        </Pie>
+                      </PieChart>
+                    </ResponsiveContainer>
+
+                    {/* Center Hole Brand & Stat Label */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-center px-4">
+                      <span className="metadata-label !text-[9px] text-slate-400 truncate max-w-[120px]">
+                        {activePaymentIndex !== null ? "Selected Channel" : "Dominant Channel"}
+                      </span>
+                      <div className="font-editorial text-2xl text-[color:var(--ink)] mt-0.5 leading-tight truncate max-w-[140px]">
+                        {displayPayment?.method}
+                      </div>
+                      <div className="kpi-num text-xl text-[color:var(--accent)] font-bold mt-0.5 tabular-nums">
+                        {displayPayment?.percent}%
+                      </div>
+                      <div className="text-[11px] font-mono-data text-[color:var(--ink-muted)] tabular-nums mt-0.5">
+                        {fmtINR(displayPayment?.amount)}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Bottom Legend / Total Indicator */}
+                  <div className="flex items-center gap-2.5 mt-3 text-xs font-mono-data text-slate-500">
+                    <span className="inline-flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-emerald-600" />
+                      Settled across {payments.length} gateways
+                    </span>
+                    <span>·</span>
+                    <span className="font-semibold text-slate-700 tabular-nums">
+                      {fmtINR(totalPayments)} total
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      })()}
     </div>
   );
 }
